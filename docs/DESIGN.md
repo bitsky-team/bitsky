@@ -1,4 +1,0 @@
-Design mockups (WIP)
-====================
-
-Soon
