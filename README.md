@@ -50,6 +50,29 @@ The indignation and distrust of Internet users has only grown. The use and contr
 
 This project will try to address that and address those concerns.
 
+Project structure
+=================
+
+```bash
+├── src
+│   ├── api # Embedded Rest API (using intermediary-api for links)
+│   ├── desktop # Desktop app (using api)
+│   ├── mobile # Mobile app
+│   ├── intermediary-api # Security REST api
+|   └── modules # device configuration interfaces (nano computer)
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── CONTRIBUTORS.md
+├── LICENSE.md
+├── README.md
+├── manifest.json
+├── docs
+│   └── BRANCHING_MODEL.md
+└── .github
+```
+
+
 How do I get started?
 =====================
 If you want to use it: actually you can't, we are bootstrapping the project.
