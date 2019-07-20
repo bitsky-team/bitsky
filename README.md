@@ -1,7 +1,7 @@
 # Bitsky
 A new way to share with your loved ones.
 
-![Version badge](https://img.shields.io/github/tag-date/bitsky-team/bitsky.svg?label=last%20version)
+![Version badge](https://img.shields.io/github/manifest-json/v/bitsky-team/bitsky.svg?style=flat-square)
 
 Table of contents
 =================
