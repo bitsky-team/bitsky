@@ -11,5 +11,6 @@ Table of contents
      * [Trello](docs/TRELLO.md)
      * [Design Mockups](docs/DESIGN.md)
      * [Branching Model](docs/BRANCHING_MODEL.md)
+     * Version: [major].[minor].[release]
    * [Changelog](CHANGELOG.md)
 <!--te-->
