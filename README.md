@@ -14,6 +14,7 @@ Table of contents
 * [Changelog](CHANGELOG.md)
 * [What does this project do?](#what-does-this-project-do)
 * [Why this project useful?](#why-is-this-project-useful)
+* [Project structure](#project-structure)
 * [How do I get started?](#how-do-i-get-started)
 * [Where did you get that great project name?](#where-did-you-get-that-great-project-name)
 * [What does the logo mean?](#what-does-the-logo-mean)
@@ -55,11 +56,11 @@ Project structure
 
 ```bash
 ├── src
-│   ├── api # Embedded Rest API (using intermediary-api for links)
+|   ├── intermediary-api # Security REST api cloud-hosted
+│   ├── api # Embedded Rest API hosted on a nano computer (using intermediary-api for links)
 │   ├── desktop # Desktop app (using api)
-│   ├── mobile # Mobile app
-│   ├── intermediary-api # Security REST api
-|   └── modules # device configuration interfaces (nano computer)
+│   ├── mobile # Mobile app (usi api)
+|   └── modules # Device configuration interfaces
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
