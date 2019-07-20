@@ -5,8 +5,9 @@ Table of contents
 =================
 
 <!--ts-->
-   * Want to help ?
+   * Contributing
      * [Trello](docs/TRELLO.md)
      * [Design Mockups](docs/DESIGN.md)
      * [Branching Model](docs/BRANCHING_MODEL.md)
+   * [Changelog](CHANGELOG.md)
 <!--te-->
