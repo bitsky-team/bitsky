@@ -8,8 +8,6 @@ Table of contents
 
 <!--ts-->
    * [Contributing](CONTRIBUTING.md)
-     * [Trello](docs/TRELLO.md)
-     * [Design Mockups](docs/DESIGN.md)
      * [Branching Model](docs/BRANCHING_MODEL.md)
    * [Changelog](CHANGELOG.md)
 <!--te-->
