@@ -6,6 +6,9 @@
 A new way to share with your loved ones.
 
 ![Version badge](https://img.shields.io/github/manifest-json/v/bitsky-team/bitsky/develop.svg?label=version)
+![Issues badge](https://img.shields.io/github/issues/bitsky-team/bitsky.svg)
+![License badge](https://img.shields.io/github/license/bitsky-team/bitsky.svg)
+![Twitter badge](https://img.shields.io/twitter/url/https/github.com/bitsky-team/bitsky.svg?style=social)
 
 Table of contents
 =================
@@ -56,11 +59,11 @@ Project structure
 
 ```bash
 ├── src
-|   ├── intermediary-api # Security REST api cloud-hosted
+│   ├── intermediary-api # Security REST api cloud-hosted
 │   ├── api # Embedded Rest API hosted on a nano computer (using intermediary-api for links)
 │   ├── desktop # Desktop app (using api)
 │   ├── mobile # Mobile app (usi api)
-|   └── modules # Device configuration interfaces
+│   └── modules # Device configuration interfaces
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
