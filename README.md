@@ -82,7 +82,7 @@ How do I get started?
 If you want to use it: actually you can't, we are bootstrapping the project.
 If you want to contribute:
  1. Read the [contributing.md file](CONTRIBUTING.md).
- 2. Check the [project board](https://github.com/bitsky-team/bitsky/projects/2) and find an issue who suits you.
+ 2. Check the [project board](https://github.com/bitsky-team/bitsky/projects) and find an issue who suits you.
  3. Respect the pull request template.
  4. Add your name in the [contributors.md file](CONTRIBUTORS.md).
  5. Thanks !
