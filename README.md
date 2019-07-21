@@ -63,7 +63,7 @@ Project structure
 │   ├── api # Embedded Rest API hosted on a nano computer (using intermediary-api for links)
 │   ├── desktop # Desktop app (using api)
 │   ├── mobile # Mobile app (usi api)
-│   └── modules # Device configuration interfaces
+│   └── configuration # Device configuration interfaces
 ├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
