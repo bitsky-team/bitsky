@@ -6,17 +6,26 @@
   "homepage": "./",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.2.1",
+    "@sentry/browser": "^5.5.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "cross-env": "^5.2.0",
     "electron-is-dev": "^1.1.0",
+    "final-form": "^4.18.2",
+    "i18next": "^17.0.6",
+    "i18next-xhr-backend": "^3.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-final-form": "^6.3.0",
+    "react-i18next": "^10.11.4",
+    "react-pose": "^4.0.8",
     "react-redux": "^7.1.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
+    "styled-components": "^4.3.2",
     "typescript": "^3.5.3"
   },
   "scripts": {
@@ -49,8 +58,8 @@
     "concurrently": "^4.1.1",
     "electron": "^5.0.7",
     "electron-builder": "^21.1.1",
-    "wait-on": "^3.3.0",
     "tslint": "^5.18.0",
-    "tslint-react": "^4.0.0"
+    "tslint-react": "^4.0.0",
+    "wait-on": "^3.3.0"
   }
 }

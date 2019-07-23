@@ -1,11 +1,15 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import * as serviceWorker from './serviceWorker'
-import { App } from './App'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {unregister} from './serviceWorker'
+import * as Sentry from '@sentry/browser'
+import './i18n'
+import {Router} from './Router'
+
+Sentry.init({dsn: process.env.REACT_APP_SENTRY_DSN});
 
 ReactDOM.render(
-  <App />,
+  <Router />,
   document.getElementById('root'),
 )
 
-serviceWorker.unregister()
+unregister()
