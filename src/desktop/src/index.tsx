@@ -7,7 +7,7 @@ import i18n from 'i18next'
 import backend from 'i18next-xhr-backend'
 import {initReactI18next} from 'react-i18next'
 import {ThemeProvider} from 'styled-components'
-import { StylesProvider } from '@material-ui/styles';
+import { StylesProvider } from '@material-ui/styles'
 
 // Initiating Sentry, this tool is used for error catching
 Sentry.init({dsn: process.env.REACT_APP_SENTRY_DSN})
