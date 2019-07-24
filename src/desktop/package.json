@@ -8,10 +8,11 @@
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@sentry/browser": "^5.5.0",
-    "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/styled-components": "^4.1.18",
     "cross-env": "^5.2.0",
     "electron-is-dev": "^1.1.0",
     "final-form": "^4.18.2",
@@ -23,6 +24,7 @@
     "react-i18next": "^10.11.4",
     "react-pose": "^4.0.8",
     "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
     "styled-components": "^4.3.2",
@@ -34,9 +36,10 @@
     "react-test": "react-scripts test",
     "react-eject": "react-scripts eject",
     "electron-build": "electron-builder",
+    "electron-start": "electron .",
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && yarn electron-start\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -55,9 +58,15 @@
     ]
   },
   "devDependencies": {
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.15",
     "concurrently": "^4.1.1",
     "electron": "^5.0.7",
     "electron-builder": "^21.1.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "react-test-renderer": "^16.8.6",
     "tslint": "^5.18.0",
     "tslint-react": "^4.0.0",
     "wait-on": "^3.3.0"

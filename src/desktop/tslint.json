@@ -30,7 +30,9 @@
       "allow-pascal-case",
       "allow-snake-case"
     ],
-    "no-shadowed-variable": false
+    "no-shadowed-variable": false,
+    "jsx-boolean-value": false,
+    "jsx-no-lambda": false
   },
   "rulesDirectory": []
 }
