@@ -25,7 +25,7 @@ i18n
   })
 
 // TODO: Maybe change Suspense fallback props into a beautiful loading screen
-const App = () => (
+const App = (): JSX.Element => (
   <Suspense fallback={<Fragment />}>
     <ThemeProvider theme={{mode: 'classic'}}>
       <Router />
