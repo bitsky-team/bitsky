@@ -1,8 +1,7 @@
 import React from 'react'
-import { IProps } from '../../../interfaces/generics'
 import { Background, WhiteOverlay, Box, LoginContainer } from '../styles'
 
-export const Container = ({children}: IProps): JSX.Element => (
+export const Container = ({children}: IPropsChildren): JSX.Element => (
     <Background>
         <WhiteOverlay>
             <LoginContainer maxWidth='lg'>

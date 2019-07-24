@@ -12,10 +12,6 @@ import {
     VisibilityOff,
     Visibility,
 } from '@material-ui/icons'
-import {
-    IAction,
-    IStringAnyMap,
-} from '../../../interfaces/generics'
 
 const initialState = {
     visible: false,
@@ -37,7 +33,7 @@ const reducer = (state: IStringAnyMap, action: IAction) => {
     }
 }
 
-export const Input = (props: any): JSX.Element => {
+export const Input = (props: IInputProps): JSX.Element => {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     return (
@@ -52,12 +48,12 @@ export const Input = (props: any): JSX.Element => {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position='end'>
-                                <IconButton
-                                    edge='end'
-                                    onClick={() => dispatch({type: actions.TOGGLE_VISIBILITY})}
-                                >
-                                    {state.visible ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
+                                    <IconButton
+                                        edge='end'
+                                        onClick={() => dispatch({type: actions.TOGGLE_VISIBILITY})}
+                                    >
+                                        {state.visible ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
                                 </InputAdornment>
                             ),
                         }}

@@ -1,4 +1,3 @@
-import {IStringTMap} from '../interfaces/generics'
 import theme, { ThemeSet } from 'styled-theming'
 
 /*

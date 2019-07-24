@@ -9,7 +9,6 @@ export const PasswordField = () => (
         {({ input, meta }) => (
             <Input
                 label='Mot de passe'
-                autoComplete='password'
                 variant='outlined'
                 invalid={meta.touched && meta.error}
                 visibilityFilter
