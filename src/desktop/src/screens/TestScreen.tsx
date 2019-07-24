@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {Card, Button, Container} from '@material-ui/core'
 import styled from 'styled-components'
+import {Card, Button, Container} from '@material-ui/core'
 import {colors} from '../constants/colors'
 
 const CenteredContainer = styled(Container)`
@@ -20,12 +20,12 @@ const StyledCard = styled(Card)`
 const ButifulButton = styled(Button)`
   border-radius: 8px;
   background: linear-gradient(45deg, ${colors.gradientPink} 0%, ${colors.gradientBlue} 100%);
-  color: white !important;
-  padding: 10px 25px !important;
+  color: white;
+  padding: 10px 25px;
   :focus, :active {
     box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2),
                 0 2px 2px 0 rgba(0,0,0,0.14),
-                0 3px 1px -2px rgba(0,0,0,0.12) !important;
+                0 3px 1px -2px rgba(0,0,0,0.12);
   }
 `
 
