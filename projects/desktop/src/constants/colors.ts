@@ -35,4 +35,8 @@ export const colors: IStringTMap<ThemeSet> = {
   gradientPinkTranslucent: theme('mode', {
     classic: 'rgb(255,128,250, 0.5)',
   }),
+
+  error: theme('mode', {
+    classic: '#e35656',
+  }),
 }

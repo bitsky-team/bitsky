@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
 import {Card, Button, Container} from '@material-ui/core'
-import {colors} from '../constants/colors'
+import {colors} from '../constants'
 
 const CenteredContainer = styled(Container)`
   display: flex;

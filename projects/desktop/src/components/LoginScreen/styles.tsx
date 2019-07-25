@@ -3,9 +3,10 @@ import {
     Container as MaterialContainer,
     Box as MaterialBox,
     TextField,
+    Button,
 } from '@material-ui/core'
 import background from '../../assets/img/background.png'
-import { colors } from '../../constants/colors'
+import { colors } from '../../constants'
 
 export const Background = styled.div`
     background-image: url(${background});
@@ -43,8 +44,8 @@ export const LeftSideContainer = styled.div`
     align-content: center;
 `
 
-export const Title = styled.h1`
-    margin: 0;
+export const BigTitle = styled.h1`
+    margin: 0 0 40px 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: lighter;
     color: ${colors.grey};
@@ -73,20 +74,33 @@ export const GradientOverlay = styled.div`
     border-radius: 0 8px 8px 0;
 `
 
+export const GradientButton = styled(Button)`
+    border-radius: 8px;
+    background: linear-gradient(45deg, ${colors.gradientBlue} 0%, ${colors.gradientPink} 100%);
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    box-shadow: none !important;
+`
+
 export const CenteredForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 70%;
+    margin: 0 auto;
+
+    ${GradientButton} {
+        margin-top: 16px;
+    }
 `
 
 export const InputContainer = styled.div`
     display: flex;
-    width: 70%;
+    width: 100%;
     margin-top: 16px;
-    
-    :first-child {
-        margin-top: 32px;
-    }
 `
 
 export const InputField = styled(TextField)`
@@ -115,12 +129,24 @@ export const InputField = styled(TextField)`
     }
 `
 
-export const InputBorder = styled.div`
+export const InputBorder = styled.div<IInputBorderProps>`
     background: linear-gradient(180deg, ${colors.gradientPink} 0%, ${colors.gradientBlue} 100%);
+    background: ${props => props.borderColor};
     flex: 1;
     max-width: 2px;
+`
 
-    :before {
-        content: ''
-    }
+export const InputWithError = styled.div<IInputWithErrorProps>`
+    position: relative;
+    width: 100%;
+
+    ${({active}) => active && `margin-bottom: 18px;`}
+`
+
+export const InputError = styled.span`
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    color: ${colors.error};
 `

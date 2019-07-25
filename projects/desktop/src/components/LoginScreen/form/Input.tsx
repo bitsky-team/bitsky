@@ -3,6 +3,7 @@ import {
     InputContainer,
     InputBorder,
     InputField,
+    InputWithError,
 } from '../styles';
 import {
     InputAdornment,
@@ -12,6 +13,8 @@ import {
     VisibilityOff,
     Visibility,
 } from '@material-ui/icons'
+import { colors } from '../../../constants'
+import { InputError } from '../styles';
 
 const initialState = {
     visible: false,
@@ -35,36 +38,47 @@ const reducer = (state: IStringAnyMap, action: IAction) => {
 
 export const Input = (props: IInputProps): JSX.Element => {
     const [state, dispatch] = useReducer(reducer, initialState)
-
+    const { visibilityFilter, invalid, value, ...rest } = props
+    
     return (
-        <InputContainer>
-            <InputBorder />
+        <InputWithError active={invalid}>
+            <InputContainer>
+                <InputBorder
+                    borderColor={invalid ? colors.error : !value ? colors.grey : null}
+                />
+                
+                {visibilityFilter
+                    ? (
+                        <InputField
+                            {...rest}
+                            value={value}
+                            type={state.visible ? 'text' : 'password'}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position='end'>
+                                        <IconButton
+                                            edge='end'
+                                            onClick={() => dispatch({type: actions.TOGGLE_VISIBILITY})}
+                                        >
+                                            {state.visible ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    )
+                    : (
+                        <InputField
+                            {...rest}
+                            value={value}
+                        />
+                    )
+                }
+            </InputContainer>
             
-            {props.visibilityFilter
-                ? (
-                    <InputField
-                        {...props}
-                        type={state.visible ? 'text' : 'password'}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position='end'>
-                                    <IconButton
-                                        edge='end'
-                                        onClick={() => dispatch({type: actions.TOGGLE_VISIBILITY})}
-                                    >
-                                        {state.visible ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                )
-                : (
-                    <InputField
-                        {...props}
-                    />
-                )
-            }
-        </InputContainer>
+            {Boolean(invalid) && (
+                <InputError>{invalid}</InputError>
+            )}
+        </InputWithError>
     )
 }
