@@ -19,6 +19,7 @@ export const LoginScreen = (): JSX.Element => {
 
                 <FinalForm
                     onSubmit={values => console.log(values)}
+                    initialValues={{ remember: false }}
                     render={({handleSubmit}) => <Form handleSubmit={handleSubmit} />}
                 />
             </LeftSide>

@@ -10,6 +10,7 @@ export const PasswordField = (): JSX.Element => {
     return (
         <Field
             name='password'
+            type='password'
             validate={composeValidators(required, validateMinimumLength(8))}
         >
             {({ input, meta }) => (
