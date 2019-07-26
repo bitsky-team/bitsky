@@ -9,7 +9,7 @@ export const colors: IStringTMap<ThemeSet> = {
   }),
 
   grey: theme('mode', {
-    classic: '#6A6A6A',
+    classic: '#8A8A8A',
   }),
 
   lightGrey: theme('mode', {

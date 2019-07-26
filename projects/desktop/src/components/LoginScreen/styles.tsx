@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core'
 import background from '../../assets/img/background.png'
 import { colors } from '../../constants'
+import {Link} from 'react-router-dom'
 
 export const Background = styled.div`
     background-image: url(${background});
@@ -31,7 +32,7 @@ export const Box = styled(MaterialBox)`
     background-color: ${colors.white};
     border-radius: 8px;
     box-shadow: 4px 8px 32px 0 rgba(0,0,0,0.10);
-    height: 80vh;
+    height: 90vh;
 `
 
 export const LeftSideContainer = styled.div`
@@ -150,4 +151,78 @@ export const InputError = styled.span`
     bottom: -22px;
     left: 0;
     color: ${colors.error};
+`
+
+export const CheckboxContainer = styled.label`
+    width: calc(100% - 30px);
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    user-select: none;
+    color: ${colors.grey};
+    
+    :hover {
+        cursor: pointer;
+    }
+`
+
+export const CheckboxInput = styled.input`
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    
+    :checked ~ span {
+        border: none;
+        background: linear-gradient(45deg, ${colors.gradientPink} 0%, ${colors.gradientBlue} 100%);
+        height: 16px;
+        width: 16px;
+    }
+    
+    :checked ~ span:after {
+        display: block;
+    }
+`
+
+export const CheckboxCheckmark = styled.span`
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid ${colors.lightGrey};
+    box-sizing: border-box;
+
+    :after {
+        content: '';
+        position: absolute;
+        display: none;
+        left: 4.3px;
+        top: 1px;
+        width: 5px;
+        height: 8px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+`
+
+export const FormLink = styled(Link)`
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  color: ${colors.grey};
+  text-decoration :none;
+  font-size: 18px;
+  margin-top: 16px;
 `

@@ -10,7 +10,9 @@
     "form": {
       "emailAddress": "Adresse email",
       "password": "Mot de passe",
-      "login": "Connexion"
+      "rememberMe": "Se souvenir de moi",
+      "login": "Connexion",
+      "notRegistered": "Pas encore inscrit ?"
     }
   }
 }

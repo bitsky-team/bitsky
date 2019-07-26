@@ -5,6 +5,7 @@
   "main": "public/electron.js",
   "homepage": "./",
   "private": true,
+  "license": "GPL-3.0",
   "dependencies": {
     "@material-ui/core": "^4.2.1",
     "@material-ui/icons": "^4.2.1",

@@ -10,7 +10,9 @@
     "form": {
       "emailAddress": "Email address",
       "password": "Password",
-      "login": "Log In"
+      "rememberMe": "Remember me",
+      "login": "Log In",
+      "notRegistered": "No account yet?"
     }
   }
 }
