@@ -51,6 +51,7 @@ export const BigTitle = styled.h1`
     color: ${colors.grey};
     text-align: center;
     font-size: 27px;
+    white-space: pre-line;
 
     span {
         font-weight: 500;

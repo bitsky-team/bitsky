@@ -14,7 +14,8 @@ import {
     Visibility,
 } from '@material-ui/icons'
 import { colors } from '../../../constants'
-import { InputError } from '../styles';
+import { InputError } from '../styles'
+import { useTranslation } from 'react-i18next'
 
 const initialState = {
     visible: false,
@@ -38,6 +39,8 @@ const reducer = (state: IStringAnyMap, action: IAction) => {
 
 export const Input = (props: IInputProps): JSX.Element => {
     const [state, dispatch] = useReducer(reducer, initialState)
+    const [t] = useTranslation()
+
     const { visibilityFilter, invalid, value, ...rest } = props
     
     return (
@@ -77,7 +80,9 @@ export const Input = (props: IInputProps): JSX.Element => {
             </InputContainer>
             
             {Boolean(invalid) && (
-                <InputError>{invalid}</InputError>
+                !invalid.key
+                    ? <InputError>{t(invalid)}</InputError>
+                    : <InputError>{t(invalid.key, invalid.data)}</InputError>
             )}
         </InputWithError>
     )

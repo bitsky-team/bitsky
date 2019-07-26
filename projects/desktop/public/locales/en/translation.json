@@ -1,3 +1,16 @@
 {
-  "app.test": "Hello"
+  "fieldError": {
+    "required": "This field is required",
+    "emailNotValid": "Incorrect email address",
+    "tooShort": "This is too short (min. {{min}} characters)"
+  },
+
+  "login": {
+    "title": "<span>Your</span> friends,\n<span>Your</span> memories,\n<span>Your</span> data,\nAt <span>home</span>.",
+    "form": {
+      "emailAddress": "Email address",
+      "password": "Password",
+      "login": "Log In"
+    }
+  }
 }

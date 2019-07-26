@@ -1,16 +1,13 @@
 export const required = (value: string): string | undefined  => {
-    // TODO: Error translation
-    return value ? undefined : 'required'
+    return value ? undefined : 'fieldError.required'
 }
 
 export const validateEmail = (value: string): string | undefined => {
-    // TODO: Error translation
-    return /^\S+@\S+$/.test(value) ? undefined : 'Incorrect email'
+    return /^\S+@\S+$/.test(value) ? undefined : 'fieldError.emailNotValid'
 }
 
-export const validateMinimumLength =  (minimum: number) => (value: string): string | undefined => {
-    // TODO: Error translation
-    return value.length >= minimum ? undefined : `This is too short ! (min. ${minimum} characters)`
+export const validateMinimumLength =  (minimum: number) => (value: string): object | undefined => {
+    return value.length >= minimum ? undefined : {key: `fieldError.tooShort`, data: {min: minimum}}
 }
 
 export const composeValidators = (...validators: any[]) => (value: string) =>
