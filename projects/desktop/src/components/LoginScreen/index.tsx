@@ -1,5 +1,5 @@
 import React from 'react'
-import { BigTitle } from './styles'
+import {BigTitle, LoginLanguageChooser} from './styles'
 import { Container, LeftSide, RightSide } from './parts'
 import { Form as FinalForm } from 'react-final-form'
 import { Form } from './form'
@@ -15,6 +15,7 @@ export const LoginScreen = (): JSX.Element => {
     return (
         <Container>
             <LeftSide>
+                <LoginLanguageChooser />
                 <BigTitle dangerouslySetInnerHTML={getTitleContent()} />
 
                 <FinalForm

@@ -8,6 +8,7 @@ import {
 import background from '../../assets/img/background.png'
 import { colors } from '../../constants'
 import {Link} from 'react-router-dom'
+import {LanguageChooser} from '../common/LanguageChooser'
 
 export const Background = styled.div`
     background-image: url(${background});
@@ -43,6 +44,7 @@ export const LeftSideContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    position: relative;
 `
 
 export const BigTitle = styled.h1`
@@ -225,4 +227,10 @@ export const FormLink = styled(Link)`
   text-decoration :none;
   font-size: 18px;
   margin-top: 16px;
+`
+
+export const LoginLanguageChooser = styled(LanguageChooser)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `
