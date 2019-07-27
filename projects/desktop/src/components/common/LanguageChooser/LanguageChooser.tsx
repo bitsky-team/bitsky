@@ -33,6 +33,7 @@ export const LanguageChooser = ({className}: {className?: string}) => {
 
     const setLanguage = async (language: string) => {
         if (language) {
+            localStorage.setItem('language', language)
             await i18n.changeLanguage(language)
         }
         toggleDialog()

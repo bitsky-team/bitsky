@@ -50,7 +50,7 @@ export const LeftSideContainer = styled.div`
 export const BigTitle = styled.h1`
     margin: 0 0 40px 0;
     font-family: 'Montserrat', sans-serif;
-    font-weight: lighter;
+    font-weight: 200;
     color: ${colors.grey};
     text-align: center;
     font-size: 27px;
@@ -63,11 +63,9 @@ export const BigTitle = styled.h1`
 `
 
 export const RightSideBackground = styled.div`
-    background: blue;
     flex: 3;
     border-radius: 0 8px 8px 0;
-    background-image: url(${background});
-    background-position: bottom center;
+    background: blue url(${background}) bottom center;
     color: ${colors.white};
 `
 
@@ -109,12 +107,11 @@ export const InputContainer = styled.div`
 
 export const InputField = styled(TextField)`
     width: calc(100% - 2px);
+    font-family: sans-serif;
 
     fieldset {
         border-left: none;
-        border-radius: 8px;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
+        border-radius: 0 8px 8px 0;
         border-color: ${colors.lightGrey};
     }
 
@@ -233,4 +230,5 @@ export const LoginLanguageChooser = styled(LanguageChooser)`
   position: absolute;
   top: 10px;
   right: 10px;
+  color: ${colors.grey};
 `

@@ -25,7 +25,8 @@ i18n
         en,
         fr,
     },
-    lng: 'en',
+    lng: localStorage.getItem('language') || undefined,
+    fallbackLng: 'en',
     keySeparator: '.',
     interpolation: {
       escapeValue: false,

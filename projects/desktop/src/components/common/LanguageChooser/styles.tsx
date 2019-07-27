@@ -12,6 +12,6 @@ export const LanguageList = styled(List)`
 export const LanguageListItem = styled(ListItem)`
   display: flex;
   justify-content: center;
-  font-family: 'Montserrat', sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
 `
