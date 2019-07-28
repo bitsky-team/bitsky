@@ -44,9 +44,13 @@ export const Input = (props: IInputProps): JSX.Element => {
     const { visibilityFilter, invalid, value, ...rest } = props
     
     return (
-        <InputWithError active={invalid}>
+        <InputWithError
+            data-testid='input'
+            active={invalid}
+        >
             <InputContainer>
                 <InputBorder
+                    data-testid='inputBorder'
                     borderColor={invalid ? colors.error : !value ? colors.grey : null}
                 />
                 
@@ -78,11 +82,11 @@ export const Input = (props: IInputProps): JSX.Element => {
                     )
                 }
             </InputContainer>
-            
+
             {Boolean(invalid) && (
                 !invalid.key
-                    ? <InputError>{t(invalid)}</InputError>
-                    : <InputError>{t(invalid.key, invalid.data)}</InputError>
+                    ? <InputError data-testid='inputError'>{t(invalid)}</InputError>
+                    : <InputError data-testid='inputError'>{t(invalid.key, invalid.data)}</InputError>
             )}
         </InputWithError>
     )

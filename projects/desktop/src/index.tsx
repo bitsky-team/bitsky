@@ -18,14 +18,13 @@ Sentry.init({dsn: process.env.REACT_APP_SENTRY_DSN})
 
 // Initiating I18n for translation
 i18n
-  // load locales files in public/locales
   .use(initReactI18next)
   .init({
     resources: {
         en,
         fr,
     },
-    lng: localStorage.getItem('language') || undefined,
+    lng: localStorage.getItem('language') || 'en',
     fallbackLng: 'en',
     keySeparator: '.',
     interpolation: {

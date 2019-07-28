@@ -65,15 +65,11 @@
     ]
   },
   "devDependencies": {
-    "@types/enzyme": "^3.10.3",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.15",
     "concurrently": "^4.1.1",
     "cypress": "^3.4.0",
     "electron": "^5.0.7",
     "electron-builder": "^21.1.1",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
     "react-test-renderer": "^16.8.6",
     "tslint": "^5.18.0",
     "tslint-react": "^4.0.0",

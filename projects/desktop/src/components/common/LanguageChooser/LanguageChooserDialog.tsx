@@ -19,6 +19,7 @@ export const LanguageChooserDialog = ({open, selectedValue, onClose}: ISimpleDia
                 {languages.map(language => (
                     <LanguageListItem
                         key={language}
+                        data-testid={language}
                         button
                         onClick={() => onClose(language)}
                         disabled={language === selectedValue}

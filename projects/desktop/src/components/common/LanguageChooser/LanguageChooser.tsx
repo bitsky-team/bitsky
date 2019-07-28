@@ -47,6 +47,7 @@ export const LanguageChooser = ({className}: {className?: string}) => {
                 onClose={setLanguage}
             />
             <Button
+                data-testid='translationToggler'
                 className={className}
                 onClick={toggleDialog}
             >
