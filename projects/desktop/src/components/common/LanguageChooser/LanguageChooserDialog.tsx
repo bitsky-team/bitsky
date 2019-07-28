@@ -21,6 +21,7 @@ export const LanguageChooserDialog = ({open, selectedValue, onClose}: ISimpleDia
                         key={language}
                         button
                         onClick={() => onClose(language)}
+                        disabled={language === selectedValue}
                     >
                         {t(`languages.${language}`)}
                     </LanguageListItem>

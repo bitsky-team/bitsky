@@ -47,6 +47,13 @@ export const LeftSideContainer = styled.div`
     position: relative;
 `
 
+export const Logo = styled.img`
+  height: 64px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+`
+
 export const BigTitle = styled.h1`
     margin: 0 0 40px 0;
     font-family: 'Montserrat', sans-serif;

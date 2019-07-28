@@ -1,9 +1,10 @@
 import React from 'react'
-import {BigTitle, LoginLanguageChooser} from './styles'
+import {BigTitle, LoginLanguageChooser, Logo} from './styles'
 import { Container, LeftSide, RightSide } from './parts'
 import { Form as FinalForm } from 'react-final-form'
 import { Form } from './form'
 import { useTranslation } from 'react-i18next'
+import logo from '../../assets/img/logo-small.png'
 
 export const LoginScreen = (): JSX.Element => {
     const [t] = useTranslation()
@@ -15,6 +16,7 @@ export const LoginScreen = (): JSX.Element => {
     return (
         <Container>
             <LeftSide>
+                <Logo src={logo} />
                 <LoginLanguageChooser />
                 <BigTitle dangerouslySetInnerHTML={getTitleContent()} />
 
