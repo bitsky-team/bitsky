@@ -1,0 +1,31 @@
+{
+  "translation": {
+    "languages":  {
+      "en": "English",
+      "fr": "French"
+    },
+
+    "fieldError": {
+      "required": "This field is required",
+      "emailNotValid": "Incorrect email address",
+      "tooShort": "This is too short (min. {{min}} characters)"
+    },
+
+    "login": {
+      "title": "<span>Your</span> friends,\n<span>Your</span> memories,\n<span>Your</span> data,\nAt <span>home</span>.",
+      "form": {
+        "emailAddress": "Email address",
+        "password": "Password",
+        "rememberMe": "Remember me",
+        "login": "Log In",
+        "notRegistered": "No account yet?"
+      }
+    },
+
+    "dialogs": {
+      "languages": {
+        "title": "Choose a language"
+      }
+    }
+  }
+}
