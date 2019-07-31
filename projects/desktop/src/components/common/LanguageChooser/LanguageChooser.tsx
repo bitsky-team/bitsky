@@ -1,17 +1,21 @@
 import React, {useReducer} from 'react'
 import { Button } from '@material-ui/core'
 import {LanguageChooserDialog} from './LanguageChooserDialog'
-import { useTranslation } from 'react-i18next'
+import {useTranslation, UseTranslationResponse} from 'react-i18next'
 
-const initialState = {
+interface IState {
+    open: boolean,
+}
+
+const initialState: IState = {
     open: false,
 }
 
-const actions = {
+const actions: IStringTMap<string> = {
     TOGGLE_DIALOG: 'TOGGLE_DIALOG',
 }
 
-const reducer = (state: typeof initialState, action: IAction) => {
+const reducer = (state: typeof initialState, action: IAction): IState => {
     switch (action.type) {
         case actions.TOGGLE_DIALOG:
             return {
@@ -23,15 +27,15 @@ const reducer = (state: typeof initialState, action: IAction) => {
     }
 }
 
-export const LanguageChooser = ({className}: {className?: string}) => {
+export const LanguageChooser = ({className}: {className?: string}): JSX.Element => {
     const [state, dispatch] = useReducer(reducer, initialState)
-    const {i18n} = useTranslation()
+    const {i18n}: UseTranslationResponse = useTranslation()
 
-    const toggleDialog = () => {
+    const toggleDialog = (): void => {
         dispatch({type: actions.TOGGLE_DIALOG})
     }
 
-    const setLanguage = async (language: string) => {
+    const setLanguage = async (language: string): Promise<void> => {
         if (language) {
             localStorage.setItem('language', language)
             await i18n.changeLanguage(language)

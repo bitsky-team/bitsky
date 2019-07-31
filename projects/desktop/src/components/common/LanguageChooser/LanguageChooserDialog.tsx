@@ -1,12 +1,12 @@
 import React from 'react'
 import {
-    Dialog
+    Dialog,
 } from '@material-ui/core'
-import { useTranslation } from 'react-i18next'
+import {useTranslation, UseTranslationResponse} from 'react-i18next'
 import {LanguageDialogTitle, LanguageList, LanguageListItem} from './styles'
 
-export const LanguageChooserDialog = ({open, selectedValue, onClose}: ISimpleDialogProps) => {
-    const [t, i18n] = useTranslation()
+export const LanguageChooserDialog = ({open, selectedValue, onClose}: ISimpleDialogProps): JSX.Element => {
+    const {t, i18n}: UseTranslationResponse = useTranslation()
 
     const languages = Object.keys(i18n.options.resources || {})
 

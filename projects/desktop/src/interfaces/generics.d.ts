@@ -18,3 +18,7 @@ interface IAction {
   type: string,
   payload?: any,
 }
+
+interface IDangerousHTMLContent {
+  __html: string,
+}

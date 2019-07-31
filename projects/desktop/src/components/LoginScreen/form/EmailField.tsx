@@ -2,10 +2,10 @@ import React from 'react'
 import { Field } from 'react-final-form'
 import { Input } from './'
 import { composeValidators, required, validateEmail } from '../../../constants/validators'
-import { useTranslation } from 'react-i18next'
+import {useTranslation, UseTranslationResponse} from 'react-i18next'
 
 export const EmailField = (): JSX.Element => {
-    const [t] = useTranslation()
+    const {t}: UseTranslationResponse = useTranslation()
 
     return (
         <Field

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, {Dispatch, useReducer} from 'react'
 import {
     InputContainer,
     InputBorder,
@@ -15,17 +15,26 @@ import {
 } from '@material-ui/icons'
 import { colors } from '../../../constants'
 import { InputError } from '../styles'
-import { useTranslation } from 'react-i18next'
+import {useTranslation, UseTranslationResponse} from 'react-i18next'
 
-const initialState = {
+interface IState {
+    visible: boolean,
+}
+interface IProps {
+    visibilityFilter: boolean,
+    invalid: InvalidInputError,
+    value: string,
+}
+
+const initialState: IState = {
     visible: false,
 }
 
-const actions = {
+const actions: IStringTMap<string> = {
     TOGGLE_VISIBILITY: 'TOGGLE_VISIBILITY',
 }
 
-const reducer = (state: IStringAnyMap, action: IAction) => {
+const reducer = (state: IStringAnyMap, action: IAction): IState => {
     switch (action.type) {
         case actions.TOGGLE_VISIBILITY:
             return {
@@ -38,15 +47,15 @@ const reducer = (state: IStringAnyMap, action: IAction) => {
 }
 
 export const Input = (props: IInputProps): JSX.Element => {
-    const [state, dispatch] = useReducer(reducer, initialState)
-    const [t] = useTranslation()
+    const [state, dispatch]: [IState, Dispatch<IAction>] = useReducer(reducer, initialState)
+    const {t}: UseTranslationResponse = useTranslation()
 
-    const { visibilityFilter, invalid, value, ...rest } = props
+    const { visibilityFilter, invalid, value, ...rest }: IProps = props
     
     return (
         <InputWithError
             data-testid='input'
-            active={invalid}
+            active={Boolean(invalid)}
         >
             <InputContainer>
                 <InputBorder
@@ -84,7 +93,7 @@ export const Input = (props: IInputProps): JSX.Element => {
             </InputContainer>
 
             {Boolean(invalid) && (
-                !invalid.key
+                typeof invalid === 'string'
                     ? <InputError data-testid='inputError'>{t(invalid)}</InputError>
                     : <InputError data-testid='inputError'>{t(invalid.key, invalid.data)}</InputError>
             )}

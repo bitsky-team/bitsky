@@ -3,16 +3,16 @@ import {BigTitle, LoginLanguageChooser, Logo} from './styles'
 import { Container, LeftSide, RightSide } from './parts'
 import { Form as FinalForm } from 'react-final-form'
 import { Form } from './form'
-import { useTranslation } from 'react-i18next'
+import {useTranslation, UseTranslationResponse} from 'react-i18next'
 import logo from '../../assets/img/logo-small.png'
 
 export const LoginScreen = (): JSX.Element => {
-    const [t] = useTranslation()
+    const {t}: UseTranslationResponse = useTranslation()
 
-    const getTitleContent = (): {__html: string} => {
+    const getTitleContent = (): IDangerousHTMLContent => {
         return {__html: t('login.title')};
     }
-
+    
     return (
         <Container>
             <LeftSide>

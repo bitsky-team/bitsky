@@ -5702,13 +5702,6 @@ hyphenate-style-name@^1.0.3:
   resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.3.tgz#097bb7fa0b8f1a9cf0bd5c734cf95899981a9b48"
   integrity sha512-EcuixamT82oplpoJ2XU4pDtKGWQ7b00CD9f1ug9IaQ3p1bkHMiKCZ9ut9QDI6qsa6cpUuB+A/I+zLtdNK4n2DQ==
 
-i18next-xhr-backend@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/i18next-xhr-backend/-/i18next-xhr-backend-3.0.0.tgz#75235870c920291dbfd32043505b7ede0dc87da3"
-  integrity sha512-Pi/X91Zk2nEqdEHTV+FG6VeMHRcMcPKRsYW/A0wlaCfKsoJc3TI7A75Tqse/d5LVGN2Ymzx0FT+R+gLag9Eb2g==
-  dependencies:
-    "@babel/runtime" "^7.4.5"
-
 i18next@^17.0.6:
   version "17.0.6"
   resolved "https://registry.yarnpkg.com/i18next/-/i18next-17.0.6.tgz#01079cc2bcef408139ea8ce24d18ac0d512fbe85"
