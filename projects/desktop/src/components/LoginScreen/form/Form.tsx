@@ -3,11 +3,13 @@ import { EmailField, PasswordField, CheckboxField } from './'
 import {CenteredForm, FormLink, GradientButton} from '../styles'
 import {useTranslation, UseTranslationResponse} from 'react-i18next'
 
-interface ILoginFormProps {
+interface IOwnProps {
     handleSubmit: () => void
 }
 
-export const Form = ({handleSubmit}: ILoginFormProps): JSX.Element => {
+type IProps = IOwnProps
+
+export const Form = ({handleSubmit}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
     return (

@@ -20,11 +20,14 @@ import {useTranslation, UseTranslationResponse} from 'react-i18next'
 interface IState {
     visible: boolean,
 }
-interface IProps {
+
+interface IOwnProps {
     visibilityFilter: boolean,
     invalid: InvalidInputError,
     value: string,
 }
+
+type IProps = IOwnProps
 
 const initialState: IState = {
     visible: false,
