@@ -1,7 +1,8 @@
 import React from 'react'
 import { EmailField, PasswordField, CheckboxField } from './'
-import {CenteredForm, FormLink, GradientButton} from '../styles'
+import {FormLink, GradientButton} from '../../common/SingleForm'
 import {useTranslation, UseTranslationResponse} from 'react-i18next'
+import {LoginForm} from '../styles'
 
 interface IOwnProps {
     handleSubmit: () => void
@@ -13,7 +14,7 @@ export const Form = ({handleSubmit}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
     return (
-        <CenteredForm onSubmit={handleSubmit}>
+        <LoginForm onSubmit={handleSubmit}>
             <EmailField />
             <PasswordField />
             <CheckboxField />
@@ -24,6 +25,6 @@ export const Form = ({handleSubmit}: IProps): JSX.Element => {
                 {t('login.form.login')}
             </GradientButton>
             <FormLink to='/register'>{t('login.form.notRegistered')}</FormLink>
-        </CenteredForm>
+        </LoginForm>
     )
 }
