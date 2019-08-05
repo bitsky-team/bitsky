@@ -9,13 +9,13 @@ export const CheckboxField = (): JSX.Element => {
     return (
         <>
             <Field
-                name='remember'
+                name='termsOfUse'
                 component='input'
                 type='checkbox'
             >
                 {({input}) => (
                     <CheckboxContainer>
-                        {t('login.form.rememberMe')}
+                        {t('register.form.termsOfUse')}
                         <CheckboxInput {...input} />
                         <CheckboxCheckmark />
                     </CheckboxContainer>

@@ -22,6 +22,17 @@
       }
     },
 
+    "register": {
+      "title": "Rejoignez l'<span>aventure</span>,\nFaites partie de la <span>communauté</span>.",
+      "form": {
+        "firstname": "Prénom",
+        "lastname": "Nom de famille",
+        "termsOfUse": "En cochant cette case, vous acceptez nos conditions générales d'utilisation.",
+        "register": "Inscription",
+        "alreadyRegistered": "Déjà inscrit ?"
+      }
+    },
+
     "dialogs": {
       "languages": {
         "title": "Choisissez une langue"

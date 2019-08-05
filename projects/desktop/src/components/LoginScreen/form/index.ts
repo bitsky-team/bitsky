@@ -1,4 +1,4 @@
-export { Input } from './Input'
+export { Input } from '../../common/SingleForm/input/Input'
 export { EmailField } from './EmailField'
 export { PasswordField } from './PasswordField'
 export { CheckboxField } from './CheckboxField'

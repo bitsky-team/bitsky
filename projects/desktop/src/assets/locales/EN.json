@@ -22,6 +22,17 @@
       }
     },
 
+    "register": {
+      "title": "Join the <span>adventure</span>,\nBe part of the <span>community</span>.",
+      "form": {
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "termsOfUse": "By checking this box, you agree to our terms and conditions of use.",
+        "register": "Register",
+        "alreadyRegistered": "Already registered?"
+      }
+    },
+
     "dialogs": {
       "languages": {
         "title": "Choose a language"

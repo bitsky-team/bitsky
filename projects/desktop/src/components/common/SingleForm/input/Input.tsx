@@ -4,7 +4,8 @@ import {
     InputBorder,
     InputField,
     InputWithError,
-} from '../styles';
+    InputError,
+} from '../index';
 import {
     InputAdornment,
     IconButton,
@@ -13,8 +14,7 @@ import {
     VisibilityOff,
     Visibility,
 } from '@material-ui/icons'
-import { colors } from '../../../constants'
-import { InputError } from '../styles'
+import { colors } from '../../../../constants'
 import {useTranslation, UseTranslationResponse} from 'react-i18next'
 
 interface IState {
