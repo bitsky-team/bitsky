@@ -1,0 +1,11 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 54320,
+    "username": "admin",
+    "password": "admin",
+    "database": "bitsky",
+    "entities": ["src/entities/*.ts"],
+    "logging": true,
+    "synchronize": true
+  }
