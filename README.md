@@ -10,7 +10,7 @@ A new way to share with your loved ones.
 ![License badge](https://img.shields.io/github/license/bitsky-team/bitsky.svg)
 ![Twitter badge](https://img.shields.io/twitter/url/https/github.com/bitsky-team/bitsky.svg?style=social)
 
-Table of contents
+📌 Table of contents
 =================
 * [Contributing](CONTRIBUTING.md)
   * [Branching Model](docs/BRANCHING_MODEL.md)
@@ -23,7 +23,7 @@ Table of contents
 * [What does the logo mean?](#what-does-the-logo-mean)
 * [Let's talk!](#lets-talk)
 
-What does this project do?
+☁️ Introduction
 ==========================
 **Founders**: Bitsky is a private community and social cloud.  
 **You**: Excuse me, what the fuck?  
@@ -42,7 +42,7 @@ Each device will be able to link to other devices through key sharing.
 
 The device on the left will be able to read and, if necessary, display the data from the device on the right and vice versa. A link is only by direct link and therefore is not transitive.
 
-Why is this project useful?
+🤔 Why?
 ===========================
 Privacy.
 
@@ -54,7 +54,7 @@ The indignation and distrust of Internet users has only grown. The use and contr
 
 This project will try to address that and address those concerns.
 
-Project structure
+🛠️ Project structure
 =================
 
 ```bash
@@ -76,8 +76,7 @@ Project structure
 └── .github
 ```
 
-
-How do I get started?
+📟 How do I get started?
 =====================
 If you want to use it: actually you can't, we are bootstrapping the project.
 If you want to contribute:
@@ -87,18 +86,15 @@ If you want to contribute:
  4. Add your name in the [contributors.md file](CONTRIBUTORS.md).
  5. Thanks !
  
-Where did you get that great project name?
+😱 Where did you get that great project name?
 ==========================================
 Bit, Sky => a bit of sky => a cloud => cloud computing. Yes.
 
-What does the logo mean?
-========================
-We can observe three elements including a cloud that refers to the metaphor of the cloud, it contains all the data.
+🤝 Contributing
+================
+Do not hesitate to contribute! It'll be very appreciated!
+Please read our contributing file before.
 
-The padlock and safe represent the “security” aspect of the product, the data is accessible only by the users of the Bitsky and by the users of the Bitsky linked to it.
-
-The balloon represents the ascension of secure data that is sent to the cloud by users from their various devices.
-
-Let's talk!
+💌 Let's talk!
 ===========
 If you have any suggestions or would like to contribute or just chat, please feel free to come to our [Discord server](https://discord.gg/nNmB7Sz).
