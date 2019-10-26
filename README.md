@@ -15,13 +15,13 @@ A new way to share with your loved ones.
 * [Contributing](CONTRIBUTING.md)
   * [Branching Model](docs/BRANCHING_MODEL.md)
 * [Changelog](CHANGELOG.md)
-* [What does this project do?](#what-does-this-project-do)
-* [Why this project useful?](#why-is-this-project-useful)
-* [Project structure](#project-structure)
-* [How do I get started?](#how-do-i-get-started)
-* [Where did you get that great project name?](#where-did-you-get-that-great-project-name)
-* [What does the logo mean?](#what-does-the-logo-mean)
-* [Let's talk!](#lets-talk)
+* [What does this project do?](#-introduction)
+* [Why this project useful?](#-why)
+* [Project structure](#-project-structure)
+* [How do I get started?](#-how-do-i-get-started)
+* [Where did you get that great project name?](#-where-did-you-get-that-great-project-name)
+* [Contributing](#-contributing)
+* [Let's talk!](#-lets-talk)
 
 ☁️ Introduction
 ==========================
