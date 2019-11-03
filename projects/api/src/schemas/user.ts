@@ -1,4 +1,4 @@
-import Joi, {Schema} from 'joi'
+import Joi, { Schema } from 'joi'
 
 export const user: Schema = Joi.object({
     firstName: Joi.string().required(),

@@ -5,7 +5,7 @@ beforeAll(async () => {
     const connection = connectionManager.create({
         "type": "postgres",
         "host": "localhost",
-        "port": 54324,
+        "port": 54320,
         "username": "test",
         "password": "test",
         "database": "bitsky_test",

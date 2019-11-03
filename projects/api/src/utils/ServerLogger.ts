@@ -1,9 +1,9 @@
-import {Request, Response} from 'express'
-import {DateTime} from 'luxon'
+import { Request, Response } from 'express'
+import { DateTime } from 'luxon'
 import clc from 'cli-color'
 import { IStringTMap } from '../interfaces/generic'
 
-export const logLevels: IStringTMap<Number> = {
+export const logLevels: IStringTMap<number> = {
     'MISC': 0,
     'INFO': 1,
     'WARN': 2,
@@ -11,7 +11,7 @@ export const logLevels: IStringTMap<Number> = {
 }
 
 export class ServerLogger {
-    static log(message: String, level = logLevels.INFO) {
+    static log(message: String, level: number = logLevels.INFO) {
         const datetime: String = DateTime.local().toFormat('dd/MM/yyyy HH:mm:ss')
 
         switch(level) {
@@ -29,6 +29,10 @@ export class ServerLogger {
 
             case logLevels.ERR:
                 console.log(clc.redBright(`[bitsky] @ [${datetime}] ${message}`))
+            break
+
+            default:
+                throw new Error('Unknown log level')
             break
         }
     }

@@ -2,7 +2,7 @@
 ## Installation
 
 1. Create a PostgreSQL (>= 11) server and edit `ormconfig.json`
-2. Create 2 database:
+2. Create 2 databases:
     * bitsky
     * bitsky_test
 

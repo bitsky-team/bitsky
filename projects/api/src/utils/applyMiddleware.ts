@@ -1,4 +1,4 @@
-import {Router} from 'express'
+import { Router } from 'express'
 
 type Wrapper = ((router: Router) => void)
 

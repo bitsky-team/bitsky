@@ -1,5 +1,5 @@
-import {getConnection, getRepository} from 'typeorm'
-import {User} from '../entities'
+import { getConnection, getRepository } from 'typeorm'
+import { User } from '../entities'
 
 export const authController = {
     create: async (data: object) => {

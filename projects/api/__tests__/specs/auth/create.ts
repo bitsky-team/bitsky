@@ -1,11 +1,12 @@
-import request, {Response} from 'supertest'
-import {startApp} from '../../../src/app'
+import request, { Response } from 'supertest'
+import { startApp } from '../../../src/app'
+import { IStringTMap } from '../../../src/interfaces/generic'
 
 const app = startApp()
 
 describe('POST /auth/create', () => {
     it('Create a user', async () => {
-        const user = {
+        const user: IStringTMap<string> = {
             firstName: 'John',
             lastName: 'Doe',
             email: 'john.doe@bitsky.be',

@@ -1,4 +1,4 @@
-import React, {Dispatch, useReducer} from 'react'
+import React, { Dispatch, useReducer } from 'react'
 import {
     InputContainer,
     InputBorder,
@@ -15,7 +15,7 @@ import {
     Visibility,
 } from '@material-ui/icons'
 import { colors } from '../../../../constants'
-import {useTranslation, UseTranslationResponse} from 'react-i18next'
+import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
 interface IState {
     visible: boolean,
@@ -65,7 +65,7 @@ export const Input = (props: IInputProps): JSX.Element => {
                     data-testid='inputBorder'
                     borderColor={invalid ? colors.error : !value ? colors.grey : null}
                 />
-                
+
                 {visibilityFilter
                     ? (
                         <InputField

@@ -1,4 +1,4 @@
-import {Router, Request, Response} from 'express'
+import { Router, Request, Response } from 'express'
 import helmet from 'helmet'
 import passport from 'passport'
 import cors from 'cors'
@@ -37,7 +37,7 @@ const handlePassportAuthentication = (router: Router) => {
     router.use(passport.initialize())
 }
 
-export const commonMiddlewares = [
+export const commonMiddlewares: Array<(router: Router) => void> = [
     handleHelmet,
     handleCors,
     handleBodyRequestParsing,

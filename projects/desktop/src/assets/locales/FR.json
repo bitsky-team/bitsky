@@ -8,7 +8,7 @@
     "fieldError": {
       "required": "Ce champ est requis",
       "emailNotValid": "Adresse email incorrect",
-      "tooShort": "C'est trop court ({{min}} caractères minimum)"
+      "tooShort": "C'est trop court ({{min}} caractères min.)"
     },
 
     "login": {

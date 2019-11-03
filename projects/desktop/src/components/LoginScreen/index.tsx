@@ -14,7 +14,7 @@ export const LoginScreen = (): JSX.Element => {
     const getTitleContent = (): IDangerousHTMLContent => {
         return {__html: t('login.title')};
     }
-    
+
     return (
         <SingleFormContainer>
             <Box>
