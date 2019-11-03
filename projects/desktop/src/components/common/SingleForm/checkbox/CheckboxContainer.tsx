@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../../../constants'
-import { getRawTheme } from '../../../../helpers/theme'
+import { getRawTheme } from '../../../../redux/helpers/theme'
 import posed from 'react-pose'
 
 interface ICheckboxContainer {

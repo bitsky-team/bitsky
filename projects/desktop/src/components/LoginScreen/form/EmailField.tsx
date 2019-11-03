@@ -17,7 +17,7 @@ export const EmailField = (): JSX.Element => {
                 <Input
                     label={t('login.form.emailAddress')}
                     variant='outlined'
-                    invalid={meta.touched && meta.error ? meta.error : 0}
+                    invalid={meta.touched && (meta.error || meta.submitError) ? meta.error || meta.submitError : 0}
                     {...input}
                 />
             )}

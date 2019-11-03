@@ -1,6 +1,5 @@
 import { Router, Request, Response } from 'express'
 import helmet from 'helmet'
-import passport from 'passport'
 import cors from 'cors'
 import parser from 'body-parser'
 import compression from 'compression'
@@ -33,10 +32,6 @@ const handleServerErrorLog = (router: Router) => {
     router.use(ServerLogger.error())
 }
 
-const handlePassportAuthentication = (router: Router) => {
-    router.use(passport.initialize())
-}
-
 export const commonMiddlewares: Array<(router: Router) => void> = [
     handleHelmet,
     handleCors,
@@ -44,5 +39,4 @@ export const commonMiddlewares: Array<(router: Router) => void> = [
     handleCompression,
     handleNewRequestLog,
     handleServerErrorLog,
-    handlePassportAuthentication,
 ]

@@ -4,12 +4,14 @@ import { serverGreetings } from './constants/asciiArts'
 import { createConnection } from 'typeorm'
 import { commonMiddlewares } from './middlewares'
 import { ServerLogger, logLevels, applyMiddleware } from './utils'
+import dotenv from 'dotenv'
 
 const version: string = '0.0.1'
 const mode: string = 'Development'
 const port: number = 5030
 
 export const startApp = () => {
+    dotenv.config()
     const router: Application = express()
 
     applyMiddleware(commonMiddlewares, router)

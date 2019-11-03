@@ -6,11 +6,22 @@ import { Box, Logo, RegisterLanguageChooser } from './styles'
 import logo from '../../assets/img/logo-small.png'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import { Form } from './form'
+import axios, { AxiosResponse } from 'axios'
+import { serverURL } from '../../constants'
+import _ from 'lodash'
 
 interface IState {
     invalidForm: {
         termsOfUse: boolean,
     },
+}
+
+interface IForm {
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    termsOfUse?: boolean,
 }
 
 const initialState: IState = {
@@ -47,15 +58,33 @@ export const RegisterScreen = (): JSX.Element => {
         dispatch({type: actions.SET_INVALID_FORM, payload: value})
     }
 
-    const onSubmit = (values: AnyObject): void => {
-        const {termsOfUse} = values
+    const onSubmit = async (values: IForm | AnyObject): Promise<void | object> => {
+        const {termsOfUse}: {termsOfUse?: boolean} = values
 
         setInvalidForm({
             termsOfUse: !termsOfUse,
         })
 
         if(termsOfUse) {
-            console.log('OK!')
+            const data: IForm = _.pick(values, ['email', 'password', 'firstName', 'lastName'])
+
+            try {
+                const response: AxiosResponse = await axios.post(
+                    `${serverURL}/auth/create`,
+                    data,
+                )
+
+                const {data: token}: AxiosResponse<string> = response
+                localStorage.setItem('token', token)
+            } catch (e) {
+                switch (e.response.data.message) {
+                    case 'email_already_taken':
+                        return { email: t('register.error.emailAlreadyTaken')}
+                    default:
+                        console.log('Error while register: ', e.response)
+                        break
+                }
+            }
         }
     }
 

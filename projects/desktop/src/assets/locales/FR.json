@@ -19,6 +19,10 @@
         "rememberMe": "Se souvenir de moi",
         "login": "Connexion",
         "notRegistered": "Pas encore inscrit ?"
+      },
+      "error": {
+        "userNotFound": "Celle-ci n'est pas attribuée",
+        "incorrectPassword": "Mot de passe incorrect"
       }
     },
 
@@ -30,6 +34,9 @@
         "termsOfUse": "En cochant cette case, vous acceptez nos conditions générales d'utilisation.",
         "register": "Inscription",
         "alreadyRegistered": "Déjà inscrit ?"
+      },
+      "error": {
+        "emailAlreadyTaken": "Celle-ci est déjà utilisée"
       }
     },
 

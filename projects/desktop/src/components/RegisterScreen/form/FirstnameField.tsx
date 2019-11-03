@@ -9,7 +9,7 @@ export const FirstnameField = (): JSX.Element => {
 
     return (
         <Field
-            name='firstname'
+            name='firstName'
             type='text'
             validate={composeValidators(required, validateMinimumLength(2))}
         >

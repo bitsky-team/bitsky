@@ -41,7 +41,7 @@ export class ServerLogger {
         return (req: Request, res: Response, next: () => any) => {
             const authorization = req.get('Authorization')
             const from = req.ip
-            ServerLogger.log(`${from} - ${req.method} on ${req.originalUrl} ${authorization ? '(Authorization: ${authorization})' : ''}`)
+            ServerLogger.log(`${from} - ${req.method} on ${req.originalUrl} ${authorization ? `(Authorization: ${authorization})` : ''}`)
             next()
         }
     }
