@@ -5,10 +5,15 @@ Do the following command in the desktop's project directory
 yarn install
 ```
 
-## Sentry (optional)
-To enable [Sentry](https://sentry.io), you need to create a file `.env` or `.env.development` with the following variables:
+## Env config
+To enable [Sentry](https://sentry.io), you need to create a file `.env` or `.env.development` with the following variable:
 ```
 REACT_APP_SENTRY_DSN=your_sentry_dsn
+```
+
+You'll need to indicate the API url with the following variable:
+```
+REACT_APP_BACKEND_URL=your_api_url
 ```
 
 Starting the app

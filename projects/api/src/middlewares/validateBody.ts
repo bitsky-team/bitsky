@@ -1,12 +1,12 @@
 import { Request, Response } from 'express'
-import { Schema } from 'joi'
+import { Schema, ValidationError } from 'joi'
 import { ServerLogger, logLevels } from '../utils'
 
 export const validateBody = (schema: Schema) => (req: Request, res: Response, next: Function) => {
-    const { error } = schema.validate(req.body, {abortEarly: false})
+    const { error }: {error: ValidationError} = schema.validate(req.body, {abortEarly: false})
 
     if (error) {
-        let message = error.details.length > 0
+        let message: string = error.details.length > 0
                       ? error.details.reduce((acc, val) => acc + val.message + ', ', '').replace(/,\s*$/, '')
                       : error.details[0].message
 

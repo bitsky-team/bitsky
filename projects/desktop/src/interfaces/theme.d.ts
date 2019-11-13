@@ -1,9 +1,7 @@
-interface ITheme {
-    mode: string,
-}
+type ITheme = string
 
 interface IThemePayload {
     theme: {
-        mode: string,
+        mode: ITheme,
     }
 }

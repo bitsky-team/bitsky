@@ -1,7 +1,22 @@
 import styled from 'styled-components'
-import {colors} from '../../../../constants'
+import { colors } from '../../../../constants'
+import { getRawTheme } from '../../../../redux/helpers/theme'
+import posed from 'react-pose'
 
-export const CheckboxContainer = styled.label`
+interface ICheckboxContainer {
+    pose: string,
+}
+
+const CheckboxContainerProps = {
+    invalid: {
+        color: colors.error(getRawTheme()),
+    },
+    valid: {
+        color: colors.grey(getRawTheme()),
+    },
+}
+
+export const CheckboxContainer = styled(posed.label(CheckboxContainerProps))<ICheckboxContainer>`
     width: calc(100% - 30px);
     margin-top: 16px;
     display: flex;
@@ -14,7 +29,7 @@ export const CheckboxContainer = styled.label`
     font-size: 14px;
     user-select: none;
     color: ${colors.grey};
-    
+
     :hover {
         cursor: pointer;
     }

@@ -1,7 +1,7 @@
-import React, {useReducer} from 'react'
+import React, { useReducer } from 'react'
 import { Button } from '@material-ui/core'
-import {LanguageChooserDialog} from './LanguageChooserDialog'
-import {useTranslation, UseTranslationResponse} from 'react-i18next'
+import { LanguageChooserDialog } from './LanguageChooserDialog'
+import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
 interface IState {
     open: boolean,

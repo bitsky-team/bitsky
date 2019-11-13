@@ -19,6 +19,10 @@
         "rememberMe": "Remember me",
         "login": "Log In",
         "notRegistered": "No account yet?"
+      },
+      "error": {
+        "userNotFound": "This one is not assigned",
+        "incorrectPassword": "Incorrect password"
       }
     },
 
@@ -30,6 +34,9 @@
         "termsOfUse": "By checking this box, you agree to our terms and conditions of use.",
         "register": "Register",
         "alreadyRegistered": "Already registered?"
+      },
+      "error": {
+        "emailAlreadyTaken": "This one is already taken"
       }
     },
 

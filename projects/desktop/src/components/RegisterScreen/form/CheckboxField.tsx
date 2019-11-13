@@ -1,9 +1,15 @@
 import React from 'react'
-import {Field} from 'react-final-form'
-import {useTranslation, UseTranslationResponse} from 'react-i18next'
-import {CheckboxContainer, CheckboxInput, CheckboxCheckmark} from '../../common/SingleForm'
+import { Field } from 'react-final-form'
+import { useTranslation, UseTranslationResponse } from 'react-i18next'
+import { CheckboxContainer, CheckboxInput, CheckboxCheckmark } from '../../common/SingleForm'
 
-export const CheckboxField = (): JSX.Element => {
+interface IOwnProps {
+    invalid: boolean,
+}
+
+type IProps = IOwnProps
+
+export const CheckboxField = ({invalid}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
     return (
@@ -14,7 +20,7 @@ export const CheckboxField = (): JSX.Element => {
                 type='checkbox'
             >
                 {({input}) => (
-                    <CheckboxContainer>
+                    <CheckboxContainer pose={invalid ? 'invalid' : 'valid'}>
                         {t('register.form.termsOfUse')}
                         <CheckboxInput {...input} />
                         <CheckboxCheckmark />

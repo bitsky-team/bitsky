@@ -2,11 +2,11 @@ import React from 'react'
 import { Field } from 'react-final-form'
 import { Input } from './'
 import { composeValidators, required, validateMinimumLength } from '../../../constants/validators';
-import {useTranslation, UseTranslationResponse} from 'react-i18next'
+import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
 export const PasswordField = (): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
-    
+
     return (
         <Field
             name='password'
@@ -17,7 +17,7 @@ export const PasswordField = (): JSX.Element => {
                 <Input
                     label={t('login.form.password')}
                     variant='outlined'
-                    invalid={meta.touched && meta.error ? meta.error : 0}
+                    invalid={meta.touched && (meta.error || meta.submitError) ? meta.error || meta.submitError : 0}
                     visibilityFilter={1}
                     {...input}
                 />
