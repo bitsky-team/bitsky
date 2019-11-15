@@ -38,7 +38,7 @@ The goal is to create a private and wireless sharing space between different gro
 
 Each device will be able to link to other devices through key sharing.
 
-![key sharing example](https://i.imgur.com/WGn2KLa.png)
+![key sharing example](https://i.imgur.com/X9kRb3v.png)
 
 The device on the left will be able to read and, if necessary, display the data from the device on the right and vice versa. A link is only by direct link and therefore is not transitive.
 
