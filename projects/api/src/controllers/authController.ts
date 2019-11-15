@@ -1,16 +1,18 @@
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import { DateTime } from 'luxon'
+import Boom, { Boom as BoomType } from '@hapi/boom'
+
 import { getRepository, Repository } from 'typeorm'
 import { User } from '../entities'
 import { IUser } from '../interfaces'
-import Boom, { Boom as BoomType } from '@hapi/boom'
-import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 import { secretKey } from '../constants/secret'
-import { DateTime } from 'luxon'
 
 /**
  * This private method checks the user's credentials and generates a token
  * @param email user's email
  * @param password user's password
+ * @param remember the login screen's "remember me" checkbox
  */
 const authenticate = async (email: string, password: string, remember: boolean = false): Promise<string | BoomType> => {
     const repository: Repository<User> = getRepository(User)
@@ -20,7 +22,7 @@ const authenticate = async (email: string, password: string, remember: boolean =
         return Boom.badRequest('user_not_found')
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password)
+    const passwordMatch: boolean = await bcrypt.compare(password, user.password)
 
     if (!passwordMatch) {
         return Boom.badRequest('incorrect_password')
@@ -28,8 +30,8 @@ const authenticate = async (email: string, password: string, remember: boolean =
 
     delete user.password
 
-    const today = DateTime.local().toSeconds()
-    const dayInSeconds = 86400
+    const today: number = DateTime.local().toSeconds()
+    const dayInSeconds: number = 86400
 
     return jwt.sign({
         ...user,
@@ -42,7 +44,7 @@ export const authController = {
         const repository: Repository<User> = getRepository(User)
 
         // Check unique email
-        const emailTaken = await repository.count({ where: { email: data.email }})
+        const emailTaken: number = await repository.count({ where: { email: data.email }})
 
         if (emailTaken) {
             return Boom.badRequest('email_already_taken')

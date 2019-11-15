@@ -21,11 +21,11 @@ export const colors: IStringTMap<ThemeSet> = {
   }),
 
   gradientBlue: theme('mode', {
-    classic: '#6CC1FF',
+    classic: '#9BD0FD',
   }),
 
   gradientPink: theme('mode', {
-    classic: '#FF80FA',
+    classic: '#F5A1F6',
   }),
 
   gradientBlueTranslucent: theme('mode', {
