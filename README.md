@@ -1,5 +1,5 @@
 <p align='center'>
-  <img src="https://i.imgur.com/Pt1nmqh.png" width="128">
+  <img src="https://i.imgur.com/Pt1nmqh.png" width="256">
 </p>
 
 # Bitsky
