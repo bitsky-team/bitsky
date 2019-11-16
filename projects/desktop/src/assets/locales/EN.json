@@ -2,7 +2,9 @@
   "translation": {
     "languages":  {
       "en": "English",
-      "fr": "French"
+      "fr": "Français",
+      "es": "Español",
+      "nl": "Nederlands"
     },
 
     "fieldError": {

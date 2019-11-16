@@ -12,6 +12,8 @@ import { configureStore } from './redux/store'
 import { Provider as StoreProvider } from 'react-redux'
 import en from './assets/locales/EN.json'
 import fr from './assets/locales/FR.json'
+import es from './assets/locales/ES.json'
+import nl from './assets/locales/NL.json'
 
 // Initiating Sentry, this tool is used for error catching
 Sentry.init({dsn: process.env.REACT_APP_SENTRY_DSN})
@@ -23,6 +25,8 @@ i18n
     resources: {
         en,
         fr,
+        es,
+        nl,
     },
     lng: localStorage.getItem('language') || 'en',
     fallbackLng: 'en',
