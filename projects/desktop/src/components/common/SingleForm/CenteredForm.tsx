@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import {GradientButton} from './GradientButton'
+
+import { GradientButton } from './GradientButton'
 
 export const CenteredForm = styled.form`
     display: flex;

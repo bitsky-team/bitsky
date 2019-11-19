@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {Container as MaterialContainer} from '@material-ui/core'
+import { Container as MaterialContainer } from '@material-ui/core'
 
 export const FullHeightContainer = styled(MaterialContainer)`
     min-height: 100vh;

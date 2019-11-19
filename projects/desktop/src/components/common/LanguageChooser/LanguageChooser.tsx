@@ -1,7 +1,8 @@
 import React, { useReducer } from 'react'
 import { Button } from '@material-ui/core'
-import { LanguageChooserDialog } from './LanguageChooserDialog'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
+
+import { LanguageChooserDialog } from './LanguageChooserDialog'
 
 interface IState {
     open: boolean,
@@ -48,7 +49,8 @@ export const LanguageChooser = ({className}: {className?: string}): JSX.Element 
             <LanguageChooserDialog
                 open={state.open}
                 selectedValue={i18n.language}
-                onClose={setLanguage}
+                setLanguage={setLanguage}
+                onClose={toggleDialog}
             />
             <Button
                 data-testid='translationToggler'

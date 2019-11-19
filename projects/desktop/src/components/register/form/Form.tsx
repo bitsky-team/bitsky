@@ -1,8 +1,9 @@
 import React from 'react'
-import { CenteredForm, FormLink, InputsRow } from '../../common/SingleForm'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
-import { FirstnameField, LastnameField } from './'
-import { EmailField, PasswordField } from '../../LoginScreen/form'
+
+import { CenteredForm, FormLink, InputsRow } from '../../common/singleForm'
+import { FirstnameField, LastnameField } from './index'
+import { EmailField, PasswordField } from '../../login/form'
 import { SubmitButton } from '../styles'
 import { CheckboxField } from './CheckboxField'
 

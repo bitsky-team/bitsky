@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import {colors} from '../../../constants'
+
+import { colors } from '../../../constants'
 
 export const BigTitle = styled.h1`
     margin: 0 0 40px 0;
