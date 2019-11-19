@@ -1,8 +1,10 @@
 {
   "translation": {
     "languages":  {
-      "en": "Anglais",
-      "fr": "Français"
+      "en": "English",
+      "fr": "Français",
+      "es": "Español",
+      "nl": "Nederlands"
     },
 
     "fieldError": {

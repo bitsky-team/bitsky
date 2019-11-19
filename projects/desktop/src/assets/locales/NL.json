@@ -1,0 +1,51 @@
+{
+  "translation": {
+    "languages":  {
+      "en": "English",
+      "fr": "Français",
+      "es": "Español",
+      "nl": "Nederlands"
+    },
+
+    "fieldError": {
+      "required": "Dit veld is verplicht",
+      "emailNotValid": "Verkeerd emailadres",
+      "tooShort": "Dit is te kort (min. {{min}} tekens)"
+    },
+
+    "login": {
+      "title": "<span>Uw</span> vrienden,\n<span>Uw</span> herinneringen,\n<span>Uw</span> data,\n<span>Thuis</span>.",
+      "form": {
+        "emailAddress": "Emailadres",
+        "password": "Wachtwoord",
+        "rememberMe": "Herinner mij",
+        "login": "Inloggen",
+        "notRegistered": "Nog geen account?"
+      },
+      "error": {
+        "userNotFound": "Deze is niet toegewezen aan",
+        "incorrectPassword": "Verkeerd wachtwoord"
+      }
+    },
+
+    "register": {
+      "title": "Doe aan het <span>avontuur</span>,\n  Maak deel uit van de <span>gemeenschap</span>.",
+      "form": {
+        "firstname": "Voornaam",
+        "lastname": "Achternaam",
+        "termsOfUse": "Met het aanvinken van dit vakje gaat u akkoord met onze gebruiksvoorwaarden.",
+        "register": "Registreren",
+        "alreadyRegistered": "Reeds geregistreerd?"
+      },
+      "error": {
+        "emailAlreadyTaken": "Deze is al bezet"
+      }
+    },
+
+    "dialogs": {
+      "languages": {
+        "title": "Kies een taal"
+      }
+    }
+  }
+}
