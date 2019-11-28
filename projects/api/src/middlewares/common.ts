@@ -3,7 +3,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 import parser from 'body-parser'
 import compression from 'compression'
-import { ServerLogger, logLevels } from '../utils'
+import { ServerLogger } from '../utils'
 
 const handleHelmet = (router: Router) => {
     router.use(helmet())

@@ -1,11 +1,15 @@
 import request, { Response } from 'supertest'
-import { startApp } from '../../../src/app'
+import server from '../../../src/app'
 import { IStringTMap } from '../../../src/interfaces/generic'
+import jwtDecode from 'jwt-decode'
 
-const app = startApp()
+interface IUserToken {
+    email: string,
+    password?: string,
+}
 
 describe('POST /auth/create', () => {
-    it('Create a user', async () => {
+    it('Creates a user', async () => {
         const user: IStringTMap<string> = {
             firstName: 'John',
             lastName: 'Doe',
@@ -13,13 +17,15 @@ describe('POST /auth/create', () => {
             password: 'iliketrains!',
         }
 
-        const res: Response = await request(app)
+        const res: Response = await request(server)
             .post('/auth/create')
             .send(user)
             .expect(200)
 
-        expect(res.body.email).toBe('john.doe@bitsky.be')
-        expect(res.body.password).toBe(undefined)
+        const decodedToken: IUserToken = jwtDecode(res.body)
+        expect(decodedToken).toBeTruthy()
+        expect(decodedToken.email).toBe('john.doe@bitsky.be')
+        expect(decodedToken.password).toBe(undefined)
     })
 
     it('Returns a bad request because email is already taken', async () => {
@@ -30,7 +36,7 @@ describe('POST /auth/create', () => {
             password: 'iliketrains!',
         }
 
-        const res: Response = await request(app)
+        const res: Response = await request(server)
             .post('/auth/create')
             .send(user)
             .expect(400)

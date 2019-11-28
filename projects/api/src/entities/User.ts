@@ -19,4 +19,14 @@ export class User {
 
     @Column({ nullable: true })
     token?: string
+
+    /*
+        Onboarding steps are the steps to complete
+        after the registration:
+
+        1. Additional information
+        2. General settings
+    */
+    @Column({ default: 1 })
+    onboardingStep: number
 }

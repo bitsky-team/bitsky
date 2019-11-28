@@ -9,7 +9,7 @@
     "debug": "nodemon --inspect",
     "build": "tsc",
     "watch": "nodemon",
-    "test": "jest --forceExit --detectOpenHandles --maxWorkers=1"
+    "test": "jest --forceExit --detectOpenHandles --maxWorkers=1 --verbose false"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.1",
@@ -32,6 +32,8 @@
     "@types/jest": "^24.0.20",
     "@types/joi": "^14.3.3",
     "@types/jsonwebtoken": "^8.3.5",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/lodash": "^4.14.148",
     "@types/supertest": "^2.0.8",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
@@ -45,6 +47,7 @@
     "jest": "^24.9.0",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
     "luxon": "^1.17.2",
     "mysql": "^2.17.1",
     "pg": "^7.12.1",
