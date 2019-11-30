@@ -1,8 +1,8 @@
-import { getConnection, getConnectionManager } from 'typeorm'
+import { getConnection, getConnectionManager, Connection, ConnectionManager } from 'typeorm'
 
 beforeAll(async () => {
-    const connectionManager = getConnectionManager()
-    const connection = connectionManager.create({
+    const connectionManager: ConnectionManager = getConnectionManager()
+    const connection: Connection = connectionManager.create({
         type: 'postgres',
         host: 'localhost',
         port: 54320,

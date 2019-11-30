@@ -2,8 +2,9 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { DateTime } from 'luxon'
 import Boom, { Boom as BoomType } from '@hapi/boom'
+import _ from 'lodash'
 
-import { getRepository, Repository } from 'typeorm'
+import { getRepository, Repository, getManager } from 'typeorm'
 import { User } from '../entities'
 import { IUser } from '../interfaces'
 import { secretKey } from '../constants/secret'
@@ -28,36 +29,46 @@ const authenticate = async (email: string, password: string, remember: boolean =
         return Boom.badRequest('incorrect_password')
     }
 
-    delete user.password
-
     const today: number = DateTime.local().toSeconds()
     const dayInSeconds: number = 86400
+    const data: object = _.pick(user, ['id', 'firstName', 'lastName', 'email', 'onboardingStep'])
 
-    return jwt.sign({
-        ...user,
+    const token: string = jwt.sign({
+        ...data,
         exp: remember ? today + (30 * dayInSeconds): today + dayInSeconds,
     }, secretKey)
+
+    // Hashing token & storing it in the db
+    const saltRounds: number = parseInt(`${process.env.SALT_ROUNDS}`, 10)
+    user.token = await bcrypt.hash(token, saltRounds)
+    await repository.save(user)
+
+    return token
 }
 
 export const authController = {
     create: async (data: IUser): Promise<string | BoomType> => {
-        const repository: Repository<User> = getRepository(User)
-
-        // Check unique email
-        const emailTaken: number = await repository.count({ where: { email: data.email }})
-
-        if (emailTaken) {
-            return Boom.badRequest('email_already_taken')
-        }
-
         // Hashing password
         const saltRounds: number = parseInt(`${process.env.SALT_ROUNDS}`, 10)
         const clearPassword: string = data.password
         data.password = await bcrypt.hash(clearPassword, saltRounds)
 
-        // Saving user
-        const user: User = repository.create(data)
-        await repository.save(user)
+        try {
+            await getManager().transaction(async transactionalEntityManager => {
+                // Check unique email
+                const emailTaken: number = await transactionalEntityManager.count(User, { where: { email: data.email }})
+
+                if (emailTaken) {
+                    throw Boom.badRequest('email_already_taken')
+                }
+
+                // Saving user
+                const user: User = transactionalEntityManager.create(User, data)
+                await transactionalEntityManager.save(user)
+            })
+        } catch (e) {
+            return e
+        }
 
         // Generating token & deleting password
         return authenticate(data.email, clearPassword)
