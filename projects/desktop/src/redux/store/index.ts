@@ -1,7 +1,5 @@
 import { combineReducers, createStore } from 'redux'
-import {
-    themeReducer,
-} from '../reducers'
+import { themeReducer } from '../reducers'
 
 // Add reducers here
 const rootReducer = combineReducers({

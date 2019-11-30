@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import {Link} from 'react-router-dom'
-import {colors} from '../../../constants'
+import { Link } from 'react-router-dom'
+
+import { colors } from '../../../constants'
 
 export const FormLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;

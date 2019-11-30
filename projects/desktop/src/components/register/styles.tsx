@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import {
-    Box as MaterialBox,
-} from '@material-ui/core'
-import {colors} from '../../constants'
-import {LanguageChooser} from '../common/LanguageChooser'
-import {GradientButton} from '../common/SingleForm'
+import { Box as MaterialBox } from '@material-ui/core'
+
+import { colors } from '../../constants'
+import { LanguageChooser } from '../common/languageChooser'
+import { GradientButton } from '../common/singleForm'
 
 export const Box = styled(MaterialBox)`
     background-color: ${colors.white};

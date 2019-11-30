@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import {Button} from '@material-ui/core'
-import {colors} from '../../../constants'
+import { Button } from '@material-ui/core'
+
+import { colors } from '../../../constants'
 
 export const GradientButton = styled(Button)`
     border-radius: 8px;

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import {colors} from '../../../../constants'
+
+import { colors } from '../../../../constants'
 
 export const CheckboxCheckmark = styled.span`
     position: absolute;

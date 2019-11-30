@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import {TextField} from '@material-ui/core'
-import {colors} from '../../../../constants'
+import { TextField } from '@material-ui/core'
+
+import { colors } from '../../../../constants'
 
 export const InputField = styled(TextField)`
     width: calc(100% - 2px);

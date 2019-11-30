@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import {
-    Box as MaterialBox,
-} from '@material-ui/core'
+import { Box as MaterialBox } from '@material-ui/core'
+
 import background from '../../assets/img/background.png'
 import { colors } from '../../constants'
-import {LanguageChooser} from '../common/LanguageChooser'
-import {CenteredForm} from '../common/SingleForm'
+import { LanguageChooser } from '../common/languageChooser'
+import { CenteredForm } from '../common/singleForm'
 
 export const Box = styled(MaterialBox)`
     flex: 1;

@@ -1,7 +1,8 @@
 import React from 'react'
-import {Field} from 'react-final-form'
-import {useTranslation, UseTranslationResponse} from 'react-i18next'
-import {CheckboxContainer, CheckboxInput, CheckboxCheckmark} from '../../common/SingleForm'
+import { Field } from 'react-final-form'
+import { useTranslation, UseTranslationResponse } from 'react-i18next'
+
+import { CheckboxContainer, CheckboxInput, CheckboxCheckmark } from '../../common/singleForm'
 
 export const CheckboxField = (): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
