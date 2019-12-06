@@ -8,6 +8,14 @@ interface IAuthenticatedRequest extends Request {
     user?: string | object
 }
 
+/**
+ * Authentication validation middleware
+ *
+ * Checks if the body's token exists and is valid
+ * @param req Express Request
+ * @param res Express Response
+ * @param next Callback to call to continue the flow
+ */
 export const validateAuthentication = () => (req: IAuthenticatedRequest, res: Response, next: Function) => {
     const token: string = String(req.headers['x-access-token'] || req.headers.authorization || '')
 

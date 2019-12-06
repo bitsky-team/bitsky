@@ -6,6 +6,10 @@ import { colors } from '../../constants'
 import { LanguageChooser } from '../common/languageChooser'
 import { CenteredForm } from '../common/singleForm'
 
+/**
+ * Login form styles
+ */
+
 export const Box = styled(MaterialBox)`
     flex: 1;
     display: flex;

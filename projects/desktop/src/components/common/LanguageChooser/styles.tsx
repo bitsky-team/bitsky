@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 import { DialogTitle, List, ListItem } from '@material-ui/core'
 
+/**
+ * Language dialog styles
+ */
+
 export const LanguageDialogTitle = styled(DialogTitle)`
   padding-bottom: 0;
 `

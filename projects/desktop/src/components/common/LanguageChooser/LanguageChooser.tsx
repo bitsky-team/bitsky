@@ -9,6 +9,7 @@ interface IState {
 }
 
 const initialState: IState = {
+    // Determine if the modal is opened or not
     open: false,
 }
 
@@ -16,6 +17,9 @@ const actions: IStringTMap<string> = {
     TOGGLE_DIALOG: 'TOGGLE_DIALOG',
 }
 
+/**
+ * Reducer who returns a new state depending on the action
+ */
 const reducer = (state: typeof initialState, action: IAction): IState => {
     switch (action.type) {
         case actions.TOGGLE_DIALOG:
@@ -28,14 +32,29 @@ const reducer = (state: typeof initialState, action: IAction): IState => {
     }
 }
 
+/**
+ * LanguageChooser component
+ *
+ * Displays a button who opens the language chooser dialog
+ * @param props Component's props
+ */
 export const LanguageChooser = ({className}: {className?: string}): JSX.Element => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const {i18n}: UseTranslationResponse = useTranslation()
 
+    /**
+     * Method who toggle the dialog state
+     */
     const toggleDialog = (): void => {
         dispatch({type: actions.TOGGLE_DIALOG})
     }
 
+    /**
+     * Method who change the language in the localStorage and in i18n
+     * We add it in the language storage to keep the language chosen by
+     * the user when he leaves the app
+     * @param language string
+     */
     const setLanguage = async (language: string): Promise<void> => {
         if (language) {
             localStorage.setItem('language', language)

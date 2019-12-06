@@ -19,6 +19,7 @@ interface IOwnProps {
 type IProps = IOwnProps
 
 const initialState: IState = {
+    // Determine if the field content is visible or not (e.g. password)
     visible: false,
 }
 
@@ -38,6 +39,12 @@ const reducer = (state: IStringAnyMap, action: IAction): IState => {
     }
 }
 
+/**
+ * Generic input component
+ *
+ * Can have a visibility filter which is an eye displayed at the right of the field
+ * @param props Compnent's props
+ */
 export const Input = (props: IInputProps): JSX.Element => {
     const [state, dispatch]: [IState, Dispatch<IAction>] = useReducer(reducer, initialState)
     const {t}: UseTranslationResponse = useTranslation()

@@ -34,7 +34,7 @@
     "react-pose": "^4.0.9",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^3.3.0",
     "redux": "^4.0.4",
     "styled-components": "^4.4.0",
     "styled-normalize": "^8.0.6",
@@ -46,12 +46,13 @@
     "react-build": "react-scripts build",
     "react-test": "react-scripts test",
     "react-eject": "react-scripts eject",
-    "cypress-test": "./node_modules/.bin/cypress open",
     "electron-build": "electron-builder",
     "electron-start": "electron .",
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build",
-    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && yarn electron-start\""
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && yarn electron-start\"",
+    "lint": "tslint --project .",
+    "cypress:run": "cypress run"
   },
   "eslintConfig": {
     "extends": "react-app"

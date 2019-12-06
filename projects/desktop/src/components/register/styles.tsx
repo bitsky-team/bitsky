@@ -5,6 +5,10 @@ import { colors } from '../../constants'
 import { LanguageChooser } from '../common/languageChooser'
 import { GradientButton } from '../common/singleForm'
 
+/**
+ * Register form styles
+ */
+
 export const Box = styled(MaterialBox)`
     background-color: ${colors.white};
     border-radius: 8px;

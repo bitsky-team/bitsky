@@ -1,14 +1,19 @@
 import expressPromiseRouter from 'express-promise-router'
 import { Request, Response, Router } from 'express'
+import { Boom } from '@hapi/boom'
+
 import { authController } from '../controllers'
 import { validateBody } from '../middlewares'
 import { user as userSchema, login as loginSchema } from '../schemas'
-import { User } from '../entities/User'
-import bcrypt from 'bcrypt'
-import { Boom } from '@hapi/boom'
 import { checkError } from '../helpers/error'
 
-export const authRouter: typeof Router = () => {
+/**
+ * Authentication Router
+ *
+ * Set various routes to handle the authentication
+ * @returns Router
+ */
+export const authRouter: typeof Router = (): Router => {
     const router: Router = expressPromiseRouter()
 
     router.post('/create', validateBody(userSchema), async (req: Request, res: Response) => {

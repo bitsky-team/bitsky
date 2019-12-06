@@ -1,3 +1,10 @@
+/**
+ * User interfaces
+ *
+ * All the interface related to the user
+ * go here
+ */
+
 export interface IUser {
     id?: number,
     firstName: string,

@@ -11,9 +11,10 @@ import { secretKey } from '../constants/secret'
 
 /**
  * This private method checks the user's credentials and generates a token
- * @param email user's email
- * @param password user's password
- * @param remember the login screen's "remember me" checkbox
+ * @param email string user's email
+ * @param password string user's password
+ * @param remember boolean the login screen's "remember me" checkbox
+ * @returns Promise
  */
 const authenticate = async (email: string, password: string, remember: boolean = false): Promise<string | BoomType> => {
     const repository: Repository<User> = getRepository(User)
@@ -46,7 +47,17 @@ const authenticate = async (email: string, password: string, remember: boolean =
     return token
 }
 
+/**
+ * Authentication controller
+ * Manages the different authentication concepts
+ */
 export const authController = {
+
+    /**
+     * This method create a new user
+     * @param data IUser the new user's data
+     * @returns Promise
+     */
     create: async (data: IUser): Promise<string | BoomType> => {
         // Hashing password
         const saltRounds: number = parseInt(`${process.env.SALT_ROUNDS}`, 10)
@@ -74,6 +85,12 @@ export const authController = {
         return authenticate(data.email, clearPassword)
     },
 
+    /**
+     * This method is a bridge to the authentication method
+     * used to log the user in
+     * @param data IUser the user's data needed to log him in
+     * @returns Promise
+     */
     login: async (data: IUser): Promise<string | BoomType> => {
         return authenticate(data.email, data.password, data.remember)
     },

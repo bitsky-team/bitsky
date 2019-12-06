@@ -10,9 +10,16 @@ interface ILanguageChooserDialogProps extends ISimpleDialogProps {
     setLanguage: (value: string) => void,
 }
 
+/**
+ * LanguageChooserDialog component
+ *
+ * A modal with the different languages
+ * @param props Component's props
+ */
 export const LanguageChooserDialog = ({open, selectedValue, setLanguage, onClose}: ILanguageChooserDialogProps): JSX.Element => {
     const {t, i18n}: UseTranslationResponse = useTranslation()
 
+    // A list of the available languages
     const languages: string[] = Object.keys(i18n.options.resources || {})
 
     return (

@@ -3,6 +3,11 @@ import { TextField } from '@material-ui/core'
 
 import { colors } from '../../../../constants'
 
+/**
+ * Input field style
+ *
+ * Removing 2px on the width for the border
+ */
 export const InputField = styled(TextField)`
     width: calc(100% - 2px);
     font-family: sans-serif;

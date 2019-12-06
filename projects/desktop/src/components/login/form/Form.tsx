@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
-import { EmailField, PasswordField, CheckboxField } from './index'
-import { FormLink, GradientButton } from '../../common/singleForm'
+import { EmailField, PasswordField, CheckboxField } from './'
+import { FormLink, GradientButton } from '../../common/singleForm/index'
 import { LoginForm } from '../styles'
 
 interface IOwnProps {
@@ -11,6 +11,11 @@ interface IOwnProps {
 
 type IProps = IOwnProps
 
+/**
+ * Login form
+ *
+ * @param props
+ */
 export const Form = ({handleSubmit}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
