@@ -49,6 +49,13 @@ const reducer = (state: typeof initialState, action: IAction): IState => {
     }
 }
 
+/**
+ * Register Container
+ *
+ * React component connected to the redux store
+ * Merges all the register form components to create
+ * a useable screen
+ */
 export const RegisterContainer = connect()((): JSX.Element => {
     const [state, dispatch] = useReducer(reducer, initialState)
     const {t}: UseTranslationResponse = useTranslation()

@@ -9,7 +9,8 @@
     "debug": "nodemon --inspect",
     "build": "tsc",
     "watch": "nodemon",
-    "test": "jest --forceExit --detectOpenHandles --maxWorkers=1 --verbose false"
+    "test": "jest --forceExit --detectOpenHandles --maxWorkers=1 --verbose false",
+    "lint": "tslint --project ."
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.1",
@@ -35,7 +36,7 @@
     "@types/jwt-decode": "^2.2.1",
     "@types/lodash": "^4.14.148",
     "@types/supertest": "^2.0.8",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^3.0.7",
     "body-parser": "^1.19.0",
     "cli-color": "^1.4.0",
     "compression": "^1.7.4",

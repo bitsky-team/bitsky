@@ -8,6 +8,8 @@ interface ICheckboxContainer {
     pose: string,
 }
 
+// When the component has the "invalid" prop, the color changes
+// Using pose to have a smooth color change
 const CheckboxContainerProps = {
     invalid: {
         color: colors.error(getRawTheme()),
@@ -17,6 +19,7 @@ const CheckboxContainerProps = {
     },
 }
 
+// Checkbox checkmark's container style
 export const CheckboxContainer = styled(posed.label(CheckboxContainerProps))<ICheckboxContainer>`
     width: calc(100% - 30px);
     margin-top: 16px;

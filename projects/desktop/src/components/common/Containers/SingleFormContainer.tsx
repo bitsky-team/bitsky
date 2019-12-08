@@ -3,6 +3,13 @@ import React from 'react'
 import { Background, WhiteOverlay } from '../background'
 import { FullHeightContainer } from './FullHeightContainer'
 
+/**
+ * Container who use multiples components
+ * used to display a centered form with
+ * a fancy background (login & register)
+ *
+ * @param props Component's props
+ */
 export const SingleFormContainer = ({children}: IPropsChildren): JSX.Element => (
     <Background>
         <WhiteOverlay>

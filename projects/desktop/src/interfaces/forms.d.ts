@@ -1,3 +1,6 @@
+/**
+ * Form interfaces
+ */
 type IInputProps = TextFieldProps & { visibilityFilter?: boolean }
 
 interface IInputBorderProps {

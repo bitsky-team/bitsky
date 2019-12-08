@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
-import { CenteredForm, FormLink, InputsRow } from '../../common/singleForm'
-import { FirstnameField, LastnameField } from './index'
+import { CenteredForm, FormLink, InputsRow } from '../../common/singleForm/index'
+import { FirstnameField, LastnameField } from './'
 import { EmailField, PasswordField } from '../../login/form'
 import { SubmitButton } from '../styles'
 import { CheckboxField } from './CheckboxField'
@@ -14,6 +14,9 @@ interface IOwnProps {
 
 type IProps = IOwnProps
 
+/**
+ * Register form
+ */
 export const Form = ({handleSubmit, invalid}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 

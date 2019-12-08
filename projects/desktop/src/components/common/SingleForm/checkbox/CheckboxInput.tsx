@@ -2,6 +2,9 @@ import styled from 'styled-components'
 
 import { colors } from '../../../../constants'
 
+// The checkbox input style
+// The input is not visible but it's used by
+// react-final-form and it affect other elements
 export const CheckboxInput = styled.input`
     position: absolute;
     opacity: 0;

@@ -10,7 +10,8 @@ export type AppState = ReturnType<typeof rootReducer>
 
 const store = createStore(
     rootReducer,
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+    // This is needed to enable the chrome redux debug tool
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
 )
 
 export const configureStore = () => {

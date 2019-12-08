@@ -1,5 +1,8 @@
 import Joi, { Schema } from 'joi'
 
+/**
+ * User schema used for register
+ */
 export const user: Schema = Joi.object({
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
@@ -7,6 +10,9 @@ export const user: Schema = Joi.object({
     password: Joi.string().required(),
 })
 
+/**
+ * User schema used for login
+ */
 export const login: Schema = Joi.object({
     email: Joi.string().required(),
     password: Joi.string().required(),

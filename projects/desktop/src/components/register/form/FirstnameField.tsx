@@ -5,6 +5,10 @@ import { Field } from 'react-final-form'
 import { composeValidators, required, validateMinimumLength } from '../../../constants/validators'
 import { Input } from '../../login/form'
 
+/**
+ * Firstnqme field of the register form
+ */
+// TODO: can be refactored into a generic component
 export const FirstnameField = (): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 

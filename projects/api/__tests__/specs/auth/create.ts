@@ -1,7 +1,8 @@
 import request, { Response } from 'supertest'
-import server from '../../../src/app'
-import { IStringTMap } from '../../../src/interfaces/generic'
 import jwtDecode from 'jwt-decode'
+
+import server from '../../../src/app'
+import { johnDoe } from '../../mocks/user'
 
 interface IUserToken {
     email: string,
@@ -10,18 +11,13 @@ interface IUserToken {
 
 describe('POST /auth/create', () => {
     it('Creates a user', async () => {
-        const user: IStringTMap<string> = {
-            firstName: 'John',
-            lastName: 'Doe',
-            email: 'john.doe@bitsky.be',
-            password: 'iliketrains!',
-        }
-
+        // Sending the data
         const res: Response = await request(server)
             .post('/auth/create')
-            .send(user)
+            .send(johnDoe)
             .expect(200)
 
+        // Checking if the response is coherent
         const decodedToken: IUserToken = jwtDecode(res.body)
         expect(decodedToken).toBeTruthy()
         expect(decodedToken.email).toBe('john.doe@bitsky.be')
@@ -29,18 +25,15 @@ describe('POST /auth/create', () => {
     })
 
     it('Returns a bad request because email is already taken', async () => {
-        const user: IStringTMap<string> = {
-            firstName: 'John',
-            lastName: 'Doe',
-            email: 'john.doe@bitsky.be',
-            password: 'iliketrains!',
-        }
-
+        // Sending the data
         const res: Response = await request(server)
             .post('/auth/create')
-            .send(user)
+            .send(johnDoe) // Same user than the first test, creating an email conflict
             .expect(400)
 
+        // As I already registered my user with this email
+        // I should receive an bad request with this message
+        // which is the translation key
         expect(res.body.message).toBe('email_already_taken')
     })
 })

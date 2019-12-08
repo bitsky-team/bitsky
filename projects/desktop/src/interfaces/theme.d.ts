@@ -1,3 +1,6 @@
+/**
+ * Theme interfaces
+ */
 type ITheme = string
 
 interface IThemePayload {

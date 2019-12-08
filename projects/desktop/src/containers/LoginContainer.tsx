@@ -18,6 +18,13 @@ interface IForm {
     password: string,
 }
 
+/**
+ * Login Container
+ *
+ * React component connected to the redux store
+ * Merges all the login form components to create
+ * a useable screen
+ */
 export const LoginContainer = connect()((): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 

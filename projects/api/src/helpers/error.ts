@@ -1,8 +1,20 @@
-import { ServerLogger, logLevels } from './../utils/ServerLogger'
 import { Boom } from '@hapi/boom'
 import { Response } from 'express'
 
-export const checkError = (res: Response, data: any, successCallback: Function) => {
+import { ServerLogger, logLevels } from './../utils/ServerLogger'
+
+/**
+ * Function used to log an error in the terminal
+ * e.g. when a controller method returns an error
+ * By default, as the error is handled by a catch
+ * the terminal will not output it
+ *
+ * @param res Response the Express Response
+ * @param data any the data to check
+ * @param successCallback Function action to do when there is no error
+ * @returns Function | Response
+ */
+export const checkError = (res: Response, data: any, successCallback: Function): Function | Response => {
     if (data instanceof Boom) {
         const {output: error}: Boom = data
         ServerLogger.log(

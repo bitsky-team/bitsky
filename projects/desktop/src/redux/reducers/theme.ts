@@ -1,6 +1,10 @@
 import { Reducer } from 'redux'
 import { SET_THEME } from '../actions/theme'
 
+/**
+ * Theme reducers
+ */
+
 export const defaultState: IThemePayload = {
     theme: {
         mode: 'classic',

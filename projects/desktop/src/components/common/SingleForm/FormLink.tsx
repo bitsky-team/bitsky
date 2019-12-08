@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom'
 
 import { colors } from '../../../constants'
 
+/**
+ * Form link style
+ *
+ * Links like "Already registered?"
+ */
 export const FormLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;

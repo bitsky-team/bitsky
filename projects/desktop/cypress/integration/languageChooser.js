@@ -1,4 +1,6 @@
 describe('Language choose', () => {
+    it('Goes on the homepage to test the language chooser', () => cy.visit('/'))
+
     it('Can change language to french', () => {
         // Find the languageChooser button & click on it
         cy

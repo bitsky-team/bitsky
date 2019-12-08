@@ -2,6 +2,14 @@ import styled from 'styled-components'
 
 import { colors } from '../../../../constants'
 
+/**
+ * The input's border style
+ *
+ * Default colors:
+ * - Grey when not filled
+ * - Gradient pink-blue when filled correctly
+ * - Red when not filled correctly
+ */
 export const InputBorder = styled.div<IInputBorderProps>`
     background: linear-gradient(180deg, ${colors.gradientPink} 0%, ${colors.gradientBlue} 100%);
     background: ${props => props.borderColor};

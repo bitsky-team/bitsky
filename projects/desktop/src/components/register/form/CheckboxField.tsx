@@ -2,7 +2,7 @@ import React from 'react'
 import { Field } from 'react-final-form'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
-import { CheckboxContainer, CheckboxInput, CheckboxCheckmark } from '../../common/singleForm'
+import { CheckboxContainer, CheckboxInput, CheckboxCheckmark } from '../../common/singleForm/index'
 
 interface IOwnProps {
     invalid: boolean,
@@ -10,6 +10,10 @@ interface IOwnProps {
 
 type IProps = IOwnProps
 
+/**
+ * Checkbox field of the register form
+ */
+// TODO: can be refactored into a generic component
 export const CheckboxField = ({invalid}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
