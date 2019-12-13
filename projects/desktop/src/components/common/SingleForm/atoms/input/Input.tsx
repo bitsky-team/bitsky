@@ -3,8 +3,8 @@ import { InputAdornment, IconButton } from '@material-ui/core'
 import { VisibilityOff, Visibility } from '@material-ui/icons'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
-import { InputContainer, InputBorder, InputField, InputWithError, InputError } from '../index'
-import { colors } from '../../../../constants'
+import { InputContainer, InputBorder, InputField, InputWithError, InputError } from '../../index'
+import { colors } from '../../../../../constants'
 
 interface IState {
     visible: boolean,

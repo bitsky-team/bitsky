@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../../../constants'
+import { colors } from '../../../../../constants'
 
 // The checkbox input style
 // The input is not visible but it's used by

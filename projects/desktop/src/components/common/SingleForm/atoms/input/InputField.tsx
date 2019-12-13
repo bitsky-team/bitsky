@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { TextField } from '@material-ui/core'
 
-import { colors } from '../../../../constants'
+import { colors } from '../../../../../constants'
 
 /**
  * Input field style

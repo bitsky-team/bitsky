@@ -2,13 +2,12 @@ import React from 'react'
 import { Field } from 'react-final-form'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
-import { Input } from './'
-import { composeValidators, required, validateMinimumLength } from '../../../constants/validators'
+import { Input } from '../atoms/input/Input'
+import { composeValidators, required, validateMinimumLength } from '../../../../constants/validators'
 
 /**
  * Password field of the login for;
  */
-// TODO: can be refactored into a generic component
 export const PasswordField = (): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 

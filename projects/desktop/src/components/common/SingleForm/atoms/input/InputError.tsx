@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { colors } from '../../../../constants'
+import { colors } from '../../../../../constants'
 
 // Input error style
 export const InputError = styled.span`

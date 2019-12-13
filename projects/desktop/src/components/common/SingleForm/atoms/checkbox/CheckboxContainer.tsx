@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import posed from 'react-pose'
 
-import { colors } from '../../../../constants'
-import { getRawTheme } from '../../../../redux/helpers/theme'
+import { colors } from '../../../../../constants'
+import { getRawTheme } from '../../../../../redux/helpers/theme'
 
 interface ICheckboxContainer {
     pose: string,

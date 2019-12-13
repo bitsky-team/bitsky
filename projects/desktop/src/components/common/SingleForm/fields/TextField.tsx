@@ -2,25 +2,32 @@ import React from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import { Field } from 'react-final-form'
 
-import { composeValidators, required, validateMinimumLength } from '../../../constants/validators'
-import { Input } from '../../login/form'
+import { composeValidators } from '../../../../constants/validators'
+import { Input } from '../atoms/input/Input'
 
 /**
- * Firstnqme field of the register form
+ * Text field for single form
  */
-// TODO: can be refactored into a generic component
-export const FirstnameField = (): JSX.Element => {
+interface IOwnProps {
+    name: string,
+    label: string,
+    validators: any[],
+}
+
+type IProps = IOwnProps
+
+export const TextField = ({name, label, validators}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
     return (
         <Field
-            name='firstName'
+            name={name}
             type='text'
-            validate={composeValidators(required, validateMinimumLength(2))}
+            validate={composeValidators(...validators)}
         >
             {({ input, meta }) => (
                 <Input
-                    label={t('register.form.firstname')}
+                    label={t(label)}
                     variant='outlined'
                     invalid={meta.touched && meta.error ? meta.error : 0}
                     {...input}
