@@ -5,11 +5,15 @@ import axios, { AxiosResponse } from 'axios'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import { SingleFormContainer } from '../components/common/containers/SingleFormContainer'
-import {  BigTitle } from '../components/common/singleForm'
-import { Box, Logo, RegisterLanguageChooser } from '../components/register/styles'
+import {
+    SingleFormContainer,
+    BigTitle,
+    RegisterBox,
+    Logo,
+    SFLanguageChooser,
+    RegisterForm,
+} from '../components'
 import logo from '../assets/img/logo-small.png'
-import { Form } from '../components/register/form'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
 
@@ -99,17 +103,17 @@ export const RegisterContainer = connect()((): JSX.Element => {
 
     return (
         <SingleFormContainer>
-            <Box>
+            <RegisterBox>
                 <Logo src={logo} alt='Bitsky' />
-                <RegisterLanguageChooser />
+                <SFLanguageChooser />
                 <BigTitle dangerouslySetInnerHTML={getTitleContent()} />
                 <FinalForm
                     onSubmit={onSubmit}
                     initialValues={{ termsOfUse: false }}
                     render={({handleSubmit}: {handleSubmit: () => void}) =>
-                        <Form handleSubmit={handleSubmit} invalid={state.invalidForm} />}
+                        <RegisterForm handleSubmit={handleSubmit} invalid={state.invalidForm} />}
                 />
-            </Box>
+            </RegisterBox>
         </SingleFormContainer>
     )
 })

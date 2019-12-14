@@ -4,11 +4,16 @@ import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import axios, { AxiosResponse } from 'axios'
 import { connect } from 'react-redux'
 
-import { Box, LoginLanguageChooser, Logo } from '../components/login/styles'
-import { SingleFormContainer } from '../components/common/containers/SingleFormContainer'
-import { BigTitle } from '../components/common/singleForm'
-import { LeftSide, RightSide } from '../components/login/parts'
-import { Form } from '../components/login/form'
+import {
+    LoginBox,
+    SFLanguageChooser,
+    Logo,
+    SingleFormContainer,
+    BigTitle,
+    LeftSide,
+    RightSide,
+    LoginForm,
+} from '../components'
 import logo from '../assets/img/logo-small.png'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
@@ -55,23 +60,23 @@ export const LoginContainer = connect()((): JSX.Element => {
 
     return (
         <SingleFormContainer>
-            <Box>
+            <LoginBox>
                 <LeftSide>
                     <Logo src={logo} alt='Bitsky' />
-                    <LoginLanguageChooser />
+                    <SFLanguageChooser />
                     <BigTitle dangerouslySetInnerHTML={getTitleContent()} />
 
                     <FinalForm
                         onSubmit={onSubmit}
                         initialValues={{ remember: false }}
                         render={({handleSubmit}: {handleSubmit: () => void}) =>
-                            <Form handleSubmit={handleSubmit} />}
+                            <LoginForm handleSubmit={handleSubmit} />}
                     />
                 </LeftSide>
                 <RightSide>
                     <br/> {/* FIXME */}
                 </RightSide>
-            </Box>
+            </LoginBox>
         </SingleFormContainer>
     )
 })
