@@ -16,7 +16,7 @@ import { secretKey } from '../constants/secret'
  * @param remember boolean the login screen's "remember me" checkbox
  * @returns Promise
  */
-const authenticate = async (email: string, password: string, remember: boolean = false): Promise<string | BoomType> => {
+const authenticate = async (email: string, password: string, remember: boolean = false): Promise<object | BoomType> => {
     const repository: Repository<User> = getRepository(User)
     const user: User | undefined = await repository.findOne({ where: { email }})
 
@@ -32,7 +32,7 @@ const authenticate = async (email: string, password: string, remember: boolean =
 
     const today: number = DateTime.local().toSeconds()
     const dayInSeconds: number = 86400
-    const data: object = _.pick(user, ['id', 'firstName', 'lastName', 'email', 'onboardingStep'])
+    const data: object = _.pick(user, ['id', 'firstName', 'lastName', 'email', 'theme', 'onboardingStep'])
 
     const token: string = jwt.sign({
         ...data,
@@ -44,7 +44,7 @@ const authenticate = async (email: string, password: string, remember: boolean =
     user.token = await bcrypt.hash(token, saltRounds)
     await repository.save(user)
 
-    return token
+    return {...data, token}
 }
 
 /**
@@ -58,7 +58,7 @@ export const authController = {
      * @param data IUser the new user's data
      * @returns Promise
      */
-    create: async (data: IUser): Promise<string | BoomType> => {
+    create: async (data: IUser): Promise<object | BoomType> => {
         // Hashing password
         const saltRounds: number = parseInt(`${process.env.SALT_ROUNDS}`, 10)
         const clearPassword: string = data.password
@@ -91,7 +91,7 @@ export const authController = {
      * @param data IUser the user's data needed to log him in
      * @returns Promise
      */
-    login: async (data: IUser): Promise<string | BoomType> => {
+    login: async (data: IUser): Promise<object | BoomType> => {
         return authenticate(data.email, data.password, data.remember)
     },
 }

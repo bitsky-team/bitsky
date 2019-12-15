@@ -3,5 +3,5 @@ import store from '../store'
 /**
  * Methods who gets the store theme's value
  */
-export const getRawTheme: Function = (): IThemePayload => ({ theme: store.getState().themeReducer.theme })
-export const getTheme: Function = (): ITheme => store.getState().themeReducer.theme.mode
+export const getTheme: Function = (): ITheme => ({ mode: store.getState().themeReducer.mode })
+export const getRawTheme: Function = (): object => ({ theme: { mode: store.getState().themeReducer.mode } })

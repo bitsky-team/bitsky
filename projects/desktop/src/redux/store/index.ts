@@ -1,18 +1,34 @@
-import { combineReducers, createStore } from 'redux'
+import { combineReducers, createStore, Reducer, applyMiddleware, compose } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
+import thunk from 'redux-thunk'
+
 import { themeReducer } from '../reducers'
 
 // Add reducers here
-const rootReducer = combineReducers({
+const rootReducer: Reducer<IReduxState> = combineReducers({
     themeReducer,
 })
 
+const persistConfig = {
+    key: 'root',
+    storage,
+    stateReconciler: autoMergeLevel2,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer as Reducer)
+
 export type AppState = ReturnType<typeof rootReducer>
 
+const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
 const store = createStore(
-    rootReducer,
-    // This is needed to enable the chrome redux debug tool
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
+    persistedReducer,
+    composeEnhancers(applyMiddleware(thunk)),
 )
+
+export const persistor = persistStore(store)
 
 export const configureStore = () => {
     return store
