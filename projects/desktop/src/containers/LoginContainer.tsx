@@ -17,11 +17,18 @@ import {
 import logo from '../assets/img/logo-small.png'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
+import { setTheme } from '../redux/actions/theme'
 
 interface IForm {
     email: string,
     password: string,
 }
+
+interface IDispatchProps {
+    setTheme: (theme: string) => Promise<Function>,
+}
+
+type IProps = IDispatchProps
 
 /**
  * Login Container
@@ -30,7 +37,12 @@ interface IForm {
  * Merges all the login form components to create
  * a useable screen
  */
-export const LoginContainer = connect()((): JSX.Element => {
+
+const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
+    setTheme: (theme: string): Promise<Function> => dispatch(setTheme(theme)),
+})
+
+export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('login.title')})
@@ -42,18 +54,21 @@ export const LoginContainer = connect()((): JSX.Element => {
                 values,
             )
 
-            const {data: token}: AxiosResponse<string> = response
+            const {data: {token, theme}}: AxiosResponse<any> = response
             localStorage.setItem('token', token)
+            setTheme(theme)
         } catch (e) {
-            switch (e.response.data.message) {
-                case 'user_not_found':
-                    return { email: t('login.error.userNotFound')}
-                case 'incorrect_password':
-                    return { password: t('login.error.incorrectPassword')}
-                default:
-                    error('Error while login: ')
-                    error(e.response)
-                    break
+            if (e.response) {
+                switch (e.response.data.message) {
+                    case 'user_not_found':
+                        return { email: t('login.error.userNotFound')}
+                    case 'incorrect_password':
+                        return { password: t('login.error.incorrectPassword')}
+                    default:
+                        error('Error while login: ')
+                        error(e.response)
+                        break
+                }
             }
         }
     }

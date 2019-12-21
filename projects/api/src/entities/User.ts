@@ -25,6 +25,9 @@ export class User {
     @Column({ nullable: true })
     token?: string
 
+    @Column({ default: 'classic'})
+    theme?: string
+
     /*
         Onboarding steps are the steps to complete
         after the registration:

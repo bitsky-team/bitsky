@@ -6,11 +6,12 @@ import { initReactI18next } from 'react-i18next'
 import { ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
 import { StylesProvider } from '@material-ui/styles'
-import { Provider as StoreProvider } from 'react-redux'
+import { Provider as StoreProvider, connect } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
 import { unregister } from './serviceWorker'
 import { Router } from './Router'
-import { configureStore } from './redux/store'
+import { configureStore, persistor } from './redux/store'
 import en from './assets/locales/EN.json'
 import fr from './assets/locales/FR.json'
 import es from './assets/locales/ES.json'
@@ -37,19 +38,46 @@ i18n
     },
   })
 
+const Loader = <Fragment />
+
 // Initiating redux store
 const store = configureStore()
 
+// This component will read the hydrated theme from redux
+interface IOwnProps {
+  children: object,
+}
+interface IStoreProps {
+  mode?: string,
+}
+type IProps = IOwnProps & IStoreProps
+const mapStateToProps = ({themeReducer: {mode}}: IReduxState): IStoreProps => ({mode})
+const ConnectedThemeProvider = connect(mapStateToProps, null)(
+  ({children, mode}: IProps) => {
+    if (!mode) {
+      return Loader
+    }
+
+    return (
+      <ThemeProvider theme={{mode}}>
+        <StylesProvider injectFirst>
+          {children}
+        </StylesProvider>
+      </ThemeProvider>
+    )
+  },
+)
+
 // TODO: Maybe change Suspense fallback props into a beautiful loading screen
 const App = (): JSX.Element => (
-  <Suspense fallback={<Fragment />}>
+  <Suspense fallback={Loader}>
     <Normalize />
     <StoreProvider store={store}>
-        <ThemeProvider theme={{mode: 'classic'}}>
-            <StylesProvider injectFirst>
-                <Router />
-            </StylesProvider>
-        </ThemeProvider>
+      <PersistGate loading={Loader} persistor={persistor}>
+        <ConnectedThemeProvider>
+          <Router />
+        </ConnectedThemeProvider>
+      </PersistGate>
     </StoreProvider>
   </Suspense>
 )

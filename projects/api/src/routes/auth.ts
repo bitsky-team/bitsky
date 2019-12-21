@@ -17,12 +17,12 @@ export const authRouter: typeof Router = (): Router => {
     const router: Router = expressPromiseRouter()
 
     router.post('/create', validateBody(userSchema), async (req: Request, res: Response) => {
-        const response: string | Boom = await authController.create(req.body)
+        const response: object | Boom = await authController.create(req.body)
         checkError(res, response, () => res.json(response))
     })
 
     router.post('/login', validateBody(loginSchema), async (req: Request, res: Response) => {
-        const response: string | Boom = await authController.login(req.body)
+        const response: object | Boom = await authController.login(req.body)
         checkError(res, response, () => res.json(response))
     })
 

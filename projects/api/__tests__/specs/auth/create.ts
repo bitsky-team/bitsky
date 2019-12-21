@@ -18,7 +18,7 @@ describe('POST /auth/create', () => {
             .expect(200)
 
         // Checking if the response is coherent
-        const decodedToken: IUserToken = jwtDecode(res.body)
+        const decodedToken: IUserToken = jwtDecode(res.body.token)
         expect(decodedToken).toBeTruthy()
         expect(decodedToken.email).toBe('john.doe@bitsky.be')
         expect(decodedToken.password).toBe(undefined)
