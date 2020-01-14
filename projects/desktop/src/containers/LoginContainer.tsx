@@ -18,6 +18,7 @@ import logo from '../assets/img/logo-small.png'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
 import { setTheme } from '../redux/actions/theme'
+import { FORM_ERROR } from 'final-form'
 
 interface IForm {
     email: string,
@@ -58,17 +59,21 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IPr
             localStorage.setItem('token', token)
             setTheme(theme)
         } catch (e) {
-            if (e.response) {
-                switch (e.response.data.message) {
-                    case 'user_not_found':
-                        return { email: t('login.error.userNotFound')}
-                    case 'incorrect_password':
-                        return { password: t('login.error.incorrectPassword')}
-                    default:
-                        error('Error while login: ')
-                        error(e.response)
-                        break
+            if (!e.response) {
+                return {
+                    [FORM_ERROR]: t('serverError'),
                 }
+            }
+
+            switch (e.response.data.message) {
+                case 'user_not_found':
+                    return { email: t('login.error.userNotFound')}
+                case 'incorrect_password':
+                    return { password: t('login.error.incorrectPassword')}
+                default:
+                    error('Error while login: ')
+                    error(e.response)
+                    break
             }
         }
     }
@@ -84,8 +89,10 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IPr
                     <FinalForm
                         onSubmit={onSubmit}
                         initialValues={{ remember: false }}
-                        render={({handleSubmit}: {handleSubmit: () => void}) =>
-                            <LoginForm handleSubmit={handleSubmit} />}
+                        render={({
+                            handleSubmit,
+                            submitError,
+                        }: IFinalFormRenderProps) => <LoginForm handleSubmit={handleSubmit} submitError={submitError} />}
                     />
                 </LeftSide>
                 <RightSide>

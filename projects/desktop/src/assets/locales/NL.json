@@ -13,6 +13,8 @@
       "tooShort": "Dit is te kort (min. {{min}} tekens)"
     },
 
+    "serverError": "Er is een serverfout opgetreden",
+
     "login": {
       "title": "<span>Uw</span> vrienden,\n<span>Uw</span> herinneringen,\n<span>Uw</span> data,\n<span>Thuis</span>.",
       "form": {

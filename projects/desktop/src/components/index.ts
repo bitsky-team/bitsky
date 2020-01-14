@@ -17,6 +17,8 @@ export { RightSideBackground } from './atoms/login/RightSideBackground'
 export { RegisterBox } from './atoms/register/RegisterBox'
 export { SubmitButton } from './atoms/register/SubmitButton'
 
+export { Alert } from './atoms/common/Alert'
+
 /// Single Form
 export { CheckboxCheckmark } from './atoms/singleForm/checkbox/CheckboxCheckmark'
 export { CheckboxContainer } from './atoms/singleForm/checkbox/CheckboxContainer'

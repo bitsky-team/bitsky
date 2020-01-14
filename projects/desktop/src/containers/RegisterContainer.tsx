@@ -16,6 +16,7 @@ import {
 import logo from '../assets/img/logo-small.png'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
+import { FORM_ERROR } from 'final-form'
 
 interface IState {
     invalidForm: {
@@ -89,6 +90,12 @@ export const RegisterContainer = connect()((): JSX.Element => {
                 const {data: token}: AxiosResponse<string> = response
                 localStorage.setItem('token', token)
             } catch (e) {
+                if (!e.response) {
+                    return {
+                        [FORM_ERROR]: t('serverError'),
+                    }
+                }
+
                 switch (e.response.data.message) {
                     case 'email_already_taken':
                         return { email: t('register.error.emailAlreadyTaken')}
@@ -110,8 +117,10 @@ export const RegisterContainer = connect()((): JSX.Element => {
                 <FinalForm
                     onSubmit={onSubmit}
                     initialValues={{ termsOfUse: false }}
-                    render={({handleSubmit}: {handleSubmit: () => void}) =>
-                        <RegisterForm handleSubmit={handleSubmit} invalid={state.invalidForm} />}
+                    render={({
+                        handleSubmit,
+                        submitError,
+                    }: IFinalFormRenderProps) => <RegisterForm handleSubmit={handleSubmit} invalid={state.invalidForm} submitError={submitError} />}
                 />
             </RegisterBox>
         </SingleFormContainer>
