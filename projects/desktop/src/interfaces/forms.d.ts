@@ -17,3 +17,8 @@ interface IInvalidInputErrrorObject {
     key: string,
     data: string,
 }
+
+interface IFinalFormRenderProps {
+    handleSubmit: () => void,
+    submitError: string,
+}

@@ -13,6 +13,8 @@
         "tooShort": "Es muy corto (mín. {{min}} caracteres)"
       },
 
+      "serverError": "Se ha producido un error del servidor",
+
       "login": {
         "title": "<span>Tus </span> amigos,\n<span>Tus </span> recuerdos,\n<span>Tus </span> datos,\nEn <span>casa</span>.",
         "form": {

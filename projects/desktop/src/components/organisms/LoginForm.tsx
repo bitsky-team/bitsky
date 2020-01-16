@@ -8,10 +8,12 @@ import {
     SFCheckboxField,
     SFEmailField,
     SFPasswordField,
+    Alert,
 } from '../'
 
 interface IOwnProps {
-    handleSubmit: () => void
+    handleSubmit: () => void,
+    submitError: string,
 }
 
 type IProps = IOwnProps
@@ -21,11 +23,12 @@ type IProps = IOwnProps
  *
  * @param props
  */
-export const LoginForm = ({handleSubmit}: IProps): JSX.Element => {
+export const LoginForm = ({handleSubmit, submitError}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
     return (
         <LoginFormContainer onSubmit={handleSubmit}>
+            {submitError && <Alert type='danger'>{submitError}</Alert>}
             <SFEmailField />
             <SFPasswordField />
             <SFCheckboxField
