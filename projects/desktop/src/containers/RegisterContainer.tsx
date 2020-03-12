@@ -87,7 +87,7 @@ export const RegisterContainer = connect()((): JSX.Element => {
                     data,
                 )
 
-                const {data: token}: AxiosResponse<string> = response
+                const {data: {token}}: AxiosResponse<any> = response
                 localStorage.setItem('token', token)
             } catch (e) {
                 if (!e.response) {
