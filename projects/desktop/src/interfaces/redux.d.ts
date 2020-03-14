@@ -1,3 +1,0 @@
-interface IReduxState {
-    themeReducer: ITheme,
-}

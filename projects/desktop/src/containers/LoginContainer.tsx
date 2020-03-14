@@ -3,6 +3,7 @@ import { Form as FinalForm, AnyObject } from 'react-final-form'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import axios, { AxiosResponse } from 'axios'
 import { connect } from 'react-redux'
+import { FORM_ERROR } from 'final-form'
 
 import {
     LoginBox,
@@ -18,7 +19,8 @@ import logo from '../assets/img/logo-small.png'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
 import { setTheme } from '../redux/actions/theme'
-import { FORM_ERROR } from 'final-form'
+import { IDangerousHTMLContent } from '../interfaces/generics'
+import { IFinalFormRenderProps } from '../interfaces/forms'
 
 interface IForm {
     email: string,

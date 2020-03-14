@@ -1,4 +1,5 @@
 import store from '../store'
+import { ITheme } from '../../interfaces/theme'
 
 /**
  * Methods who gets the store theme's value

@@ -5,6 +5,7 @@ import {
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
 import { LanguageDialogTitle, LanguageList, LanguageListItem } from '../../'
+import { ISimpleDialogProps } from '../../../interfaces/dialogs'
 
 interface ILanguageChooserDialogProps extends ISimpleDialogProps {
     setLanguage: (value: string) => void,

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { colors } from '../../../../constants'
+import { IInputBorderProps } from '../../../../interfaces/forms'
 
 /**
  * The input's border style

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { IInputWithErrorProps } from '../../../../interfaces/forms'
+
 /**
  * Input with error style
  *

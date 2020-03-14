@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Background, WhiteOverlay, FullHeightContainer } from '../../'
+import { IPropsChildren } from '../../../interfaces/generics'
 
 /**
  * Container who use multiples components

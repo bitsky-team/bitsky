@@ -5,9 +5,13 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import thunk from 'redux-thunk'
 
 import { themeReducer } from '../reducers'
+import { IReduxState } from '../../interfaces/redux'
+import { IThemeAction } from './../../interfaces/theme'
+
+type ReducerAction = IThemeAction
 
 // Add reducers here
-const rootReducer: Reducer<IReduxState> = combineReducers({
+const rootReducer: Reducer<IReduxState, ReducerAction> = combineReducers({
     themeReducer,
 })
 
