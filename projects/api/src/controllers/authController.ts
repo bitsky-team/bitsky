@@ -16,7 +16,7 @@ import { secretKey } from '../constants/secret'
  * @param remember boolean the login screen's "remember me" checkbox
  * @returns Promise
  */
-const authenticate = async (email: string, password: string, remember: boolean = false): Promise<object | BoomType> => {
+const _authenticate = async (email: string, password: string, remember: boolean = false): Promise<object | BoomType> => {
     const repository: Repository<User> = getRepository(User)
     const user: User | undefined = await repository.findOne({ where: { email }})
 
@@ -82,7 +82,7 @@ export const authController = {
         }
 
         // Generating token & deleting password
-        return authenticate(data.email, clearPassword)
+        return _authenticate(data.email, clearPassword)
     },
 
     /**
@@ -92,6 +92,6 @@ export const authController = {
      * @returns Promise
      */
     login: async (data: IUser): Promise<object | BoomType> => {
-        return authenticate(data.email, data.password, data.remember)
+        return _authenticate(data.email, data.password, data.remember)
     },
 }

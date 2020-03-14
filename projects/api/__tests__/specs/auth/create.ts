@@ -1,8 +1,10 @@
 import request, { Response } from 'supertest'
 import jwtDecode from 'jwt-decode'
+import { getRepository, Repository } from 'typeorm'
 
 import server from '../../../src/app'
 import { johnDoe } from '../../mocks/user'
+import { User } from '../../../src/entities'
 
 interface IUserToken {
     email: string,
@@ -25,6 +27,12 @@ describe('POST /auth/create', () => {
     })
 
     it('Returns a bad request because email is already taken', async () => {
+        // Simulating that the email is already taken
+        // by creating the user before
+        const repository: Repository<User> = getRepository(User)
+        const user = await repository.create(johnDoe)
+        await repository.save(user)
+
         // Sending the data
         const res: Response = await request(server)
             .post('/auth/create')
