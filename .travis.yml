@@ -10,8 +10,6 @@ node_js:
     - node
 
 before_install:
-    - sudo apt-get update
-    - sudo /etc/init.d/postgresql stop
     - sudo /etc/init.d/postgresql start 12.1
 
 before_script:

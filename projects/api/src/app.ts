@@ -8,6 +8,7 @@ import { authRouter } from './routes/auth'
 import { serverGreetings } from './constants/asciiArts'
 import { commonMiddlewares } from './middlewares'
 import { ServerLogger, logLevels, applyMiddleware } from './utils'
+import { testConfig, productionConfig } from './database'
 
 // Loading env variables
 dotenv.config()
@@ -26,17 +27,24 @@ app.use('/auth', authRouter())
 
 // Creating a server from the app
 const server: Server = createServer(app)
+const databaseConfig = process.env.NODE_ENV === 'test' ? testConfig : productionConfig
 
 // Injecting TypeORM and launch the server
-createConnection().then(() => {
-    if (!server.listening) {
-        server.listen(port, () => {
-            ServerLogger.log(serverGreetings, logLevels.MISC)
-            ServerLogger.log(`Version: ${version}                                     ${mode} mode\n`, logLevels.MISC)
-            ServerLogger.log(`Server running on port ${port}!`)
-        })
-    }
-})
+export const launch = async () => {
+    return createConnection(databaseConfig).then(() => {
+        if (!server.listening) {
+            server.listen(port, () => {
+                ServerLogger.log(serverGreetings, logLevels.MISC)
+                ServerLogger.log(`Version: ${version}                                     ${mode} mode\n`, logLevels.MISC)
+                ServerLogger.log(`Server running on port ${port}!`)
+            })
+        }
+    })
+}
+
+if (process.env.NODE_ENV !== 'test') {
+    launch()
+}
 
 // Exporting the server for testing purpose
 export default server

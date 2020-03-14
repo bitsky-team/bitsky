@@ -79,7 +79,7 @@ const handleServerErrorLog = (router: Router) => {
  * Exporting all the middlewares into an array
  * which will be iterated when applying it
  */
-export const commonMiddlewares: Array<(router: Router) => void> = [
+export const commonMiddlewares: ((router: Router) => void)[] = [
     handleHelmet,
     handleCors,
     handleBodyRequestParsing,
