@@ -22,7 +22,7 @@ export const SFPasswordField = (): JSX.Element => {
                     label={t('login.form.password')}
                     variant='outlined'
                     invalid={touched && (error || submitError) ? error || submitError : false}
-                    visibilityFilter={1}
+                    visibilityFilter={true}
                     {...input}
                 />
             )}

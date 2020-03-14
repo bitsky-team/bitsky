@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 import { colors } from '../../../constants'
 import { getRawTheme } from '../../../redux/helpers/theme'
+import { IAlertColor } from '../../../interfaces/alerts'
+import { ITheme } from '../../../interfaces/theme'
 
 const AlertBox = styled.div<IAlertColor>`
     background: ${props => props.bgColor};

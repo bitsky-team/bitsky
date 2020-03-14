@@ -1,8 +1,10 @@
 import React, { useReducer } from 'react'
 import { Button } from '@material-ui/core'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
+import { AnyAction } from 'redux'
 
 import { LanguageChooserDialog } from './LanguageChooserDialog'
+import { IStringTMap } from '../../../interfaces/generics'
 
 interface IState {
     open: boolean,
@@ -20,7 +22,7 @@ const actions: IStringTMap<string> = {
 /**
  * Reducer who returns a new state depending on the action
  */
-const reducer = (state: typeof initialState, action: IAction): IState => {
+const reducer = (state: typeof initialState, action: AnyAction): IState => {
     switch (action.type) {
         case actions.TOGGLE_DIALOG:
             return {

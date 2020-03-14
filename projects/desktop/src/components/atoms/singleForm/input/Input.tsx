@@ -2,19 +2,18 @@ import React, { Dispatch, useReducer } from 'react'
 import { InputAdornment, IconButton } from '@material-ui/core'
 import { VisibilityOff, Visibility } from '@material-ui/icons'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
+import { AnyAction } from 'redux'
 
 import { InputContainer, InputBorder, InputField, InputWithError, InputError } from '../../../'
 import { colors } from '../../../../constants'
+import { IStringTMap, IStringAnyMap } from '../../../../interfaces/generics'
+import { IInputProps } from '../../../../interfaces/forms'
 
 interface IState {
     visible: boolean,
 }
 
-interface IOwnProps {
-    visibilityFilter: boolean,
-    invalid: InvalidInputError,
-    value: string,
-}
+type IOwnProps = IInputProps
 
 type IProps = IOwnProps
 
@@ -27,7 +26,7 @@ const actions: IStringTMap<string> = {
     TOGGLE_VISIBILITY: 'TOGGLE_VISIBILITY',
 }
 
-const reducer = (state: IStringAnyMap, action: IAction): IState => {
+const reducer = (state: IStringAnyMap, action: AnyAction): IState => {
     switch (action.type) {
         case actions.TOGGLE_VISIBILITY:
             return {
@@ -46,8 +45,8 @@ const reducer = (state: IStringAnyMap, action: IAction): IState => {
  * @param props Compnent's props
  */
 export const Input = (props: IInputProps): JSX.Element => {
-    const [state, dispatch]: [IState, Dispatch<IAction>] = useReducer(reducer, initialState)
-    const {t}: UseTranslationResponse = useTranslation()
+    const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
+    const { t }: UseTranslationResponse = useTranslation()
 
     const { visibilityFilter, invalid, value, ...rest }: IProps = props
 

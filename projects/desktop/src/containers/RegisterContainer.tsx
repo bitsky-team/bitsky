@@ -4,6 +4,8 @@ import { Form as FinalForm, AnyObject } from 'react-final-form'
 import axios, { AxiosResponse } from 'axios'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import { FORM_ERROR } from 'final-form'
+import { AnyAction } from 'redux'
 
 import {
     SingleFormContainer,
@@ -16,7 +18,8 @@ import {
 import logo from '../assets/img/logo-small.png'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
-import { FORM_ERROR } from 'final-form'
+import { IStringTMap, IDangerousHTMLContent } from '../interfaces/generics'
+import { IFinalFormRenderProps } from '../interfaces/forms'
 
 interface IState {
     invalidForm: {
@@ -42,7 +45,7 @@ const actions: IStringTMap<string> = {
     SET_INVALID_FORM: 'SET_INVALID_FORM',
 }
 
-const reducer = (state: typeof initialState, action: IAction): IState => {
+const reducer = (state: typeof initialState, action: AnyAction): IState => {
     switch (action.type) {
         case actions.SET_INVALID_FORM:
             return {

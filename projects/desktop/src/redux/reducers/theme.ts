@@ -1,5 +1,7 @@
 import { Reducer } from 'redux'
+
 import { SET_THEME } from '../actions/theme'
+import { ITheme, IThemeReducer, IThemeAction } from '../../interfaces/theme'
 
 /**
  * Theme reducers

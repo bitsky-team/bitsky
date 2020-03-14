@@ -1,5 +1,7 @@
 import theme from 'styled-theming'
 
+import { IStringTMap } from '../interfaces/generics'
+
 /*
   Colors used with styled components
 */
