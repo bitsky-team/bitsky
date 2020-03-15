@@ -28,13 +28,13 @@ const actions: IStringTMap<string> = {
 
 const reducer = (state: IStringAnyMap, action: AnyAction): IState => {
     switch (action.type) {
-        case actions.TOGGLE_VISIBILITY:
-            return {
-                ...state,
-                visible: !state.visible,
-            }
-        default:
-            throw new Error('Action type not found')
+    case actions.TOGGLE_VISIBILITY:
+        return {
+            ...state,
+            visible: !state.visible,
+        }
+    default:
+        throw new Error('Action type not found')
     }
 }
 

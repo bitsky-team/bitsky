@@ -42,24 +42,24 @@ export class ServerLogger {
         const datetime: string = DateTime.local().toFormat('dd/MM/yyyy HH:mm:ss')
 
         switch(level) {
-            case logLevels.MISC:
-                log(message)
-                break
+        case logLevels.MISC:
+            log(message)
+            break
 
-            case logLevels.INFO:
-                log(clc.cyanBright(`[bitsky] @ [${datetime}] ${message}`))
-                break
+        case logLevels.INFO:
+            log(clc.cyanBright(`[bitsky] @ [${datetime}] ${message}`))
+            break
 
-            case logLevels.WARN:
-                log(clc.yellowBright(`[bitsky] @ [${datetime}] ${message}`))
-                break
+        case logLevels.WARN:
+            log(clc.yellowBright(`[bitsky] @ [${datetime}] ${message}`))
+            break
 
-            case logLevels.ERR:
-                log(clc.redBright(`[bitsky] @ [${datetime}] ${message}`))
-                break
+        case logLevels.ERR:
+            log(clc.redBright(`[bitsky] @ [${datetime}] ${message}`))
+            break
 
-            default:
-                throw new Error('Unknown log level')
+        default:
+            throw new Error('Unknown log level')
         }
     }
 

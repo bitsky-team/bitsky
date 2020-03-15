@@ -53,7 +53,7 @@
     "release": "yarn react-build && electron-builder --publish=always",
     "build": "yarn react-build && yarn electron-build",
     "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && yarn electron-start\"",
-    "lint": "tslint --project .",
+    "lint": "eslint src --ext .ts,.tsx,.js",
     "cypress:run": "cypress run"
   },
   "eslintConfig": {

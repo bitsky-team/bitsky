@@ -24,13 +24,13 @@ const actions: IStringTMap<string> = {
  */
 const reducer = (state: typeof initialState, action: AnyAction): IState => {
     switch (action.type) {
-        case actions.TOGGLE_DIALOG:
-            return {
-                ...state,
-                open: !state.open,
-            }
-        default:
-            throw new Error('Action type not found')
+    case actions.TOGGLE_DIALOG:
+        return {
+            ...state,
+            open: !state.open,
+        }
+    default:
+        throw new Error('Action type not found')
     }
 }
 

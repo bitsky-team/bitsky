@@ -19,8 +19,8 @@ describe('POST /auth/login', () => {
         const password = await bcrypt.hash(johnDoe.password, saltRounds)
 
         const user = await repository.create({
-          ...johnDoe,
-          password
+            ...johnDoe,
+            password
         })
         await repository.save(user)
 
@@ -28,9 +28,9 @@ describe('POST /auth/login', () => {
         const res: Response = await request(server)
             .post('/auth/login')
             .send({
-              email: johnDoe.email,
-              password: johnDoe.password,
-              remember: false,
+                email: johnDoe.email,
+                password: johnDoe.password,
+                remember: false,
             })
             .expect(200)
 
@@ -46,9 +46,9 @@ describe('POST /auth/login', () => {
         const res: Response = await request(server)
             .post('/auth/login')
             .send({
-              email: johnDoe.email,
-              password: johnDoe.password,
-              remember: false,
+                email: johnDoe.email,
+                password: johnDoe.password,
+                remember: false,
             })
             .expect(400)
 
@@ -56,20 +56,20 @@ describe('POST /auth/login', () => {
     })
 
     it('Login unsuccessfully (incorrect password)', async () => {
-      const repository: Repository<User> = getRepository(User)
-      const user = await repository.create(johnDoe)
-      await repository.save(user)
+        const repository: Repository<User> = getRepository(User)
+        const user = await repository.create(johnDoe)
+        await repository.save(user)
 
-      // Sending the data
-      const res: Response = await request(server)
-          .post('/auth/login')
-          .send({
-            email: johnDoe.email,
-            password: johnDoe.password,
-            remember: false,
-          })
-          .expect(400)
+        // Sending the data
+        const res: Response = await request(server)
+            .post('/auth/login')
+            .send({
+                email: johnDoe.email,
+                password: johnDoe.password,
+                remember: false,
+            })
+            .expect(400)
 
-      expect(res.body.message).toBe('incorrect_password')
-  })
+        expect(res.body.message).toBe('incorrect_password')
+    })
 })

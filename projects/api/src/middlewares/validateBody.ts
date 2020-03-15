@@ -15,8 +15,8 @@ export const validateBody = (schema: Schema) => (req: Request, res: Response, ne
 
     if (error) {
         const message: string = error.details.length > 0
-                      ? error.details.reduce((acc, val) => acc + val.message + ', ', '').replace(/,\s*$/, '')
-                      : error.details[0].message
+            ? error.details.reduce((acc, val) => acc + val.message + ', ', '').replace(/,\s*$/, '')
+            : error.details[0].message
 
         ServerLogger.log('Bad request while validating the request\'s body', logLevels.ERR)
         ServerLogger.log(message, logLevels.ERR)

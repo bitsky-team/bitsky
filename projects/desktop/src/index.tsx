@@ -23,21 +23,21 @@ Sentry.init({dsn: process.env.REACT_APP_SENTRY_DSN})
 
 // Initiating I18n for translation
 i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-        en,
-        fr,
-        es,
-        nl,
-    },
-    lng: localStorage.getItem('language') || 'en',
-    fallbackLng: 'en',
-    keySeparator: '.',
-    interpolation: {
-      escapeValue: false,
-    },
-  })
+    .use(initReactI18next)
+    .init({
+        resources: {
+            en,
+            fr,
+            es,
+            nl,
+        },
+        lng: localStorage.getItem('language') || 'en',
+        fallbackLng: 'en',
+        keySeparator: '.',
+        interpolation: {
+            escapeValue: false,
+        },
+    })
 
 const Loader = <Fragment />
 
@@ -54,39 +54,39 @@ interface IStoreProps {
 type IProps = IOwnProps & IStoreProps
 const mapStateToProps = ({themeReducer: {mode}}: IReduxState): IStoreProps => ({mode})
 const ConnectedThemeProvider = connect(mapStateToProps, null)(
-  ({children, mode}: IProps) => {
-    if (!mode) {
-      return Loader
-    }
+    ({children, mode}: IProps) => {
+        if (!mode) {
+            return Loader
+        }
 
-    return (
-      <ThemeProvider theme={{mode}}>
-        <StylesProvider injectFirst>
-          {children}
-        </StylesProvider>
-      </ThemeProvider>
-    )
-  },
+        return (
+            <ThemeProvider theme={{mode}}>
+                <StylesProvider injectFirst>
+                    {children}
+                </StylesProvider>
+            </ThemeProvider>
+        )
+    },
 )
 
 // TODO: Maybe change Suspense fallback props into a beautiful loading screen
 const App = (): JSX.Element => (
-  <Suspense fallback={Loader}>
-    <Normalize />
-    <StoreProvider store={store}>
-      <PersistGate loading={Loader} persistor={persistor}>
-        <ConnectedThemeProvider>
-          <Router />
-        </ConnectedThemeProvider>
-      </PersistGate>
-    </StoreProvider>
-  </Suspense>
+    <Suspense fallback={Loader}>
+        <Normalize />
+        <StoreProvider store={store}>
+            <PersistGate loading={Loader} persistor={persistor}>
+                <ConnectedThemeProvider>
+                    <Router />
+                </ConnectedThemeProvider>
+            </PersistGate>
+        </StoreProvider>
+    </Suspense>
 )
 
 // Rendering the app
 ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
+    <App />,
+    document.getElementById('root'),
 )
 
 unregister()
