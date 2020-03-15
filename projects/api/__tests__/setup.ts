@@ -1,6 +1,8 @@
 import { getConnection } from 'typeorm'
 
 import { launch } from '../src/app'
+import server from '../src/app'
+
 
 beforeAll(async () => {
     await launch()
@@ -8,4 +10,8 @@ beforeAll(async () => {
 
 afterEach(async () => {
     await getConnection().synchronize(true)
+})
+
+afterAll(async () => {
+    await server.close()
 })

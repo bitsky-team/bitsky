@@ -5,7 +5,7 @@
     "test": "yarn test-api && yarn test-desktop",
     "test-api": "cd projects/api && yarn test && yarn lint",
     "test-desktop": "cd projects/desktop && yarn lint",
-    "start-desktop": "cd projects/desktop && pm2 start ./node_modules/react-scripts/scripts/start.js && wait-on http://localhost:3000",
+    "start-desktop": "cd projects/desktop && pm2 start -f ./node_modules/react-scripts/scripts/start.js && wait-on http://localhost:3000",
     "test-desktop-cypress": "cd projects/desktop && yarn run cypress:run",
     "clean-jobs": "pm2 kill"
   },
