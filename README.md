@@ -12,16 +12,12 @@ A new way to share with your loved ones.
 
 📌 Table of contents
 =================
-* [Contributing](CONTRIBUTING.md)
-  * [Branching Model](docs/BRANCHING_MODEL.md)
-* [Changelog](CHANGELOG.md)
-* [What does this project do?](#-introduction)
-* [Why this project useful?](#-why)
+* [Introduction](#-introduction)
+* [Why](#-why)
 * [Project structure](#-project-structure)
 * [How do I get started?](#-how-do-i-get-started)
-* [Where did you get that great project name?](#-where-did-you-get-that-great-project-name)
 * [Contributing](#-contributing)
-* [Let's talk!](#-lets-talk)
+* [Discord](#-discord)
 
 ☁️ Introduction
 ==========================
@@ -56,7 +52,6 @@ This project will try to address that and address those concerns.
 
 🛠️ Project structure
 =================
-
 ```bash
 ├── src
 │   ├── intermediary-api # Security REST api cloud-hosted
@@ -79,22 +74,35 @@ This project will try to address that and address those concerns.
 📟 How do I get started?
 =====================
 If you want to use it: actually you can't, we are bootstrapping the project.
+But if you want to get an overview of the current work here are the steps to follow:
+
+## Tools
+
+- yarn@1.22.0
+- node@13.8.0
+- postgreSQL@12.1
+
+## Base installation
+- Install the main dependencies
+  ```bash
+  cd bitsky
+  yarn install
+  ```
+
+- Install & launch [API](https://github.com/bitsky-team/bitsky/tree/develop/projects/api)
+
+- Install & launch [Desktop app](https://github.com/bitsky-team/bitsky/tree/develop/projects/desktop)
+
+
+🤝 Contributing
+================
 If you want to contribute:
  1. Read the [contributing.md file](CONTRIBUTING.md).
  2. Check the [project board](https://github.com/bitsky-team/bitsky/projects) and find an issue who suits you.
  3. Respect the pull request template.
  4. Add your name in the [contributors.md file](CONTRIBUTORS.md).
  5. Thanks !
- 
-😱 Where did you get that great project name?
-==========================================
-Bit, Sky => a bit of sky => a cloud => cloud computing. Yes.
 
-🤝 Contributing
-================
-Do not hesitate to contribute! It'll be very appreciated!
-Please read our contributing file before.
-
-💌 Let's talk!
+💌 Discord
 ===========
 If you have any suggestions or would like to contribute or just chat, please feel free to come to our [Discord server](https://discord.gg/nNmB7Sz).
