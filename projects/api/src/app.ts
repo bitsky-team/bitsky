@@ -30,13 +30,15 @@ const server: Server = createServer(app)
 const databaseConfig = process.env.NODE_ENV === 'test' ? testConfig : productionConfig
 
 // Injecting TypeORM and launch the server
-export const launch = async () => {
+export const launch = async (greetings = true) => {
     return createConnection(databaseConfig).then(() => {
         if (!server.listening) {
             server.listen(port, () => {
-                ServerLogger.log(serverGreetings, logLevels.MISC)
-                ServerLogger.log(`Version: ${version}                                     ${mode} mode\n`, logLevels.MISC)
-                ServerLogger.log(`Server running on port ${port}!`)
+                if (greetings) {
+                    ServerLogger.log(serverGreetings, logLevels.MISC)
+                    ServerLogger.log(`Version: ${version}                                     ${mode} mode\n`, logLevels.MISC)
+                    ServerLogger.log(`Server running on port ${port}!`)
+                }
             })
         }
     })

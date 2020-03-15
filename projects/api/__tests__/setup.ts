@@ -5,7 +5,7 @@ import server from '../src/app'
 
 
 beforeAll(async () => {
-    await launch()
+    await launch(false)
 })
 
 afterEach(async () => {
