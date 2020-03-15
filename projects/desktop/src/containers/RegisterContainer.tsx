@@ -47,13 +47,13 @@ const actions: IStringTMap<string> = {
 
 const reducer = (state: typeof initialState, action: AnyAction): IState => {
     switch (action.type) {
-        case actions.SET_INVALID_FORM:
-            return {
-                ...state,
-                invalidForm: action.payload,
-            }
-        default:
-            throw new Error('Action type not found')
+    case actions.SET_INVALID_FORM:
+        return {
+            ...state,
+            invalidForm: action.payload,
+        }
+    default:
+        throw new Error('Action type not found')
     }
 }
 
@@ -100,12 +100,12 @@ export const RegisterContainer = connect()((): JSX.Element => {
                 }
 
                 switch (e.response.data.message) {
-                    case 'email_already_taken':
-                        return { email: t('register.error.emailAlreadyTaken')}
-                    default:
-                        error('Error while register: ')
-                        error(e.response)
-                        break
+                case 'email_already_taken':
+                    return { email: t('register.error.emailAlreadyTaken')}
+                default:
+                    error('Error while register: ')
+                    error(e.response)
+                    break
                 }
             }
         }

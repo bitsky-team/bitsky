@@ -68,14 +68,14 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IPr
             }
 
             switch (e.response.data.message) {
-                case 'user_not_found':
-                    return { email: t('login.error.userNotFound')}
-                case 'incorrect_password':
-                    return { password: t('login.error.incorrectPassword')}
-                default:
-                    error('Error while login: ')
-                    error(e.response)
-                    break
+            case 'user_not_found':
+                return { email: t('login.error.userNotFound')}
+            case 'incorrect_password':
+                return { password: t('login.error.incorrectPassword')}
+            default:
+                error('Error while login: ')
+                error(e.response)
+                break
             }
         }
     }

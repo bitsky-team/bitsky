@@ -9,7 +9,7 @@ export const validateEmail = (value: string): string | undefined =>
     /^\S+@\S+$/.test(value) ? undefined : 'fieldError.emailNotValid'
 
 export const validateMinimumLength =  (minimum: number) => (value: string): object | undefined =>
-    value.length >= minimum ? undefined : {key: `fieldError.tooShort`, data: {min: minimum}}
+    value.length >= minimum ? undefined : {key: 'fieldError.tooShort', data: {min: minimum}}
 
 /**
  * Function used to merge multiple validators
