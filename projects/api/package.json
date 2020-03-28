@@ -20,6 +20,9 @@
     "@types/express-promise-router": "^3.0.0",
     "@types/helmet": "^0.0.45",
     "@types/luxon": "^1.15.2",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "eslint": "^6.8.0",
     "nodemon": "^2.0.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.6.3"
