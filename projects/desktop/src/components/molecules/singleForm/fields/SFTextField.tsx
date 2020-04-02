@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
-import { Field } from 'react-final-form'
+import { Field, FieldRenderProps } from 'react-final-form'
 
 import { composeValidators } from '../../../../constants/validators'
 import { Input } from '../../../'
@@ -9,9 +9,9 @@ import { Input } from '../../../'
  * Text field for single form
  */
 interface IOwnProps {
-    name: string,
-    label: string,
-    validators: any[],
+    name: string;
+    label: string;
+    validators: any[];
 }
 
 type IProps = IOwnProps
@@ -25,7 +25,7 @@ export const SFTextField = ({name, label, validators}: IProps): JSX.Element => {
             type='text'
             validate={composeValidators(...validators)}
         >
-            {({ input, meta }) => (
+            {({ input, meta }: FieldRenderProps<any>) => (
                 <Input
                     label={t(label)}
                     variant='outlined'

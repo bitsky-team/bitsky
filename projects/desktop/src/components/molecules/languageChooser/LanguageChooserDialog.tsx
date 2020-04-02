@@ -8,7 +8,7 @@ import { LanguageDialogTitle, LanguageList, LanguageListItem } from '../../'
 import { ISimpleDialogProps } from '../../../interfaces/dialogs'
 
 interface ILanguageChooserDialogProps extends ISimpleDialogProps {
-    setLanguage: (value: string) => void,
+    setLanguage: (value: string) => void;
 }
 
 /**
@@ -21,7 +21,7 @@ export const LanguageChooserDialog = ({open, selectedValue, setLanguage, onClose
     const {t, i18n}: UseTranslationResponse = useTranslation()
 
     // A list of the available languages
-    const languages: string[] = Object.keys(i18n.options.resources || {})
+    const languages: string[] = Object.keys(i18n.options.resources ?? {})
 
     return (
         <Dialog onClose={onClose} open={open}>
@@ -29,12 +29,12 @@ export const LanguageChooserDialog = ({open, selectedValue, setLanguage, onClose
                 {t('dialogs.languages.title')}
             </LanguageDialogTitle>
             <LanguageList>
-                {languages.map(language => (
+                {languages.map((language: string): JSX.Element => (
                     <LanguageListItem
                         key={language}
                         data-testid={language}
                         button
-                        onClick={() => setLanguage(language)}
+                        onClick={(): void => setLanguage(language)}
                         disabled={language === selectedValue}
                     >
                         {t(`languages.${language}`)}

@@ -6,9 +6,16 @@ import { getRawTheme } from '../../../redux/helpers/theme'
 import { IAlertColor } from '../../../interfaces/alerts'
 import { ITheme } from '../../../interfaces/theme'
 
+type PropsValue = string
+interface IAlertProps {
+    bgColor?: PropsValue;
+    color?: PropsValue;
+    borderColor?: PropsValue;
+}
+
 const AlertBox = styled.div<IAlertColor>`
-    background: ${props => props.bgColor};
-    color: ${props => props.color};
+    background: ${(props: IAlertProps): PropsValue => props.bgColor ?? ''};
+    color: ${(props: IAlertProps): PropsValue => props.color ?? ''};
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -18,21 +25,21 @@ const AlertBox = styled.div<IAlertColor>`
     font-family: 'Montserrat',sans-serif;
     font-size: 14px;
     border-radius: 4px;
-    border: 1px solid ${props => props.borderColor};
+    border: 1px solid ${(props: IAlertProps): PropsValue => props.borderColor ?? ''};
 `
 
 interface IOwnProps {
-    type: string,
-    children: string
+    type: string;
+    children: string;
 }
 
 type IProps = IOwnProps
 
-export const Alert = ({ type, children }: IProps) => {
+export const Alert: Function = ({ type, children }: IProps) => {
     const [data, setData]: [IAlertColor, Function] = useState({})
 
     useEffect(() => {
-        const theme: { theme: ITheme } = getRawTheme()
+        const theme: { theme: ITheme; } = getRawTheme()
 
         if (!['info', 'warning', 'danger', 'success'].includes(type)) {
             throw new Error('Unknown alert type')

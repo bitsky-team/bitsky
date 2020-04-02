@@ -5,7 +5,7 @@ import { colors } from '../../../../constants'
 import { getRawTheme } from '../../../../redux/helpers/theme'
 
 interface ICheckboxContainer {
-    pose: string,
+    pose: string;
 }
 
 // When the component has the "invalid" prop, the color changes

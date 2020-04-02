@@ -7,8 +7,8 @@ import { johnDoe } from '../../mocks/user'
 import { User } from '../../../src/entities'
 
 interface IUserToken {
-    email: string,
-    password?: string,
+    email: string;
+    password?: string;
 }
 
 describe('POST /auth/create', () => {
@@ -30,7 +30,7 @@ describe('POST /auth/create', () => {
         // Simulating that the email is already taken
         // by creating the user before
         const repository: Repository<User> = getRepository(User)
-        const user = await repository.create(johnDoe)
+        const user: User = repository.create(johnDoe)
         await repository.save(user)
 
         // Sending the data

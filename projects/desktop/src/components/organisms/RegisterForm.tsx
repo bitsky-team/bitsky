@@ -15,9 +15,9 @@ import {
 import { required, validateMinimumLength } from '../../constants/validators'
 
 interface IOwnProps {
-    handleSubmit: () => void,
-    invalid: { termsOfUse: boolean },
-    submitError: string,
+    handleSubmit: () => void;
+    invalid: { termsOfUse: boolean; };
+    submitError: string;
 }
 
 type IProps = IOwnProps
@@ -30,7 +30,7 @@ export const RegisterForm = ({handleSubmit, invalid, submitError}: IProps): JSX.
 
     return (
         <CenteredForm onSubmit={handleSubmit}>
-            {submitError && <Alert type='danger'>{submitError}</Alert>}
+            {submitError ? <Alert type='danger'>{submitError}</Alert> : ''}
             <InputsRow>
                 <SFTextField
                     name='firstName'

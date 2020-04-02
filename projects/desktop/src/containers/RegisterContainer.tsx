@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, Dispatch } from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import axios, { AxiosResponse } from 'axios'
@@ -23,16 +23,16 @@ import { IFinalFormRenderProps } from '../interfaces/forms'
 
 interface IState {
     invalidForm: {
-        termsOfUse: boolean,
-    },
+        termsOfUse: boolean;
+    };
 }
 
 interface IForm {
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string,
-    termsOfUse?: boolean,
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    termsOfUse?: boolean;
 }
 
 const initialState: IState = {
@@ -65,7 +65,7 @@ const reducer = (state: typeof initialState, action: AnyAction): IState => {
  * a useable screen
  */
 export const RegisterContainer = connect()((): JSX.Element => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
     const {t}: UseTranslationResponse = useTranslation()
 
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('register.title')})
@@ -75,23 +75,23 @@ export const RegisterContainer = connect()((): JSX.Element => {
     }
 
     const onSubmit = async (values: IForm | AnyObject): Promise<void | object> => {
-        const {termsOfUse}: {termsOfUse?: boolean} = values
+        const {termsOfUse}: {termsOfUse?: boolean;} = values
 
         setInvalidForm({
             termsOfUse: !termsOfUse,
         })
 
         if(termsOfUse) {
-            const data: IForm = _.pick(values, ['email', 'password', 'firstName', 'lastName'])
+            const formData: IForm = _.pick(values, ['email', 'password', 'firstName', 'lastName'])
 
             try {
                 const response: AxiosResponse = await axios.post(
                     `${serverURL}/auth/create`,
-                    data,
+                    formData,
                 )
 
-                const {data: {token}}: AxiosResponse<any> = response
-                localStorage.setItem('token', token)
+                const {data}: AxiosResponse<any> = response
+                localStorage.setItem('token', data.token)
             } catch (e) {
                 if (!e.response) {
                     return {

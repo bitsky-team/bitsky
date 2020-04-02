@@ -12,6 +12,6 @@ afterEach(async () => {
     await getConnection().synchronize(true)
 })
 
-afterAll(async () => {
-    await server.close()
+afterAll(() => {
+    server.close()
 })

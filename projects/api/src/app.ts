@@ -15,7 +15,7 @@ dotenv.config()
 
 // Defining the server options
 const version: string = '0.0.1'
-const mode: string = _.upperFirst(process.env.NODE_ENV || 'production')
+const mode: string = _.upperFirst(process.env.NODE_ENV ?? 'production')
 const port: number = 5030
 
 // Creating an app and applying the middlewares on it
@@ -30,14 +30,14 @@ const server: Server = createServer(app)
 const databaseConfig = process.env.NODE_ENV === 'test' ? testConfig : productionConfig
 
 // Injecting TypeORM and launch the server
-export const launch = async (greetings = true) => {
+export const launch = async (greetings: boolean = true): Promise<void> => {
     return createConnection(databaseConfig).then(() => {
         if (!server.listening) {
             server.listen(port, () => {
                 if (greetings) {
                     ServerLogger.log(serverGreetings, logLevels.MISC)
                     ServerLogger.log(`Version: ${version}                                     ${mode} mode\n`, logLevels.MISC)
-                    ServerLogger.log(`Server running on port ${port}!`)
+                    ServerLogger.log(`Server running on port ${port.toString()}!`)
                 }
             })
         }
@@ -45,6 +45,7 @@ export const launch = async (greetings = true) => {
 }
 
 if (process.env.NODE_ENV !== 'test') {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     launch()
 }
 

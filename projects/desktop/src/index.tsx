@@ -19,9 +19,10 @@ import es from './assets/locales/ES.json'
 import nl from './assets/locales/NL.json'
 
 // Initiating Sentry, this tool is used for error catching
-Sentry.init({dsn: process.env.REACT_APP_SENTRY_DSN})
+Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN })
 
 // Initiating I18n for translation
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 i18n
     .use(initReactI18next)
     .init({
@@ -31,7 +32,7 @@ i18n
             es,
             nl,
         },
-        lng: localStorage.getItem('language') || 'en',
+        lng: localStorage.getItem('language') ?? 'en',
         fallbackLng: 'en',
         keySeparator: '.',
         interpolation: {
@@ -46,13 +47,16 @@ const store = configureStore()
 
 // This component will read the hydrated theme from redux
 interface IOwnProps {
-  children: object,
+  children: object;
 }
 interface IStoreProps {
-  mode?: string,
+  mode?: string;
 }
+
 type IProps = IOwnProps & IStoreProps
-const mapStateToProps = ({themeReducer: {mode}}: IReduxState): IStoreProps => ({mode})
+
+const mapStateToProps = ({themeReducer}: IReduxState): IStoreProps => ({mode: themeReducer.mode})
+
 const ConnectedThemeProvider = connect(mapStateToProps, null)(
     ({children, mode}: IProps) => {
         if (!mode) {
@@ -70,6 +74,7 @@ const ConnectedThemeProvider = connect(mapStateToProps, null)(
 )
 
 // TODO: Maybe change Suspense fallback props into a beautiful loading screen
+// but if there is a loading at each click, it will be relou
 const App = (): JSX.Element => (
     <Suspense fallback={Loader}>
         <Normalize />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field } from 'react-final-form'
+import { Field, FieldRenderProps } from 'react-final-form'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
 import { CheckboxContainer, CheckboxInput, CheckboxCheckmark } from '../../../index'
@@ -8,9 +8,9 @@ import { CheckboxContainer, CheckboxInput, CheckboxCheckmark } from '../../../in
  * Checkbox input for single forms
  */
 interface IOwnProps {
-    name: string,
-    textTranslationKey: string,
-    invalid?: boolean,
+    name: string;
+    textTranslationKey: string;
+    invalid?: boolean;
 }
 
 type IProps = IOwnProps
@@ -25,7 +25,7 @@ export const SFCheckboxField = ({name, textTranslationKey, invalid }: IProps): J
                 component='input'
                 type='checkbox'
             >
-                {({input}) => (
+                {({input}: FieldRenderProps<any>): JSX.Element => (
                     <CheckboxContainer pose={invalid ? 'invalid' : 'valid'}>
                         {t(textTranslationKey)}
                         <CheckboxInput {...input} />

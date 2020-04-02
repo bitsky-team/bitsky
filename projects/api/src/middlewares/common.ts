@@ -13,7 +13,7 @@ import { ServerLogger } from '../utils'
  * As the authors say: "It's not a silver bullet, but it can help!"
  * @param router the application
  */
-const handleHelmet = (router: Router) => {
+const handleHelmet = (router: Router): void => {
     router.use(helmet())
 }
 
@@ -23,7 +23,7 @@ const handleHelmet = (router: Router) => {
  * Enable cross-origin requests
  * @param router the application
  */
-const handleCors = (router: Router) => {
+const handleCors = (router: Router): void => {
     router.use(cors({ credentials: true, origin: true }))
 }
 
@@ -33,7 +33,7 @@ const handleCors = (router: Router) => {
  * Enable some data types to be used as a body request
  * @param router the application
  */
-const handleBodyRequestParsing = (router: Router) => {
+const handleBodyRequestParsing = (router: Router): void => {
     router.use(parser.json())
 }
 
@@ -48,7 +48,7 @@ const handleBodyRequestParsing = (router: Router) => {
  * with the no-transform directive, as compressing will transform the body.
  * @param router the application
  */
-const handleCompression = (router: Router) => {
+const handleCompression = (router: Router): void => {
     router.use(compression({
         filter: (req: Request, res: Response) =>
             req.headers['x-no-compression'] ? false : compression.filter(req, res),
@@ -61,7 +61,7 @@ const handleCompression = (router: Router) => {
  * Log every request in the terminal
  * @param router the application
  */
-const handleNewRequestLog = (router: Router) => {
+const handleNewRequestLog = (router: Router): void => {
     router.use(ServerLogger.newRequest())
 }
 
@@ -71,7 +71,7 @@ const handleNewRequestLog = (router: Router) => {
  * Log every error in the terminal
  * @param router the application
  */
-const handleServerErrorLog = (router: Router) => {
+const handleServerErrorLog = (router: Router): void => {
     router.use(ServerLogger.error())
 }
 

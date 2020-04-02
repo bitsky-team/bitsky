@@ -1,4 +1,4 @@
-import { combineReducers, createStore, Reducer, applyMiddleware, compose } from 'redux'
+import { combineReducers, createStore, Reducer, applyMiddleware, Store, AnyAction, compose } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
@@ -25,7 +25,8 @@ const persistedReducer = persistReducer(persistConfig, rootReducer as Reducer)
 
 export type AppState = ReturnType<typeof rootReducer>
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const extensionCompose: any | undefined = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+const composeEnhancers = extensionCompose ?? compose
 
 const store = createStore(
     persistedReducer,
@@ -34,8 +35,6 @@ const store = createStore(
 
 export const persistor = persistStore(store)
 
-export const configureStore = () => {
-    return store
-}
+export const configureStore = (): Store<any, AnyAction> => store
 
 export default store

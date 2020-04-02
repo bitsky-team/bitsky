@@ -27,7 +27,7 @@ const PrivateRoute = ({ component, ...options }: RouteProps): JSX.Element => {
     return <Route {...options} component={finalComponent} />
 }
 
-const OnboardingTemporary = () => {
+const OnboardingTemporary = (): JSX.Element => {
     return <p>WIP</p>
 }
 
