@@ -12,8 +12,8 @@ import {
 } from '../'
 
 interface IOwnProps {
-    handleSubmit: () => void,
-    submitError: string,
+    handleSubmit: () => void;
+    submitError: string;
 }
 
 type IProps = IOwnProps
@@ -28,7 +28,7 @@ export const LoginForm = ({handleSubmit, submitError}: IProps): JSX.Element => {
 
     return (
         <LoginFormContainer onSubmit={handleSubmit}>
-            {submitError && <Alert type='danger'>{submitError}</Alert>}
+            {submitError ? <Alert type='danger'>{submitError}</Alert> : ''}
             <SFEmailField />
             <SFPasswordField />
             <SFCheckboxField

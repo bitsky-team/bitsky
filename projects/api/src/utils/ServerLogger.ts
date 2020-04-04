@@ -19,7 +19,7 @@ export const logLevels: IStringTMap<number> = {
  *
  * @param message string
  */
-const log = (message: string) => {
+const log = (message: string): void => {
     // tslint:disable-next-line: no-console
     console.log(message)
 }
@@ -38,7 +38,7 @@ export class ServerLogger {
      * @param message string the message to log
      * @param level number will determine the color of the message
      */
-    static log(message: string, level: number = logLevels.INFO) {
+    static log(message: string, level: number = logLevels.INFO): void {
         const datetime: string = DateTime.local().toFormat('dd/MM/yyyy HH:mm:ss')
 
         switch(level) {

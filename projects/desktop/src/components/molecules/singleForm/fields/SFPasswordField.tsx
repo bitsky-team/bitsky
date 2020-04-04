@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field } from 'react-final-form'
+import { Field, FieldRenderProps } from 'react-final-form'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
 import { Input } from '../../../'
@@ -17,11 +17,11 @@ export const SFPasswordField = (): JSX.Element => {
             type='password'
             validate={composeValidators(required, validateMinimumLength(8))}
         >
-            {({ input, meta: {touched, error, submitError} }) => (
+            {({ input, meta }: FieldRenderProps<any>) => (
                 <Input
                     label={t('login.form.password')}
                     variant='outlined'
-                    invalid={touched && (error || submitError) ? error || submitError : false}
+                    invalid={meta.touched && (meta.error || meta.submitError) ? meta.error || meta.submitError : false}
                     visibilityFilter={true}
                     {...input}
                 />

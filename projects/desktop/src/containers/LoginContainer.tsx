@@ -23,12 +23,12 @@ import { IDangerousHTMLContent } from '../interfaces/generics'
 import { IFinalFormRenderProps } from '../interfaces/forms'
 
 interface IForm {
-    email: string,
-    password: string,
+    email: string;
+    password: string;
 }
 
 interface IDispatchProps {
-    setTheme: (theme: string) => Promise<Function>,
+    setTheme: (theme: string) => Promise<Function>;
 }
 
 type IProps = IDispatchProps
@@ -42,7 +42,7 @@ type IProps = IDispatchProps
  */
 
 const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
-    setTheme: (theme: string): Promise<Function> => dispatch(setTheme(theme)),
+    setTheme: async (theme: string): Promise<Function> => dispatch(setTheme(theme)),
 })
 
 export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IProps): JSX.Element => {
@@ -57,9 +57,9 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IPr
                 values,
             )
 
-            const {data: {token, theme}}: AxiosResponse<any> = response
-            localStorage.setItem('token', token)
-            setTheme(theme)
+            const {data}: AxiosResponse<any> = response
+            localStorage.setItem('token', data.token)
+            await setTheme(data.theme)
         } catch (e) {
             if (!e.response) {
                 return {

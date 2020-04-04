@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, Reducer, MouseEvent, Dispatch } from 'react'
 import { Button } from '@material-ui/core'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import { AnyAction } from 'redux'
@@ -7,7 +7,7 @@ import { LanguageChooserDialog } from './LanguageChooserDialog'
 import { IStringTMap } from '../../../interfaces/generics'
 
 interface IState {
-    open: boolean,
+    open: boolean;
 }
 
 const initialState: IState = {
@@ -22,7 +22,7 @@ const actions: IStringTMap<string> = {
 /**
  * Reducer who returns a new state depending on the action
  */
-const reducer = (state: typeof initialState, action: AnyAction): IState => {
+const reducer: Reducer<typeof initialState, AnyAction> = (state: typeof initialState, action: AnyAction): IState => {
     switch (action.type) {
     case actions.TOGGLE_DIALOG:
         return {
@@ -40,15 +40,15 @@ const reducer = (state: typeof initialState, action: AnyAction): IState => {
  * Displays a button who opens the language chooser dialog
  * @param props Component's props
  */
-export const LanguageChooser = ({className}: {className?: string}): JSX.Element => {
-    const [state, dispatch] = useReducer(reducer, initialState)
+export const LanguageChooser = ({className}: {className?: string;}): JSX.Element => {
+    const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
     const {i18n}: UseTranslationResponse = useTranslation()
 
     /**
      * Method who toggle the dialog state
      */
-    const toggleDialog = (): void => {
-        dispatch({type: actions.TOGGLE_DIALOG})
+    const toggleDialog: (event?: MouseEvent) => void = (): void => {
+        return dispatch({type: actions.TOGGLE_DIALOG})
     }
 
     /**
@@ -57,7 +57,7 @@ export const LanguageChooser = ({className}: {className?: string}): JSX.Element 
      * the user when he leaves the app
      * @param language string
      */
-    const setLanguage = async (language: string): Promise<void> => {
+    const setLanguage: (value: string) => void = async (language: string): Promise<void> => {
         if (language) {
             localStorage.setItem('language', language)
             await i18n.changeLanguage(language)

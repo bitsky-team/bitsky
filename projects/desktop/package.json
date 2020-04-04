@@ -73,7 +73,6 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^25.1.4",
     "concurrently": "^5.0.0",
     "cypress": "^4.1.0",
     "electron": "^8.1.1",

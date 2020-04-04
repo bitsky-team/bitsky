@@ -10,7 +10,7 @@ import { IStringTMap, IStringAnyMap } from '../../../../interfaces/generics'
 import { IInputProps } from '../../../../interfaces/forms'
 
 interface IState {
-    visible: boolean,
+    visible: boolean;
 }
 
 type IOwnProps = IInputProps
@@ -90,11 +90,10 @@ export const Input = (props: IInputProps): JSX.Element => {
                 }
             </InputContainer>
 
-            {Boolean(invalid) && (
-                typeof invalid === 'string'
-                    ? <InputError data-testid='inputError'>{t(invalid)}</InputError>
-                    : <InputError data-testid='inputError'>{t(invalid.key, invalid.data)}</InputError>
-            )}
+            {typeof invalid === 'string'
+                ? <InputError data-testid='inputError'>{t(invalid)}</InputError>
+                : <InputError data-testid='inputError'>{t(invalid.key, invalid.data)}</InputError>
+            }
         </InputWithError>
     )
 }

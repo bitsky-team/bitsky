@@ -8,17 +8,17 @@ import { johnDoe } from '../../mocks/user'
 import { User } from '../../../src/entities'
 
 interface IUserToken {
-    email: string,
-    password?: string,
+    email: string;
+    password?: string;
 }
 
 describe('POST /auth/login', () => {
     it('Login successfully', async () => {
         const repository: Repository<User> = getRepository(User)
-        const saltRounds: number = parseInt(`${process.env.SALT_ROUNDS}`, 10)
-        const password = await bcrypt.hash(johnDoe.password, saltRounds)
+        const saltRounds: number = parseInt(process.env.SALT_ROUNDS ?? '10', 10)
+        const password: string = await bcrypt.hash(johnDoe.password, saltRounds)
 
-        const user = await repository.create({
+        const user: User = repository.create({
             ...johnDoe,
             password
         })
@@ -57,7 +57,7 @@ describe('POST /auth/login', () => {
 
     it('Login unsuccessfully (incorrect password)', async () => {
         const repository: Repository<User> = getRepository(User)
-        const user = await repository.create(johnDoe)
+        const user: User = repository.create(johnDoe)
         await repository.save(user)
 
         // Sending the data

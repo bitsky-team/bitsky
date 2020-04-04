@@ -4,7 +4,7 @@ import { DateTime } from 'luxon'
 import Boom, { Boom as BoomType } from '@hapi/boom'
 import _ from 'lodash'
 
-import { getRepository, Repository, getManager } from 'typeorm'
+import { getRepository, Repository, getManager, EntityManager } from 'typeorm'
 import { User } from '../entities'
 import { IUser } from '../interfaces'
 import { secretKey } from '../constants/secret'
@@ -40,7 +40,7 @@ const _authenticate = async (email: string, password: string, remember: boolean 
     }, secretKey)
 
     // Hashing token & storing it in the db
-    const saltRounds: number = parseInt(`${process.env.SALT_ROUNDS}`, 10)
+    const saltRounds: number = parseInt(process.env.SALT_ROUNDS ?? '10', 10)
     user.token = await bcrypt.hash(token, saltRounds)
     await repository.save(user)
 
@@ -60,12 +60,12 @@ export const authController = {
      */
     create: async (data: IUser): Promise<object | BoomType> => {
         // Hashing password
-        const saltRounds: number = parseInt(`${process.env.SALT_ROUNDS}`, 10)
+        const saltRounds: number = parseInt(process.env.SALT_ROUNDS ?? '10', 10)
         const clearPassword: string = data.password
         data.password = await bcrypt.hash(clearPassword, saltRounds)
 
         try {
-            await getManager().transaction(async transactionalEntityManager => {
+            await getManager().transaction(async (transactionalEntityManager: EntityManager): Promise<User> => {
                 // Check unique email
                 const emailTaken: number = await transactionalEntityManager.count(User, { where: { email: data.email }})
 
@@ -75,7 +75,7 @@ export const authController = {
 
                 // Saving user
                 const user: User = transactionalEntityManager.create(User, data)
-                await transactionalEntityManager.save(user)
+                return transactionalEntityManager.save(user)
             })
         } catch (e) {
             return e
@@ -91,7 +91,5 @@ export const authController = {
      * @param data IUser the user's data needed to log him in
      * @returns Promise
      */
-    login: async (data: IUser): Promise<object | BoomType> => {
-        return _authenticate(data.email, data.password, data.remember)
-    },
+    login: async (data: IUser): Promise<object | BoomType> => _authenticate(data.email, data.password, data.remember),
 }

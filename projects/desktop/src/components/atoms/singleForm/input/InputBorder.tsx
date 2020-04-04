@@ -13,7 +13,7 @@ import { IInputBorderProps } from '../../../../interfaces/forms'
  */
 export const InputBorder = styled.div<IInputBorderProps>`
     background: linear-gradient(180deg, ${colors.gradientPink} 0%, ${colors.gradientBlue} 100%);
-    background: ${props => props.borderColor};
+    background: ${(props: IInputBorderProps) => props.borderColor};
     flex: 1;
     max-width: 2px;
 `

@@ -8,7 +8,7 @@ type Wrapper = ((router: Router) => void)
  * @param middleware the array of middlewares to iterate on
  * @param router the app where to apply the middleware
  */
-export const applyMiddleware = (middleware: Wrapper[], router: Router) => {
+export const applyMiddleware = (middleware: Wrapper[], router: Router): void => {
     for (const m of middleware) {
         m(router)
     }
