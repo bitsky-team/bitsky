@@ -3,7 +3,7 @@ import { RouteProps } from 'react-router'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 
 import { LoginContainer } from './containers/LoginContainer'
-import { SignUpContainer } from './containers/SignupContainer'
+import { SignUpContainer } from './containers/SignUpContainer'
 import { isAuthenticated } from './helpers/auth'
 import { error } from './helpers/logger'
 

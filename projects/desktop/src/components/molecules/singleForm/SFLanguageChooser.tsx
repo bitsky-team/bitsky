@@ -10,5 +10,5 @@ export const SFLanguageChooser = styled(LanguageChooser)`
   position: absolute;
   top: 10px;
   right: 10px;
-  color: ${colors.grey};
+  color: ${colors.lightGrey};
 `

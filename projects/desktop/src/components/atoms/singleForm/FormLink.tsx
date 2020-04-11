@@ -11,7 +11,7 @@ import { colors } from '../../../constants'
 export const FormLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
-  color: ${colors.grey};
+  color: ${colors.lightGrey};
   text-decoration :none;
   font-size: 18px;
   margin-top: 16px;

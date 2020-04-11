@@ -3,7 +3,7 @@ import { Button } from '@material-ui/core'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import { AnyAction } from 'redux'
 
-import { LanguageChooserDialog } from './LanguageChooserDialog'
+import { LanguageChooserContainer, LanguageChooserDialog } from '../../'
 import { IStringTMap } from '../../../interfaces/generics'
 
 interface IState {
@@ -66,7 +66,7 @@ export const LanguageChooser = ({className}: {className?: string;}): JSX.Element
     }
 
     return (
-        <>
+        <LanguageChooserContainer>
             <LanguageChooserDialog
                 open={state.open}
                 selectedValue={i18n.language}
@@ -80,6 +80,6 @@ export const LanguageChooser = ({className}: {className?: string;}): JSX.Element
             >
                 {i18n.language}
             </Button>
-        </>
+        </LanguageChooserContainer>
     )
 }

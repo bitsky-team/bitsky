@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import axios, { AxiosResponse } from 'axios'
 import { connect } from 'react-redux'
 import { FORM_ERROR } from 'final-form'
+import { ThemeContext } from 'styled-components'
 
 import {
     LoginBox,
@@ -15,12 +16,13 @@ import {
     RightSide,
     LoginForm,
 } from '../components'
-import logo from '../assets/img/logo-small.png'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
 import { setTheme } from '../redux/actions/theme'
 import { IDangerousHTMLContent } from '../interfaces/generics'
 import { IFinalFormRenderProps } from '../interfaces/forms'
+import { getLogo } from '../helpers/logo'
+import { ITheme } from '../interfaces/theme'
 
 interface IForm {
     email: string;
@@ -47,7 +49,7 @@ const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
 
 export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
-
+    const theme: ITheme = useContext(ThemeContext)
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('login.title')})
 
     const onSubmit = async (values: IForm | AnyObject): Promise<void | object> => {
@@ -84,7 +86,7 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IPr
         <SingleFormContainer>
             <LoginBox>
                 <LeftSide>
-                    <Logo src={logo} alt='Bitsky' />
+                    <Logo src={getLogo(theme)} alt='Bitsky' />
                     <SFLanguageChooser />
                     <BigTitle dangerouslySetInnerHTML={getTitleContent()} />
 

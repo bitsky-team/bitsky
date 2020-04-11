@@ -27,14 +27,4 @@ export class User {
 
     @Column({ default: 'classic'})
     theme?: string
-
-    /*
-        Onboarding steps are the steps to complete
-        after the registration:
-
-        1. Additional information
-        2. General settings
-    */
-    @Column({ default: 1 })
-    onboardingStep: number
 }
