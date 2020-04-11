@@ -22,7 +22,7 @@
         "password": "Password",
         "rememberMe": "Remember me",
         "login": "Log In",
-        "notRegistered": "No account yet?"
+        "notSignedUp": "No account yet?"
       },
       "error": {
         "userNotFound": "This one is not assigned",
@@ -30,14 +30,14 @@
       }
     },
 
-    "register": {
+    "signup": {
       "title": "Join the <span>adventure</span>,\nBe part of the <span>community</span>.",
       "form": {
         "firstname": "Firstname",
         "lastname": "Lastname",
         "termsOfUse": "By checking this box, you agree to our terms and conditions of use.",
-        "register": "Register",
-        "alreadyRegistered": "Already registered?"
+        "signup": "Sign up",
+        "alreadySignedUp": "Already signed up?"
       },
       "error": {
         "emailAlreadyTaken": "This one is already taken"

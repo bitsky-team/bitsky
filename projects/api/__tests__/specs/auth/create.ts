@@ -11,11 +11,11 @@ interface IUserToken {
     password?: string;
 }
 
-describe('POST /auth/create', () => {
+describe('POST /auth/signup', () => {
     it('Creates a user', async () => {
         // Sending the data
         const res: Response = await request(server)
-            .post('/auth/create')
+            .post('/auth/signup')
             .send(johnDoe)
             .expect(200)
 
@@ -35,11 +35,11 @@ describe('POST /auth/create', () => {
 
         // Sending the data
         const res: Response = await request(server)
-            .post('/auth/create')
+            .post('/auth/signup')
             .send(johnDoe) // Same user than the first test, creating an email conflict
             .expect(400)
 
-        // As I already registered my user with this email
+        // As I already signed up my user with this email
         // I should receive an bad request with this message
         // which is the translation key
         expect(res.body.message).toBe('email_already_taken')

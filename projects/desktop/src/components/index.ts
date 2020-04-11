@@ -14,8 +14,8 @@ export { LoginBox } from './atoms/login/LoginBox'
 export { LoginFormContainer } from './atoms/login/LoginFormContainer'
 export { RightSideBackground } from './atoms/login/RightSideBackground'
 
-export { RegisterBox } from './atoms/register/RegisterBox'
-export { SubmitButton } from './atoms/register/SubmitButton'
+export { SignUpBox } from './atoms/signup/SignUpBox'
+export { SubmitButton } from './atoms/signup/SubmitButton'
 
 export { Alert } from './atoms/common/Alert'
 
@@ -54,7 +54,7 @@ export { SingleFormContainer } from './molecules/singleForm/SingleFormContainer'
 
 // Organisms
 export { LoginForm } from './organisms/LoginForm'
-export { RegisterForm } from './organisms/RegisterForm'
+export { SignUpForm } from './organisms/SignUpForm'
 
 // Templates
 

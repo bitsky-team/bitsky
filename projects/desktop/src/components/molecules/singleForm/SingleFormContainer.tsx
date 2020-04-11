@@ -6,7 +6,7 @@ import { IPropsChildren } from '../../../interfaces/generics'
 /**
  * Container who use multiples components
  * used to display a centered form with
- * a fancy background (login & register)
+ * a fancy background (login & signup)
  *
  * @param props Component's props
  */

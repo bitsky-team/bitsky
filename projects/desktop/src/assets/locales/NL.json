@@ -22,7 +22,7 @@
         "password": "Wachtwoord",
         "rememberMe": "Herinner mij",
         "login": "Inloggen",
-        "notRegistered": "Nog geen account?"
+        "notSignedUp": "Nog geen account?"
       },
       "error": {
         "userNotFound": "Deze is niet toegewezen aan",
@@ -30,14 +30,14 @@
       }
     },
 
-    "register": {
+    "signup": {
       "title": "Doe aan het <span>avontuur</span>,\n  Maak deel uit van de <span>gemeenschap</span>.",
       "form": {
         "firstname": "Voornaam",
         "lastname": "Achternaam",
         "termsOfUse": "Met het aanvinken van dit vakje gaat u akkoord met onze gebruiksvoorwaarden.",
-        "register": "Registreren",
-        "alreadyRegistered": "Reeds geregistreerd?"
+        "signup": "Registreren",
+        "alreadySignedUp": "Reeds geregistreerd?"
       },
       "error": {
         "emailAlreadyTaken": "Deze is al bezet"

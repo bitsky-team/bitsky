@@ -5,7 +5,7 @@ import { colors } from '../../../constants'
 /**
  * Big title style
  *
- * Title displayed on login & register form
+ * Title displayed on login & signup form
  */
 export const BigTitle = styled.h1`
     margin: 0 0 40px 0;

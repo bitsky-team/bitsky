@@ -3,7 +3,7 @@ import { RouteProps } from 'react-router'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 
 import { LoginContainer } from './containers/LoginContainer'
-import { RegisterContainer } from './containers/RegisterContainer'
+import { SignUpContainer } from './containers/SignupContainer'
 import { isAuthenticated } from './helpers/auth'
 import { error } from './helpers/logger'
 
@@ -34,7 +34,7 @@ const OnboardingTemporary = (): JSX.Element => {
 export const Router = (): JSX.Element => (
     <BrowserRouter>
         <Route exact path='/' component={LoginContainer} />
-        <Route exact path='/register' component={RegisterContainer} />
+        <Route exact path='/signup' component={SignUpContainer} />
         <PrivateRoute exact path='/onboarding' component={OnboardingTemporary} />
     </BrowserRouter>
 )

@@ -22,7 +22,7 @@
         "password": "Mot de passe",
         "rememberMe": "Se souvenir de moi",
         "login": "Connexion",
-        "notRegistered": "Pas encore inscrit ?"
+        "notSignedUp": "Pas encore inscrit ?"
       },
       "error": {
         "userNotFound": "Celle-ci n'est pas attribuée",
@@ -30,14 +30,14 @@
       }
     },
 
-    "register": {
+    "signup": {
       "title": "Rejoignez l'<span>aventure</span>,\nFaites partie de la <span>communauté</span>.",
       "form": {
         "firstname": "Prénom",
         "lastname": "Nom de famille",
         "termsOfUse": "En cochant cette case, vous acceptez nos conditions générales d'utilisation.",
-        "register": "Inscription",
-        "alreadyRegistered": "Déjà inscrit ?"
+        "signup": "Inscription",
+        "alreadySignedUp": "Déjà inscrit ?"
       },
       "error": {
         "emailAlreadyTaken": "Celle-ci est déjà utilisée"

@@ -6,7 +6,7 @@ import { colors } from '../../../constants'
 /**
  * Form link style
  *
- * Links like "Already registered?"
+ * Links like "Already signed up?"
  */
 export const FormLink = styled(Link)`
   font-family: 'Montserrat', sans-serif;

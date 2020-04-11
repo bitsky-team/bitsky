@@ -11,7 +11,7 @@ import {
     SFPasswordField,
     SubmitButton,
     Alert,
-} from '../'
+} from '..'
 import { required, validateMinimumLength } from '../../constants/validators'
 
 interface IOwnProps {
@@ -23,9 +23,9 @@ interface IOwnProps {
 type IProps = IOwnProps
 
 /**
- * Register form
+ * Sign Up form
  */
-export const RegisterForm = ({handleSubmit, invalid, submitError}: IProps): JSX.Element => {
+export const SignUpForm = ({handleSubmit, invalid, submitError}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
     return (
@@ -34,12 +34,12 @@ export const RegisterForm = ({handleSubmit, invalid, submitError}: IProps): JSX.
             <InputsRow>
                 <SFTextField
                     name='firstName'
-                    label='register.form.firstname'
+                    label='signup.form.firstname'
                     validators={[required, validateMinimumLength(2)]}
                 />
                 <SFTextField
                     name='lastName'
-                    label='register.form.lastname'
+                    label='signup.form.lastname'
                     validators={[required, validateMinimumLength(2)]}
                 />
             </InputsRow>
@@ -50,12 +50,12 @@ export const RegisterForm = ({handleSubmit, invalid, submitError}: IProps): JSX.
 
             <SFCheckboxField
                 name='termsOfUse'
-                textTranslationKey='register.form.termsOfUse'
+                textTranslationKey='signup.form.termsOfUse'
                 invalid={invalid.termsOfUse}
             />
 
-            <SubmitButton type='submit'>{t('register.form.register')}</SubmitButton>
-            <FormLink to='/'>{t('register.form.alreadyRegistered')}</FormLink>
+            <SubmitButton type='submit'>{t('signup.form.signup')}</SubmitButton>
+            <FormLink to='/'>{t('signup.form.alreadySignedUp')}</FormLink>
         </CenteredForm>
     )
 }
