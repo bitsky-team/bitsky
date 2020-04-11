@@ -58,7 +58,7 @@ export const authController = {
      * @param data IUser the new user's data
      * @returns Promise
      */
-    create: async (data: IUser): Promise<object | BoomType> => {
+    signup: async (data: IUser): Promise<object | BoomType> => {
         // Hashing password
         const saltRounds: number = parseInt(process.env.SALT_ROUNDS ?? '10', 10)
         const clearPassword: string = data.password

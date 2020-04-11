@@ -1,8 +1,8 @@
 /* eslint no-undef: 0 */
 
-describe('Register', () => {
+describe('Sign up', () => {
     it('Can visit the page', () => {
-        cy.visit('/register')
+        cy.visit('/signup')
     })
 
     it('Check all the inputs are present', () => {
@@ -52,6 +52,6 @@ describe('Register', () => {
             .and('eq', 'rgb(227, 86, 86)')
     })
 
-    // I don't need to do more test because the components used for the register screen
+    // I don't need to do more test because the components used for the sign up screen
     // are the same than the components used for the log in screen
 })

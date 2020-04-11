@@ -16,8 +16,8 @@ import { checkError } from '../helpers/error'
 export const authRouter: typeof Router = (): Router => {
     const router: Router = expressPromiseRouter()
 
-    router.post('/create', validateBody(userSchema), async (req: Request, res: Response) => {
-        const response: object | Boom = await authController.create(req.body)
+    router.post('/signup', validateBody(userSchema), async (req: Request, res: Response) => {
+        const response: object | Boom = await authController.signup(req.body)
         checkError(res, response, () => res.json(response))
     })
 

@@ -41,7 +41,7 @@ export const LoginForm = ({handleSubmit, submitError}: IProps): JSX.Element => {
             >
                 {t('login.form.login')}
             </GradientButton>
-            <FormLink to='/register'>{t('login.form.notRegistered')}</FormLink>
+            <FormLink to='/signup'>{t('login.form.notSignedUp')}</FormLink>
         </LoginFormContainer>
     )
 }

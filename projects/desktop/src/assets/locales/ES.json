@@ -22,7 +22,7 @@
           "password": "Contraseña",
           "rememberMe": "Recuérdame",
           "login": "Ingresar",
-          "notRegistered": "¿Todavía no tiene cuenta?"
+          "notSignedUp": "¿Todavía no tiene cuenta?"
         },
         "error": {
           "userNotFound": "Este no está asignado",
@@ -30,14 +30,14 @@
         }
       },
 
-      "register": {
+      "signup": {
         "title": "Únete a la <span>aventura</span>,\nSea parte de la <span>comunidad</span>.",
         "form": {
           "firstname": "Nombre",
           "lastname": "Apellido",
           "termsOfUse": "Al marcar esta casilla, usted acepta nuestros términos y condiciones de uso.",
-          "register": "Registrarse",
-          "alreadyRegistered": "¿Ya está registrado?"
+          "signup": "Registrarse",
+          "alreadySignedUp": "¿Ya está registrado?"
         },
         "error": {
           "emailAlreadyTaken": "Esta ya está tomada"
