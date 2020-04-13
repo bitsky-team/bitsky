@@ -11,11 +11,17 @@ import { colors } from '../../../../constants'
 export const InputField = styled(TextField)`
     width: calc(100% - 2px);
     font-family: sans-serif;
+    background: ${colors.inputGrey};
+    border-radius: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    input {
+        color: ${colors.grey};
+    }
 
     fieldset {
-        border-left: none;
-        border-radius: 0 8px 8px 0;
-        border-color: ${colors.lightGrey};
+        border: none !important;
     }
 
     label {
@@ -28,7 +34,11 @@ export const InputField = styled(TextField)`
 
     div:hover, .Mui-focused {
         fieldset {
-            border: 1px solid ${colors.lightGrey} !important;
+            border: none;
         }
+    }
+
+    .MuiIconButton-root {
+        color: ${colors.grey};
     }
 `

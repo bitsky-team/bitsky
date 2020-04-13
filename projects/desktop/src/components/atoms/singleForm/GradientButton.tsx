@@ -9,7 +9,7 @@ import { colors } from '../../../constants'
 export const GradientButton = styled(Button)`
     border-radius: 8px;
     background: linear-gradient(45deg, ${colors.gradientBlue} 0%, ${colors.gradientPink} 100%);
-    color: white;
+    color: ${colors.buttonColor};
     padding: 12px 25px;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;

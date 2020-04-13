@@ -22,7 +22,7 @@ export const CheckboxCheckmark = styled.span`
         top: 1px;
         width: 5px;
         height: 8px;
-        border: solid white;
+        border: solid ${colors.buttonColor};
         border-width: 0 3px 3px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);

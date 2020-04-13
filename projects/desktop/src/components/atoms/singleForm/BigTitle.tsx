@@ -11,7 +11,7 @@ export const BigTitle = styled.h1`
     margin: 0 0 40px 0;
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
-    color: ${colors.grey};
+    color: ${colors.lightGrey};
     text-align: center;
     font-size: 27px;
     white-space: pre-line;

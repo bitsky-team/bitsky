@@ -14,8 +14,8 @@ describe('Homepage', () => {
             .within(() => {
                 cy.get('[data-testid=inputBorder]')
                     .should('have.css', 'background-color')
-                // Cypress only accept rgb(a)
-                    .and('eq', 'rgb(138, 138, 138)')
+                    // Cypress only accept rgb(a)
+                    .and('eq', 'rgb(109, 109, 109)')
             })
 
         // Password field

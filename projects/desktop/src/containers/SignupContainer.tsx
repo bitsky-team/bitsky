@@ -1,4 +1,4 @@
-import React, { useReducer, Dispatch } from 'react'
+import React, { useContext, useReducer, Dispatch } from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import axios, { AxiosResponse } from 'axios'
@@ -6,6 +6,7 @@ import _ from 'lodash'
 import { connect } from 'react-redux'
 import { FORM_ERROR } from 'final-form'
 import { AnyAction } from 'redux'
+import { ThemeContext } from 'styled-components'
 
 import {
     SingleFormContainer,
@@ -15,11 +16,12 @@ import {
     SFLanguageChooser,
     SignUpForm,
 } from '../components'
-import logo from '../assets/img/logo-small.png'
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
 import { IStringTMap, IDangerousHTMLContent } from '../interfaces/generics'
 import { IFinalFormRenderProps } from '../interfaces/forms'
+import { getLogo } from '../helpers/logo'
+import { ITheme } from '../interfaces/theme'
 
 interface IState {
     invalidForm: {
@@ -67,6 +69,7 @@ const reducer = (state: typeof initialState, action: AnyAction): IState => {
 export const SignUpContainer = connect()((): JSX.Element => {
     const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
     const {t}: UseTranslationResponse = useTranslation()
+    const theme: ITheme = useContext(ThemeContext)
 
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('signup.title')})
 
@@ -114,7 +117,7 @@ export const SignUpContainer = connect()((): JSX.Element => {
     return (
         <SingleFormContainer>
             <SignUpBox>
-                <Logo src={logo} alt='Bitsky' />
+                <Logo src={getLogo(theme)} alt='Bitsky' />
                 <SFLanguageChooser />
                 <BigTitle dangerouslySetInnerHTML={getTitleContent()} />
                 <FinalForm

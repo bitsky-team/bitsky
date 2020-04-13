@@ -4,6 +4,8 @@ export { WhiteOverlay } from './atoms/common/background/WhiteOverlay'
 
 export { FullHeightContainer } from './atoms/common/containers/FullHeightContainer'
 
+export { LanguageChooserContainer } from './atoms/common/languageChooser/LanguageChooserContainer'
+export { LanguageDialog } from './atoms/common/languageChooser/LanguageDialog'
 export { LanguageDialogTitle } from './atoms/common/languageChooser/LanguageDialogTitle'
 export { LanguageList } from './atoms/common/languageChooser/LanguageList'
 export { LanguageListItem } from './atoms/common/languageChooser/LanguageListItem'

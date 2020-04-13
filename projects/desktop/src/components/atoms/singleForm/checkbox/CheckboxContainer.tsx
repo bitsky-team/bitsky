@@ -32,7 +32,7 @@ export const CheckboxContainer = styled(posed.label(CheckboxContainerProps))<ICh
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     user-select: none;
-    color: ${colors.grey};
+    color: ${colors.lightGrey};
 
     :hover {
         cursor: pointer;
