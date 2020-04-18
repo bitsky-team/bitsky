@@ -71,7 +71,7 @@ export const LanguageChooser = connect(null, mapDispatchToProps)(({className, se
      * the user when he leaves the app
      * @param language string
      */
-    const setSessionLanguage: (value: string) => void = async (language: string): Promise<void> => {
+    const setSessionLanguage: (language: string) => void = async (language: string): Promise<void> => {
         if (language) {
             await setLanguage(language)
             await i18n.changeLanguage(language)
