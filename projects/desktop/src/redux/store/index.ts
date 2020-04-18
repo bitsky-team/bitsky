@@ -4,15 +4,18 @@ import storage from 'redux-persist/lib/storage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import thunk from 'redux-thunk'
 
-import { themeReducer } from '../reducers'
+import { themeReducer, sessionReducer } from '../reducers'
 import { IReduxState } from '../../interfaces/redux'
 import { IThemeAction } from './../../interfaces/theme'
+import { ISessionAction } from './../../interfaces/session'
 
 type ReducerAction = IThemeAction
+                    | ISessionAction
 
 // Add reducers here
 const rootReducer: Reducer<IReduxState, ReducerAction> = combineReducers({
     themeReducer,
+    sessionReducer,
 })
 
 const persistConfig = {
