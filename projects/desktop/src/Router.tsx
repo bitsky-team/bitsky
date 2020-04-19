@@ -1,11 +1,12 @@
 import React from 'react'
 import { RouteProps } from 'react-router'
 import { BrowserRouter, Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { LoginContainer } from './containers/LoginContainer'
 import { SignUpContainer } from './containers/SignUpContainer'
-import { isAuthenticated } from './helpers/auth'
 import { error } from './helpers/logger'
+import { IReduxState } from './interfaces/redux'
 
 /**
  * Component who redirect the user to the root URL
@@ -17,24 +18,33 @@ const notAuthenticated = (): JSX.Element => {
     return <Redirect to='/' />
 }
 
+interface IStoreProps {
+    auth?: boolean | undefined;
+}
+
 /**
  * Component who redirect the user if he doesn't have a token set
  *
  * @returns JSX.Element
  */
-const PrivateRoute = ({ component, ...options }: RouteProps): JSX.Element => {
-    const finalComponent = isAuthenticated() ? component : notAuthenticated
-    return <Route {...options} component={finalComponent} />
-}
+type PrivateRouteProps = RouteProps & IStoreProps
+const PrivateRoute = ({ auth, component, ...options }: PrivateRouteProps): JSX.Element =>
+    <Route {...options} component={auth ? component : notAuthenticated} />
 
 const OnboardingTemporary = (): JSX.Element => {
     return <p>WIP</p>
 }
 
-export const Router = (): JSX.Element => (
-    <BrowserRouter>
-        <Route exact path='/' component={LoginContainer} />
-        <Route exact path='/signup' component={SignUpContainer} />
-        <PrivateRoute exact path='/onboarding' component={OnboardingTemporary} />
-    </BrowserRouter>
-)
+const mapStateToProps = ({sessionReducer}: IReduxState): IStoreProps => ({
+    auth: Boolean(sessionReducer.token),
+})
+
+export const Router = connect(mapStateToProps, null)(({auth}: IStoreProps): JSX.Element => {
+    return (
+        <BrowserRouter>
+            <Route exact path='/' component={LoginContainer} />
+            <Route exact path='/signup' auth={auth} component={SignUpContainer} />
+            <PrivateRoute exact path='/onboarding' auth={auth} component={OnboardingTemporary} />
+        </BrowserRouter>
+    )
+})

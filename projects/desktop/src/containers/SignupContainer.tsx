@@ -22,6 +22,7 @@ import { IStringTMap, IDangerousHTMLContent } from '../interfaces/generics'
 import { IFinalFormRenderProps } from '../interfaces/forms'
 import { getLogo } from '../helpers/logo'
 import { ITheme } from '../interfaces/theme'
+import { setToken } from '../redux/actions/session'
 
 interface IState {
     invalidForm: {
@@ -59,6 +60,12 @@ const reducer = (state: typeof initialState, action: AnyAction): IState => {
     }
 }
 
+interface IDispatchProps {
+    setToken: (token: string) => Promise<Function>;
+}
+
+type IProps = IDispatchProps
+
 /**
  * Sign Up Container
  *
@@ -66,7 +73,12 @@ const reducer = (state: typeof initialState, action: AnyAction): IState => {
  * Merges all the sign up form components to create
  * a useable screen
  */
-export const SignUpContainer = connect()((): JSX.Element => {
+
+const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
+    setToken: async (token: string): Promise<Function> => dispatch(setToken(token)),
+})
+
+export const SignUpContainer = connect(null, mapDispatchToProps)(({setToken}: IProps): JSX.Element => {
     const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
     const {t}: UseTranslationResponse = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
@@ -94,7 +106,7 @@ export const SignUpContainer = connect()((): JSX.Element => {
                 )
 
                 const {data}: AxiosResponse<any> = response
-                localStorage.setItem('token', data.token)
+                await setToken(data.token)
             } catch (e) {
                 if (!e.response) {
                     return {

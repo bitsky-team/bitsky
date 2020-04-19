@@ -19,6 +19,7 @@ import {
 import { serverURL } from '../constants'
 import { error } from '../helpers/logger'
 import { setTheme } from '../redux/actions/theme'
+import { setToken } from '../redux/actions/session'
 import { IDangerousHTMLContent } from '../interfaces/generics'
 import { IFinalFormRenderProps } from '../interfaces/forms'
 import { getLogo } from '../helpers/logo'
@@ -31,6 +32,7 @@ interface IForm {
 
 interface IDispatchProps {
     setTheme: (theme: string) => Promise<Function>;
+    setToken: (token: string) => Promise<Function>;
 }
 
 type IProps = IDispatchProps
@@ -45,9 +47,10 @@ type IProps = IDispatchProps
 
 const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
     setTheme: async (theme: string): Promise<Function> => dispatch(setTheme(theme)),
+    setToken: async (token: string): Promise<Function> => dispatch(setToken(token)),
 })
 
-export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IProps): JSX.Element => {
+export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setToken}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('login.title')})
@@ -60,7 +63,7 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme}: IPr
             )
 
             const {data}: AxiosResponse<any> = response
-            localStorage.setItem('token', data.token)
+            await setToken(data.token)
             await setTheme(data.theme)
         } catch (e) {
             if (!e.response) {

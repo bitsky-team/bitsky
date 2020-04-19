@@ -2,9 +2,11 @@ import React, { useReducer, Reducer, MouseEvent, Dispatch } from 'react'
 import { Button } from '@material-ui/core'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import { AnyAction } from 'redux'
+import { connect } from 'react-redux'
 
 import { LanguageChooserContainer, LanguageChooserDialog } from '../../'
 import { IStringTMap } from '../../../interfaces/generics'
+import { setLanguage } from '../../../redux/actions/session'
 
 interface IState {
     open: boolean;
@@ -17,6 +19,14 @@ const initialState: IState = {
 
 const actions: IStringTMap<string> = {
     TOGGLE_DIALOG: 'TOGGLE_DIALOG',
+}
+
+interface IDispatchProps {
+    setLanguage: (language: string) => Promise<Function>;
+}
+
+type IProps = IDispatchProps & {
+    className?: string;
 }
 
 /**
@@ -40,7 +50,11 @@ const reducer: Reducer<typeof initialState, AnyAction> = (state: typeof initialS
  * Displays a button who opens the language chooser dialog
  * @param props Component's props
  */
-export const LanguageChooser = ({className}: {className?: string;}): JSX.Element => {
+const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
+    setLanguage: async (language: string): Promise<Function> => dispatch(setLanguage(language)),
+})
+
+export const LanguageChooser = connect(null, mapDispatchToProps)(({className, setLanguage}: IProps): JSX.Element => {
     const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
     const {i18n}: UseTranslationResponse = useTranslation()
 
@@ -57,9 +71,9 @@ export const LanguageChooser = ({className}: {className?: string;}): JSX.Element
      * the user when he leaves the app
      * @param language string
      */
-    const setLanguage: (value: string) => void = async (language: string): Promise<void> => {
+    const setSessionLanguage: (language: string) => void = async (language: string): Promise<void> => {
         if (language) {
-            localStorage.setItem('language', language)
+            await setLanguage(language)
             await i18n.changeLanguage(language)
         }
         toggleDialog()
@@ -70,7 +84,7 @@ export const LanguageChooser = ({className}: {className?: string;}): JSX.Element
             <LanguageChooserDialog
                 open={state.open}
                 selectedValue={i18n.language}
-                setLanguage={setLanguage}
+                setLanguage={setSessionLanguage}
                 onClose={toggleDialog}
             />
             <Button
@@ -82,4 +96,4 @@ export const LanguageChooser = ({className}: {className?: string;}): JSX.Element
             </Button>
         </LanguageChooserContainer>
     )
-}
+})
