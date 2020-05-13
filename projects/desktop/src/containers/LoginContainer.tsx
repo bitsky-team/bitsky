@@ -5,6 +5,7 @@ import axios, { AxiosResponse } from 'axios'
 import { connect } from 'react-redux'
 import { FORM_ERROR } from 'final-form'
 import { ThemeContext } from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
 import {
     LoginBox,
@@ -22,8 +23,10 @@ import { setTheme } from '../redux/actions/theme'
 import { setToken } from '../redux/actions/session'
 import { IDangerousHTMLContent } from '../interfaces/generics'
 import { IFinalFormRenderProps } from '../interfaces/forms'
+import { IToken } from '../interfaces/token'
 import { getLogo } from '../helpers/logo'
 import { ITheme } from '../interfaces/theme'
+import { getTokenData } from '../helpers/auth'
 
 interface IForm {
     email: string;
@@ -54,6 +57,7 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setT
     const {t}: UseTranslationResponse = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('login.title')})
+    let history = useHistory()
 
     const onSubmit = async (values: IForm | AnyObject): Promise<void | object> => {
         try {
@@ -65,6 +69,14 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setT
             const {data}: AxiosResponse<any> = response
             await setToken(data.token)
             await setTheme(data.theme)
+
+            const tokenData: IToken | undefined = getTokenData()
+            if (!tokenData?.username) {
+                return history.push('/onboarding')
+            }
+
+            return history.push('/activity_feed')
+
         } catch (e) {
             if (!e.response) {
                 return {

@@ -8,11 +8,13 @@ import { Normalize } from 'styled-normalize'
 import { StylesProvider } from '@material-ui/styles'
 import { Provider as StoreProvider, connect } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
+import { createGlobalStyle } from 'styled-components'
 
 import { unregister } from './serviceWorker'
 import { Router } from './Router'
 import { configureStore, persistor } from './redux/store'
 import { IReduxState } from './interfaces/redux'
+import { colors } from './constants/colors'
 import en from './assets/locales/EN.json'
 import fr from './assets/locales/FR.json'
 import es from './assets/locales/ES.json'
@@ -48,6 +50,22 @@ i18n
     })
 
 const Loader = <Fragment />
+
+const GlobalStyle = createGlobalStyle`
+    ::-webkit-scrollbar {
+        width: 5px;
+        padding: 2.5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: ${colors.white};
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: ${colors.grey};
+        border-radius: 5px;
+    }
+`
 
 // Initiating redux store
 const store = configureStore()
@@ -88,6 +106,7 @@ const App = (): JSX.Element => (
         <StoreProvider store={store}>
             <PersistGate loading={Loader} persistor={persistor}>
                 <ConnectedThemeProvider>
+                    <GlobalStyle />
                     <Router />
                 </ConnectedThemeProvider>
             </PersistGate>

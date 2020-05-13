@@ -22,9 +22,21 @@ export class User {
     @Column()
     password: string
 
-    @Column({ nullable: true })
-    token?: string
-
     @Column({ default: 'classic'})
     theme?: string
+
+    @Column({ nullable: true })
+    username?: string
+
+    @Column({ nullable: true })
+    birthdate?: string
+
+    @Column({ nullable: true })
+    avatar?: string
+
+    @Column({ nullable: true })
+    description?: string
+
+    @Column({ nullable: true })
+    token?: string
 }

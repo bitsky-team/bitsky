@@ -12,11 +12,13 @@ interface IOwnProps {
     name: string;
     label: string;
     validators: any[];
+    customComponent?: any;
+    multiline?: boolean;
 }
 
 type IProps = IOwnProps
 
-export const SFTextField = ({name, label, validators}: IProps): JSX.Element => {
+export const SFTextField = ({name, label, validators, customComponent, multiline}: IProps): JSX.Element => {
     const {t}: UseTranslationResponse = useTranslation()
 
     return (
@@ -29,7 +31,9 @@ export const SFTextField = ({name, label, validators}: IProps): JSX.Element => {
                 <Input
                     label={t(label)}
                     variant='outlined'
-                    invalid={meta.touched && meta.error ? meta.error : 0}
+                    invalid={meta.touched && (meta.error || meta.submitError) ? meta.error || meta.submitError : false}
+                    customComponent={customComponent}
+                    multiline={multiline}
                     {...input}
                 />
             )}

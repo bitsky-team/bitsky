@@ -16,7 +16,7 @@ export const InputField = styled(TextField)`
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 
-    input {
+    input, textarea {
         color: ${colors.grey};
     }
 

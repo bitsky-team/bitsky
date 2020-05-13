@@ -44,9 +44,27 @@
         }
       },
 
+      "onboarding": {
+        "title": "¡Ya casi estás <span>ahí</span>!",
+        "form": {
+          "username": "Nombre de usuario",
+          "birthdate": "Fecha de nacimiento",
+          "description": "Descripción",
+          "finish": "¡Vámonos!"
+        },
+        "error": {
+          "usernameAlreadyTaken": "Esta ya está tomada",
+          "invalidBirthdate": "Fecha inválida"
+        }
+      },
+
       "dialogs": {
         "languages": {
           "title": "Seleccione un idioma"
+        },
+        "avatarCropper": {
+          "modify": "Modificar",
+          "title": "Elija una foto de perfil"
         }
       }
     }
