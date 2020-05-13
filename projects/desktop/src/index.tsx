@@ -22,6 +22,13 @@ import nl from './assets/locales/NL.json'
 Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN })
 
 // Initiating I18n for translation
+// Store not rehydrated yet, but we need the language
+const getLanguage = (): string | undefined => {
+    const persistedStore = JSON.parse(localStorage.getItem('persist:root') ?? '{}')
+    const sessionReducer = JSON.parse(persistedStore.sessionReducer ?? '{}')
+    return sessionReducer?.language
+}
+
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 i18n
     .use(initReactI18next)
@@ -32,7 +39,7 @@ i18n
             es,
             nl,
         },
-        lng: localStorage.getItem('language') ?? 'en',
+        lng: getLanguage() ?? 'en',
         fallbackLng: 'en',
         keySeparator: '.',
         interpolation: {
