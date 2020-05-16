@@ -5,10 +5,10 @@
 # Bitsky
 A new way to share with your loved ones.
 
+[![Build Status](https://travis-ci.com/bitsky-team/bitsky.svg?branch=develop)](https://travis-ci.com/bitsky-team/bitsky)
 ![Version badge](https://img.shields.io/github/manifest-json/v/bitsky-team/bitsky/develop.svg?label=version)
 ![Issues badge](https://img.shields.io/github/issues/bitsky-team/bitsky.svg)
 ![License badge](https://img.shields.io/github/license/bitsky-team/bitsky.svg)
-![Twitter badge](https://img.shields.io/twitter/url/https/github.com/bitsky-team/bitsky.svg?style=social)
 
 📌 Table of contents
 =================
