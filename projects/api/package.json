@@ -9,8 +9,8 @@
     "debug": "nodemon --inspect",
     "build": "tsc",
     "watch": "nodemon",
-    "test": "jest --forceExit --detectOpenHandles --maxWorkers=1 --verbose false",
-    "watch-test": "jest --forceExit --detectOpenHandles --maxWorkers=1 --verbose false --watch",
+    "test": "jest --maxWorkers=4 --forceExit --detectOpenHandles --verbose false",
+    "watch-test": "jest --maxWorkers=4 --forceExit --detectOpenHandles --verbose false --watch",
     "lint": "eslint src --ext .ts,.js"
   },
   "devDependencies": {

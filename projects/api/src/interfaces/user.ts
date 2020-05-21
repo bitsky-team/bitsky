@@ -13,5 +13,9 @@ export interface IUser {
     password: string;
     remember?: boolean;
     theme?: string;
-    onboardingStep?: number;
+    username?: string;
+    birthdate?: string;
+    avatar?: string;
+    description?: string;
+    token?: string;
 }

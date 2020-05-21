@@ -6,7 +6,7 @@ import _ from 'lodash'
 
 import { getRepository, Repository, getManager, EntityManager } from 'typeorm'
 import { User } from '../entities'
-import { IUser } from '../interfaces'
+import { IUser, RequestUser } from '../interfaces'
 import { secretKey } from '../constants/secret'
 
 /**
@@ -32,7 +32,7 @@ const _authenticate = async (email: string, password: string, remember: boolean 
 
     const today: number = DateTime.local().toSeconds()
     const dayInSeconds: number = 86400
-    const data: object = _.pick(user, ['id', 'firstName', 'lastName', 'email', 'theme', 'onboardingStep'])
+    const data: Partial<User> = _.pick(user, ['id', 'firstName', 'lastName', 'email', 'theme', 'username'])
 
     const token: string = jwt.sign({
         ...data,
@@ -92,4 +92,46 @@ export const authController = {
      * @returns Promise
      */
     login: async (data: IUser): Promise<object | BoomType> => _authenticate(data.email, data.password, data.remember),
+
+    /**
+     * This method updates the user with its onboarding data
+     * @param user RequestUser the decoded token
+     * @param data IUser the user's onboarding data
+     * @returns Promise
+     */
+    onboarding: async (user: RequestUser, data: IUser): Promise<null | BoomType> => {
+        const { username, birthdate }: IUser = data
+        const { email }: RequestUser = user
+
+        const convertedBirthdate: DateTime = DateTime.fromFormat(birthdate!, 'dd/LL/yyyy')
+        const today: DateTime = DateTime.local()
+        const pastLimit: DateTime = DateTime.fromFormat('01/01/1900', 'dd/LL/yyyy')
+
+        if (birthdate?.includes('_') || convertedBirthdate > today || convertedBirthdate < pastLimit) {
+            // The birthdate is not fully filled, too high or too low
+            return Boom.badRequest('invalid_birthdate')
+        }
+
+        try {
+            await getManager().transaction(async (transactionalEntityManager: EntityManager): Promise<void> => {
+                // Check unique username
+                const usernameTaken: number = await transactionalEntityManager.count(User, { where: { username }})
+
+                if (usernameTaken) {
+                    throw Boom.badRequest('username_already_taken')
+                }
+
+                // Saving new data
+                await transactionalEntityManager.update(
+                    User,
+                    { email: email },
+                    { ...data }
+                )
+            })
+
+            return null
+        } catch (e) {
+            return e
+        }
+    }
 }

@@ -59,16 +59,17 @@ export const LanguageChooser = connect(null, mapDispatchToProps)(({className, se
     const {i18n}: UseTranslationResponse = useTranslation()
 
     /**
-     * Method who toggle the dialog state
+     * Method who toggles the dialog state
      */
     const toggleDialog: (event?: MouseEvent) => void = (): void => {
         return dispatch({type: actions.TOGGLE_DIALOG})
     }
 
     /**
-     * Method who change the language in the localStorage and in i18n
-     * We add it in the language storage to keep the language chosen by
-     * the user when he leaves the app
+     * Method who changes the language in redux and in i18n
+     * We add it in redux to keep the language chosen by
+     * the user when he leaves the app thanks to
+     * redux-persist
      * @param language string
      */
     const setSessionLanguage: (language: string) => void = async (language: string): Promise<void> => {

@@ -48,7 +48,7 @@ export const Input = (props: IInputProps): JSX.Element => {
     const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
     const { t }: UseTranslationResponse = useTranslation()
 
-    const { visibilityFilter, invalid, value, ...rest }: IProps = props
+    const { visibilityFilter, invalid, value, customComponent, ...rest }: IProps = props
 
     return (
         <InputWithError
@@ -85,6 +85,9 @@ export const Input = (props: IInputProps): JSX.Element => {
                         <InputField
                             {...rest}
                             value={value}
+                            InputProps={{
+                                inputComponent: customComponent,
+                            }}
                         />
                     )
                 }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { LoginContainer } from './containers/LoginContainer'
 import { SignUpContainer } from './containers/SignUpContainer'
+import { OnboardingContainer } from './containers/OnboardingContainer'
 import { error } from './helpers/logger'
 import { IReduxState } from './interfaces/redux'
 
@@ -22,18 +23,15 @@ interface IStoreProps {
     auth?: boolean | undefined;
 }
 
+type PrivateRouteProps = RouteProps & IStoreProps
+
 /**
  * Component who redirect the user if he doesn't have a token set
  *
  * @returns JSX.Element
  */
-type PrivateRouteProps = RouteProps & IStoreProps
 const PrivateRoute = ({ auth, component, ...options }: PrivateRouteProps): JSX.Element =>
     <Route {...options} component={auth ? component : notAuthenticated} />
-
-const OnboardingTemporary = (): JSX.Element => {
-    return <p>WIP</p>
-}
 
 const mapStateToProps = ({sessionReducer}: IReduxState): IStoreProps => ({
     auth: Boolean(sessionReducer.token),
@@ -43,8 +41,8 @@ export const Router = connect(mapStateToProps, null)(({auth}: IStoreProps): JSX.
     return (
         <BrowserRouter>
             <Route exact path='/' component={LoginContainer} />
-            <Route exact path='/signup' auth={auth} component={SignUpContainer} />
-            <PrivateRoute exact path='/onboarding' auth={auth} component={OnboardingTemporary} />
+            <Route exact path='/signup' component={SignUpContainer} />
+            <PrivateRoute exact path='/onboarding' auth={auth} component={OnboardingContainer} />
         </BrowserRouter>
     )
 })

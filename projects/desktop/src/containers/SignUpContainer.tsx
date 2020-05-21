@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { FORM_ERROR } from 'final-form'
 import { AnyAction } from 'redux'
 import { ThemeContext } from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
 import {
     SingleFormContainer,
@@ -82,6 +83,7 @@ export const SignUpContainer = connect(null, mapDispatchToProps)(({setToken}: IP
     const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
     const {t}: UseTranslationResponse = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
+    let history = useHistory()
 
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('signup.title')})
 
@@ -107,6 +109,7 @@ export const SignUpContainer = connect(null, mapDispatchToProps)(({setToken}: IP
 
                 const {data}: AxiosResponse<any> = response
                 await setToken(data.token)
+                return history.push('/onboarding')
             } catch (e) {
                 if (!e.response) {
                     return {

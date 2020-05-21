@@ -1,5 +1,6 @@
 import { ThemeSet } from 'styled-theming'
 import { TextFieldProps } from '@material-ui/core'
+import { InputBaseComponentProps } from '@material-ui/core/InputBase'
 
 /**
  * Form interfaces
@@ -7,6 +8,7 @@ import { TextFieldProps } from '@material-ui/core'
 export type IInputProps = TextFieldProps & {
     visibilityFilter?: boolean;
     invalid: InvalidInputError;
+    customComponent?: React.ElementType<InputBaseComponentProps>;
 }
 
 export interface IInputBorderProps {

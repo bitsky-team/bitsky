@@ -1,11 +1,12 @@
 import React from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
-import { LanguageDialog, LanguageDialogTitle, LanguageList, LanguageListItem } from '../../'
+import { Dialog, DialogTitle, LanguageList, LanguageListItem } from '../../'
 import { ISimpleDialogProps } from '../../../interfaces/dialogs'
 
 interface ILanguageChooserDialogProps extends ISimpleDialogProps {
     setLanguage: (value: string) => void;
+    selectedValue: string;
 }
 
 /**
@@ -21,10 +22,10 @@ export const LanguageChooserDialog = ({open, selectedValue, setLanguage, onClose
     const languages: string[] = Object.keys(i18n.options.resources ?? {})
 
     return (
-        <LanguageDialog onClose={onClose} open={open}>
-            <LanguageDialogTitle>
+        <Dialog onClose={onClose} open={open}>
+            <DialogTitle>
                 {t('dialogs.languages.title')}
-            </LanguageDialogTitle>
+            </DialogTitle>
             <LanguageList>
                 {languages.map((language: string): JSX.Element => (
                     <LanguageListItem
@@ -38,6 +39,6 @@ export const LanguageChooserDialog = ({open, selectedValue, setLanguage, onClose
                     </LanguageListItem>
                 ))}
             </LanguageList>
-        </LanguageDialog>
+        </Dialog>
     )
 }

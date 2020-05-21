@@ -44,9 +44,27 @@
       }
     },
 
+    "onboarding": {
+      "title": "Je bent er <span>bijna</span>!",
+      "form": {
+        "username": "Gebruikersnaam",
+        "birthdate": "Geboortedatum",
+        "description": "Beschrijving",
+        "finish": "Laten we gaan!"
+      },
+      "error": {
+        "usernameAlreadyTaken": "Deit is al genomen",
+        "invalidBirthdate": "Ongeldige datum"
+      }
+    },
+
     "dialogs": {
       "languages": {
         "title": "Kies een taal"
+      },
+      "avatarCropper": {
+        "modify": "Wijzig",
+        "title": "Kies een profielfoto"
       }
     }
   }

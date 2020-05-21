@@ -44,9 +44,27 @@
       }
     },
 
+    "onboarding": {
+      "title": "You are almost <span>there</span>!",
+      "form": {
+        "username": "Username",
+        "birthdate": "Birthdate",
+        "description": "Description",
+        "finish": "Let's go!"
+      },
+      "error": {
+        "usernameAlreadyTaken": "This one is already taken",
+        "invalidBirthdate": "Invalid date"
+      }
+    },
+
     "dialogs": {
       "languages": {
         "title": "Choose a language"
+      },
+      "avatarCropper": {
+        "modify": "Modify",
+        "title": "Choose a profile picture"
       }
     }
   }

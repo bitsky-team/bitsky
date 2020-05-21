@@ -1,12 +1,9 @@
-import { Request, Response } from 'express'
+import { Response } from 'express'
 import jwt from 'jsonwebtoken'
 
 import { ServerLogger, logLevels } from '../utils'
 import { secretKey } from '../constants/secret'
-
-interface IAuthenticatedRequest extends Request {
-    user?: string | object;
-}
+import { IAuthenticatedRequest, IToken } from '../interfaces'
 
 /**
  * Authentication validation middleware
@@ -25,7 +22,7 @@ export const validateAuthentication = () => (req: IAuthenticatedRequest, res: Re
     }
 
     try {
-        req.user = jwt.verify(token, secretKey)
+        req.user = jwt.verify(token, secretKey) as IToken
         next()
     } catch {
         ServerLogger.log('Trying to access to a private route with an invalid token', logLevels.ERR)

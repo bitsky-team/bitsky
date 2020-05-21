@@ -75,7 +75,6 @@ module.exports = {
         ],
         '@typescript-eslint/no-throw-literal': ['error'],
         '@typescript-eslint/no-unnecessary-boolean-literal-compare': ['error'],
-        '@typescript-eslint/no-unnecessary-condition': ['error'],
         '@typescript-eslint/no-unused-vars-experimental': ['error'],
         '@typescript-eslint/no-var-requires': ['error'],
         '@typescript-eslint/prefer-includes': ['error'],
