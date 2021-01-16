@@ -78,8 +78,8 @@ But if you want to get an overview of the current work here are the steps to fol
 
 ## Tools
 
-- yarn@1.22.0
-- node@13.8.0
+- yarn@1.22.10
+- node@15.6.0
 - postgreSQL@12.1
 
 ## Base installation
