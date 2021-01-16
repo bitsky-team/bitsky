@@ -30,7 +30,7 @@ type IProps = ISimpleDialogProps & IOwnProps
  */
 export const AvatarCropperDialog = ({ open, onClose, setAvatar }: IProps): JSX.Element => {
     const { t }: UseTranslationResponse = useTranslation()
-    const [uploadedImage, setUplodadedImage]: [(string | null), Function] = useState<string | null>(null)
+    const [uploadedImage, setUploadedImage]: [(string | null), Function] = useState<string | null>(null)
     const [scale, setScale]: [number, Function] = useState<number>(1)
     const [editor, setEditor]: [(AvatarEditor | null), Function] = useState<AvatarEditor | null>(null)
     const imageInput = useRef<HTMLInputElement>(null)
@@ -39,11 +39,10 @@ export const AvatarCropperDialog = ({ open, onClose, setAvatar }: IProps): JSX.E
      * Method which changes the state when
      * the slider value changes
      *
-     * @param _ event, but not needed
-     * @param value the slider value
+     * @param value: the scale of the image
      */
-    const handleSliderChange = (_: any, value: number | number[]): void => {
-        setScale(value as number)
+    const handleSliderChange = (...args: any): void => {
+        setScale(args[1] as number)
     }
 
     /**
@@ -84,7 +83,7 @@ export const AvatarCropperDialog = ({ open, onClose, setAvatar }: IProps): JSX.E
             reader.onload = (e: ProgressEvent<FileReader>) => {
                 const result: string = e.target?.result as string
                 if (result.startsWith('data:image')  || result.startsWith('data:application/octet-stream;base64')) {
-                    setUplodadedImage(result)
+                    setUploadedImage(result)
                 }
             }
             reader.readAsDataURL(input.files[0])
@@ -128,7 +127,7 @@ export const AvatarCropperDialog = ({ open, onClose, setAvatar }: IProps): JSX.E
                             </Button>
                         </Grid>
                         <Grid item xs>
-                            <Button onClick={() => setUplodadedImage(null)}>
+                            <Button onClick={() => setUploadedImage(null)}>
                                 <Replay />
                             </Button>
                         </Grid>
