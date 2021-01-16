@@ -45,8 +45,7 @@ export const launch = async (greetings: boolean = true): Promise<void> => {
 }
 
 if (process.env.NODE_ENV !== 'test') {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    launch()
+    launch().catch((e: Error) => console.error(e))
 }
 
 // Exporting the server for testing purpose
