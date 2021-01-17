@@ -75,14 +75,37 @@ This project will try to address that and address those concerns.
 =====================
 If you want to use it: actually you can't, we are bootstrapping the project.
 But if you want to get an overview of the current work here are the steps to follow:
+ 
+## Preview the project
+Docker is a requirement.
 
-## Tools
+```bash
+cd bitsky
+docker compose up
+```
+
+After seeing this:
+```bash
+bitsky_api_1 | ██████╗ ██╗████████╗███████╗██╗  ██╗██╗   ██╗     █████╗ ██████╗ ██╗
+bitsky_api_1 | ██╔══██╗██║╚══██╔══╝██╔════╝██║ ██╔╝╚██╗ ██╔╝    ██╔══██╗██╔══██╗██║
+bitsky_api_1 | ██████╔╝██║   ██║   ███████╗█████╔╝  ╚████╔╝     ███████║██████╔╝██║
+bitsky_api_1 | ██╔══██╗██║   ██║   ╚════██║██╔═██╗   ╚██╔╝      ██╔══██║██╔═══╝ ██║
+bitsky_api_1 | ██████╔╝██║   ██║   ███████║██║  ██╗   ██║       ██║  ██║██║     ██║
+bitsky_api_1 | ╚═════╝ ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝       ╚═╝  ╚═╝╚═╝     ╚═
+```
+
+Frontend will be available at http://localhost:5000
+
+Backend will be available at http://localhost:5030
+
+## Contribute
+### Tools
 
 - yarn@1.22.10
 - node@15.6.0
 - postgreSQL@12.1
 
-## Base installation
+### Base installation
 - Install the main dependencies
   ```bash
   cd bitsky

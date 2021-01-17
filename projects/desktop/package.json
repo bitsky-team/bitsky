@@ -6,6 +6,7 @@
   "homepage": "./",
   "private": true,
   "license": "GPL-3.0",
+  "version": "1.0.0",
   "dependencies": {
     "@babel/helper-builder-react-jsx": "^7.10.4",
     "@babel/helper-call-delegate": "^7.12.1",
