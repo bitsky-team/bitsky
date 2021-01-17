@@ -2,7 +2,7 @@ import { ConnectionOptions } from 'typeorm'
 
 export const productionConfig: ConnectionOptions = {
     type: 'postgres',
-    host: 'localhost',
+    host: process.env.DB_HOST?.length ? process.env.DB_HOST : 'localhost',
     port: 5432,
     username: 'admin',
     password: 'admin',
@@ -15,7 +15,7 @@ export const productionConfig: ConnectionOptions = {
 
 export const testConfig: ConnectionOptions = {
     type: 'postgres',
-    host: 'localhost',
+    host: process.env.DB_HOST?.length ? process.env.DB_HOST : 'localhost',
     port: 5432,
     username: 'test',
     password: 'test',

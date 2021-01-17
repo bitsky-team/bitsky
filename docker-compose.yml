@@ -1,0 +1,22 @@
+services:
+  web:
+    build: ./projects/desktop/.
+    stdin_open: true
+    ports:
+      - "5000:5000"
+
+  api:
+    build: ./projects/api/.
+    environment:
+      - DB_HOST=db
+    ports:
+      - "5030:5030"
+
+  db:
+    image: "postgres:12.1"
+    environment:
+      POSTGRES_DB: bitsky
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
