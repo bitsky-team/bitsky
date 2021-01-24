@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, {useContext, useEffect} from 'react'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import axios, { AxiosResponse } from 'axios'
@@ -57,7 +57,15 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setT
     const {t}: UseTranslationResponse = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('login.title')})
-    let history = useHistory()
+    const history = useHistory()
+
+    useEffect(() => {
+        const tokenData: IToken | undefined = getTokenData()
+
+        if (tokenData?.username) {
+            return history.push('/activity_feed')
+        }
+    })
 
     const onSubmit = async (values: IForm | AnyObject): Promise<void | object> => {
         try {

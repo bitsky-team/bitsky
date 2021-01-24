@@ -1,4 +1,4 @@
-import { combineReducers, createStore, Reducer, applyMiddleware, Store, AnyAction, compose } from 'redux'
+import { combineReducers, createStore, Reducer, applyMiddleware, Store, compose } from 'redux'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
@@ -38,6 +38,6 @@ const store = createStore(
 
 export const persistor = persistStore(store)
 
-export const configureStore = (): Store<any, AnyAction> => store
+export const configureStore = (): Store => store
 
 export default store

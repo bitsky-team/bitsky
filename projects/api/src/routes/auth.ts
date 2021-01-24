@@ -32,7 +32,7 @@ export const authRouter: typeof Router = (): Router => {
     })
 
     router.post('/onboarding', validateAuthentication(), validateBody(onboardingSchema), async (req: IAuthenticatedRequest, res: Response) => {
-        const response: null | Boom = await authController.onboarding(req.user!, req.body)
+        const response: object | Boom = await authController.onboarding(req.user!, req.body)
         checkError(res, response, (): Response<string> => res.json(response))
     })
 
