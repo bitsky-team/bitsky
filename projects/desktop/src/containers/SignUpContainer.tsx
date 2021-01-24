@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, Dispatch } from 'react'
+import React, {useContext, useReducer, Dispatch, useEffect} from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import axios, { AxiosResponse } from 'axios'
@@ -24,6 +24,8 @@ import { IFinalFormRenderProps } from '../interfaces/forms'
 import { getLogo } from '../helpers/logo'
 import { ITheme } from '../interfaces/theme'
 import { setToken } from '../redux/actions/session'
+import {IToken} from '../interfaces/token'
+import {getTokenData} from '../helpers/auth'
 
 interface IState {
     invalidForm: {
@@ -83,7 +85,15 @@ export const SignUpContainer = connect(null, mapDispatchToProps)(({setToken}: IP
     const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
     const {t}: UseTranslationResponse = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
-    let history = useHistory()
+    const history = useHistory()
+
+    useEffect(() => {
+        const tokenData: IToken | undefined = getTokenData()
+
+        if (tokenData?.username) {
+            return history.push('/activity_feed')
+        }
+    })
 
     const getTitleContent = (): IDangerousHTMLContent => ({__html: t('signup.title')})
 

@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
 import { DateTime } from 'luxon'
 import Boom, { Boom as BoomType } from '@hapi/boom'
 import _ from 'lodash'
@@ -7,7 +6,7 @@ import _ from 'lodash'
 import { getRepository, Repository, getManager, EntityManager } from 'typeorm'
 import { User } from '../entities'
 import { IUser, RequestUser } from '../interfaces'
-import { secretKey } from '../constants/secret'
+import { generateToken } from '../helpers/auth'
 
 /**
  * This private method checks the user's credentials and generates a token
@@ -30,14 +29,8 @@ const _authenticate = async (email: string, password: string, remember: boolean 
         return Boom.badRequest('incorrect_password')
     }
 
-    const today: number = DateTime.local().toSeconds()
-    const dayInSeconds: number = 86400
     const data: Partial<User> = _.pick(user, ['id', 'firstName', 'lastName', 'email', 'theme', 'username'])
-
-    const token: string = jwt.sign({
-        ...data,
-        exp: remember ? today + (30 * dayInSeconds): today + dayInSeconds,
-    }, secretKey)
+    const token: string = generateToken(data, remember)
 
     // Hashing token & storing it in the db
     const saltRounds: number = parseInt(process.env.SALT_ROUNDS ?? '10', 10)
@@ -99,7 +92,7 @@ export const authController = {
      * @param data IUser the user's onboarding data
      * @returns Promise
      */
-    onboarding: async (user: RequestUser, data: IUser): Promise<null | BoomType> => {
+    onboarding: async (user: RequestUser, data: IUser): Promise<object | BoomType> => {
         const { username, birthdate }: IUser = data
         const { email }: RequestUser = user
 
@@ -113,6 +106,8 @@ export const authController = {
         }
 
         try {
+            let user: User | undefined
+
             await getManager().transaction(async (transactionalEntityManager: EntityManager): Promise<void> => {
                 // Check unique username
                 const usernameTaken: number = await transactionalEntityManager.count(User, { where: { username }})
@@ -127,9 +122,20 @@ export const authController = {
                     { email: email },
                     { ...data }
                 )
+
+                user = await transactionalEntityManager.findOne(
+                    User,
+                    { email: email },
+                )
             })
 
-            return null
+            if (!user) {
+                throw Boom.notFound('user_not_found')
+            }
+
+            const userSafeData: Partial<User> = _.pick(user, ['id', 'firstName', 'lastName', 'email', 'theme', 'username'])
+
+            return { ...userSafeData, token: generateToken(data)}
         } catch (e) {
             return e
         }

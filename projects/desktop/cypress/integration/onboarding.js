@@ -1,4 +1,5 @@
 /* eslint no-undef: 0 */
+import { onboardingToken } from '../fixtures/constants/token'
 
 describe('Onboarding', () => {
     it('Cannot visit the page without token', () => {
@@ -11,9 +12,10 @@ describe('Onboarding', () => {
     it('Can visit the page with a token', () => {
         localStorage.setItem('persist:root', JSON.stringify({
             "themeReducer":'{"mode":"classic"}',
-            "sessionReducer":'{"language":"en","token":"yes"}',
+            "sessionReducer":'{"language":"en","token": "' + onboardingToken + '"}',
             "_persist":'{"version":-1,"rehydrated":true}'
         }))
+
         cy
             .visit('/onboarding')
             .url()
