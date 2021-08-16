@@ -10,12 +10,10 @@ import { IPropsChildren } from '../../../interfaces/generics'
  *
  * @param props Component's props
  */
-export const SingleFormContainer: Function = ({children}: IPropsChildren): JSX.Element =>  (
-    <Background>
-        <WhiteOverlay>
-            <FullHeightContainer maxWidth='lg'>
-                {children as JSX.Element}
-            </FullHeightContainer>
-        </WhiteOverlay>
-    </Background>
+export const SingleFormContainer: Function = ({ children }: IPropsChildren): JSX.Element => (
+	<Background>
+		<WhiteOverlay>
+			<FullHeightContainer maxWidth="lg">{children as JSX.Element}</FullHeightContainer>
+		</WhiteOverlay>
+	</Background>
 )

@@ -1,0 +1,8 @@
+{
+	"semi": false,
+	"singleQuote": true,
+	"proseWrap": "always",
+	"useTabs": true,
+	"printWidth": 100,
+	"htmlWhitespaceSensitivity": "ignore"
+}

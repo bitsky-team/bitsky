@@ -2,6 +2,6 @@
  * Dialog interfaces
  */
 export interface ISimpleDialogProps {
-    open: boolean;
-    onClose: () => void;
+	open: boolean
+	onClose: () => void
 }

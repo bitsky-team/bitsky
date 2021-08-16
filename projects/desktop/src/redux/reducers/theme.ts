@@ -8,17 +8,20 @@ import { ITheme, IThemeReducer, IThemeAction } from '../../interfaces/theme'
  */
 
 export const defaultState: ITheme = {
-    mode: 'classic',
+	mode: 'classic',
 }
 
 const reducer: IThemeReducer = {
-    [SET_THEME]: (state: ITheme, payload: ITheme): ITheme => ({
-        ...state,
-        ...payload,
-    }),
+	[SET_THEME]: (state: ITheme, payload: ITheme): ITheme => ({
+		...state,
+		...payload,
+	}),
 }
 
-export const themeReducer: Reducer<ITheme, IThemeAction> = (state: ITheme = defaultState, action: IThemeAction): ITheme => {
-    const handler = reducer[action.type]
-    return handler instanceof Function ? handler(state, action.payload) : state
+export const themeReducer: Reducer<ITheme, IThemeAction> = (
+	state: ITheme = defaultState,
+	action: IThemeAction
+): ITheme => {
+	const handler = reducer[action.type]
+	return handler instanceof Function ? handler(state, action.payload) : state
 }

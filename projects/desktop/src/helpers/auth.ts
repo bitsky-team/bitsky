@@ -8,11 +8,11 @@ import { getSession } from '../redux/helpers/session'
  * @returns object | undefined
  */
 export const getTokenData = (): IToken | undefined => {
-    const token: string | null = getSession().token
+	const token: string | null = getSession().token
 
-    if (!token) {
-        return undefined
-    }
+	if (!token) {
+		return undefined
+	}
 
-    return jwtDecode(token)
+	return jwtDecode(token)
 }

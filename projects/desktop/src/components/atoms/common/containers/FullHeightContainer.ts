@@ -6,8 +6,8 @@ import { Container as MaterialContainer } from '@material-ui/core'
  * and centers the content
  */
 export const FullHeightContainer = styled(MaterialContainer)`
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `

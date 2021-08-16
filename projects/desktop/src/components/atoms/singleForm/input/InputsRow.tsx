@@ -6,14 +6,14 @@ import styled from 'styled-components'
  * Used to display x input on a single row
  */
 export const InputsRow = styled.div`
-  display: flex;
+	display: flex;
 
-  > * {
-    margin-right: 30px;
-    min-width: 300px;
-  }
+	> * {
+		margin-right: 30px;
+		min-width: 300px;
+	}
 
-  > :last-child {
-    margin-right: 0;
-  }
+	> :last-child {
+		margin-right: 0;
+	}
 `

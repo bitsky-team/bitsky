@@ -6,8 +6,8 @@ import { ListItem } from '@material-ui/core'
  * Each item is displayed on a line and centered horizontally
  */
 export const LanguageListItem = styled(ListItem)`
-  display: flex;
-  justify-content: center;
-  font-family: sans-serif;
-  font-weight: 400;
+	display: flex;
+	justify-content: center;
+	font-family: sans-serif;
+	font-weight: 400;
 `

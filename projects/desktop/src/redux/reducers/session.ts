@@ -8,21 +8,24 @@ import { ISession, ISessionAction, ISessionReducer } from '../../interfaces/sess
  */
 
 export const defaultState: ISession = {
-    language: 'en',
+	language: 'en',
 }
 
 const reducer: ISessionReducer = {
-    [SET_LANGUAGE]: (state: ISession, payload: ISession): ISession => ({
-        ...state,
-        language: payload.language,
-    }),
-    [SET_TOKEN]: (state: ISession, payload: ISession): ISession => ({
-        ...state,
-        token: payload.token,
-    }),
+	[SET_LANGUAGE]: (state: ISession, payload: ISession): ISession => ({
+		...state,
+		language: payload.language,
+	}),
+	[SET_TOKEN]: (state: ISession, payload: ISession): ISession => ({
+		...state,
+		token: payload.token,
+	}),
 }
 
-export const sessionReducer: Reducer<ISession, ISessionAction> = (state: ISession = defaultState, action: ISessionAction): ISession => {
-    const handler = reducer[action.type]
-    return handler instanceof Function ? handler(state, action.payload) : state
+export const sessionReducer: Reducer<ISession, ISessionAction> = (
+	state: ISession = defaultState,
+	action: ISessionAction
+): ISession => {
+	const handler = reducer[action.type]
+	return handler instanceof Function ? handler(state, action.payload) : state
 }

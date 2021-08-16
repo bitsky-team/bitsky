@@ -8,31 +8,27 @@ import { CheckboxContainer, CheckboxInput, CheckboxCheckmark } from '../../../in
  * Checkbox input for single forms
  */
 interface IOwnProps {
-    name: string;
-    textTranslationKey: string;
-    invalid?: boolean;
+	name: string
+	textTranslationKey: string
+	invalid?: boolean
 }
 
 type IProps = IOwnProps
 
-export const SFCheckboxField = ({name, textTranslationKey, invalid }: IProps): JSX.Element => {
-    const {t}: UseTranslationResponse = useTranslation()
+export const SFCheckboxField = ({ name, textTranslationKey, invalid }: IProps): JSX.Element => {
+	const { t }: UseTranslationResponse = useTranslation()
 
-    return (
-        <>
-            <Field
-                name={name}
-                component='input'
-                type='checkbox'
-            >
-                {({input}: FieldRenderProps<any>): JSX.Element => (
-                    <CheckboxContainer pose={invalid ? 'invalid' : 'valid'}>
-                        {t(textTranslationKey)}
-                        <CheckboxInput {...input} />
-                        <CheckboxCheckmark />
-                    </CheckboxContainer>
-                )}
-            </Field>
-        </>
-    )
+	return (
+		<>
+			<Field name={name} component="input" type="checkbox">
+				{({ input }: FieldRenderProps<any>): JSX.Element => (
+					<CheckboxContainer pose={invalid ? 'invalid' : 'valid'}>
+						{t(textTranslationKey)}
+						<CheckboxInput {...input} />
+						<CheckboxCheckmark />
+					</CheckboxContainer>
+				)}
+			</Field>
+		</>
+	)
 }

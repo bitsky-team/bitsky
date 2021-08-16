@@ -1,5 +1,5 @@
 export interface IAlertColor {
-    bgColor?: string;
-    borderColor?: string;
-    color?: string;
+	bgColor?: string
+	borderColor?: string
+	color?: string
 }

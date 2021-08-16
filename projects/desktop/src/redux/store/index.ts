@@ -9,19 +9,18 @@ import { IReduxState } from '../../interfaces/redux'
 import { IThemeAction } from './../../interfaces/theme'
 import { ISessionAction } from './../../interfaces/session'
 
-type ReducerAction = IThemeAction
-                    | ISessionAction
+type ReducerAction = IThemeAction | ISessionAction
 
 // Add reducers here
 const rootReducer: Reducer<IReduxState, ReducerAction> = combineReducers({
-    themeReducer,
-    sessionReducer,
+	themeReducer,
+	sessionReducer,
 })
 
 const persistConfig = {
-    key: 'root',
-    storage,
-    stateReconciler: autoMergeLevel2,
+	key: 'root',
+	storage,
+	stateReconciler: autoMergeLevel2,
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer as Reducer)
@@ -31,10 +30,7 @@ export type AppState = ReturnType<typeof rootReducer>
 const extensionCompose: any | undefined = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 const composeEnhancers = extensionCompose ?? compose
 
-const store = createStore(
-    persistedReducer,
-    composeEnhancers(applyMiddleware(thunk)),
-)
+const store = createStore(persistedReducer, composeEnhancers(applyMiddleware(thunk)))
 
 export const persistor = persistStore(store)
 

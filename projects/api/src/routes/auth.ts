@@ -5,9 +5,9 @@ import { Boom } from '@hapi/boom'
 import { authController } from '../controllers'
 import { validateAuthentication, validateBody } from '../middlewares'
 import {
-    signup as signupSchema,
-    login as loginSchema,
-    onboarding as onboardingSchema,
+	signup as signupSchema,
+	login as loginSchema,
+	onboarding as onboardingSchema,
 } from '../schemas'
 import { checkError } from '../helpers/error'
 import { IAuthenticatedRequest } from '../interfaces'
@@ -19,22 +19,27 @@ import { IAuthenticatedRequest } from '../interfaces'
  * @returns Router
  */
 export const authRouter: typeof Router = (): Router => {
-    const router: Router = expressPromiseRouter()
+	const router: Router = expressPromiseRouter()
 
-    router.post('/signup', validateBody(signupSchema), async (req: Request, res: Response) => {
-        const response: object | Boom = await authController.signup(req.body)
-        checkError(res, response, (): Response<string> => res.json(response))
-    })
+	router.post('/signup', validateBody(signupSchema), async (req: Request, res: Response) => {
+		const response: object | Boom = await authController.signup(req.body)
+		checkError(res, response, (): Response<string> => res.json(response))
+	})
 
-    router.post('/login', validateBody(loginSchema), async (req: Request, res: Response) => {
-        const response: object | Boom = await authController.login(req.body)
-        checkError(res, response, (): Response<string> => res.json(response))
-    })
+	router.post('/login', validateBody(loginSchema), async (req: Request, res: Response) => {
+		const response: object | Boom = await authController.login(req.body)
+		checkError(res, response, (): Response<string> => res.json(response))
+	})
 
-    router.post('/onboarding', validateAuthentication(), validateBody(onboardingSchema), async (req: IAuthenticatedRequest, res: Response) => {
-        const response: object | Boom = await authController.onboarding(req.user!, req.body)
-        checkError(res, response, (): Response<string> => res.json(response))
-    })
+	router.post(
+		'/onboarding',
+		validateAuthentication(),
+		validateBody(onboardingSchema),
+		async (req: IAuthenticatedRequest, res: Response) => {
+			const response: object | Boom = await authController.onboarding(req.user!, req.body)
+			checkError(res, response, (): Response<string> => res.json(response))
+		}
+	)
 
-    return router
+	return router
 }

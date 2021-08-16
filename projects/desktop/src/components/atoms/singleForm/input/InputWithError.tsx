@@ -9,8 +9,8 @@ import { IInputWithErrorProps } from '../../../../interfaces/forms'
  * when an error is displayed
  */
 export const InputWithError = styled.div<IInputWithErrorProps>`
-    position: relative;
-    width: 100%;
+	position: relative;
+	width: 100%;
 
-    ${({active}: IInputWithErrorProps) => active ? 'margin-bottom: 18px;' : ''}
+	${({ active }: IInputWithErrorProps) => (active ? 'margin-bottom: 18px;' : '')}
 `

@@ -14,15 +14,29 @@ import { ServerLogger, logLevels } from './../utils/ServerLogger'
  * @param successCallback Function action to do when there is no error
  * @returns Function | Response
  */
-export const checkError = (res: Response, data: any, successCallback: Function): Function | Response => {
-    if (data instanceof Boom) {
-        const {output: error}: Boom = data
-        ServerLogger.log(
-            `${error.payload.error} (${error.payload.statusCode.toString()}): ${error.payload.message}`,
-            logLevels.ERR,
-        )
-        return res.status(error.statusCode).send(error.payload)
-    }
+export const checkError = (
+	res: Response | Response[],
+	data: any,
+	successCallback: Function
+): Function | Response => {
+	const check = (res: Response) => {
+		if (data instanceof Boom) {
+			const { output: error }: Boom = data
+			ServerLogger.log(
+				`${error.payload.error} (${error.payload.statusCode.toString()}): ${error.payload.message}`,
+				logLevels.ERR
+			)
+			return res.status(error.statusCode).send(error.payload)
+		}
+	}
 
-    return successCallback()
+	if (res instanceof Array) {
+		for (const r of res) {
+			check(r)
+		}
+	} else {
+		check(res)
+	}
+
+	return successCallback()
 }

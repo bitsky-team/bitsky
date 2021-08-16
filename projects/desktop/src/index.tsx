@@ -26,28 +26,26 @@ Sentry.init({ dsn: process.env.REACT_APP_SENTRY_DSN })
 // Initiating I18n for translation
 // Store not rehydrated yet, but we need the language
 const getLanguage = (): string | undefined => {
-    const persistedStore = JSON.parse(localStorage.getItem('persist:root') ?? '{}')
-    const sessionReducer = JSON.parse(persistedStore.sessionReducer ?? '{}')
-    return sessionReducer?.language
+	const persistedStore = JSON.parse(localStorage.getItem('persist:root') ?? '{}')
+	const sessionReducer = JSON.parse(persistedStore.sessionReducer ?? '{}')
+	return sessionReducer?.language
 }
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
-i18n
-    .use(initReactI18next)
-    .init({
-        resources: {
-            en,
-            fr,
-            es,
-            nl,
-        },
-        lng: getLanguage() ?? 'en',
-        fallbackLng: 'en',
-        keySeparator: '.',
-        interpolation: {
-            escapeValue: false,
-        },
-    })
+i18n.use(initReactI18next).init({
+	resources: {
+		en,
+		fr,
+		es,
+		nl,
+	},
+	lng: getLanguage() ?? 'en',
+	fallbackLng: 'en',
+	keySeparator: '.',
+	interpolation: {
+		escapeValue: false,
+	},
+})
 
 const Loader = <Fragment />
 
@@ -72,52 +70,50 @@ const store = configureStore()
 
 // This component will read the hydrated theme from redux
 interface IOwnProps {
-  children: object;
+	children: object
 }
 interface IStoreProps {
-  mode?: string;
+	mode?: string
 }
 
 type IProps = IOwnProps & IStoreProps
 
-const mapStateToProps = ({themeReducer}: IReduxState): IStoreProps => ({mode: themeReducer.mode})
+const mapStateToProps = ({ themeReducer }: IReduxState): IStoreProps => ({
+	mode: themeReducer.mode,
+})
 
-const ConnectedThemeProvider = connect(mapStateToProps, null)(
-    ({children, mode}: IProps) => {
-        if (!mode) {
-            return Loader
-        }
+const ConnectedThemeProvider = connect(
+	mapStateToProps,
+	null
+)(({ children, mode }: IProps) => {
+	if (!mode) {
+		return Loader
+	}
 
-        return (
-            <ThemeProvider theme={{mode}}>
-                <StylesProvider injectFirst>
-                    {children}
-                </StylesProvider>
-            </ThemeProvider>
-        )
-    },
-)
+	return (
+		<ThemeProvider theme={{ mode }}>
+			<StylesProvider injectFirst>{children}</StylesProvider>
+		</ThemeProvider>
+	)
+})
 
 // TODO: Maybe change Suspense fallback props into a beautiful loading screen
 // but if there is a loading at each click, it will be relou
 const App = (): JSX.Element => (
-    <Suspense fallback={Loader}>
-        <Normalize />
-        <StoreProvider store={store}>
-            <PersistGate loading={Loader} persistor={persistor}>
-                <ConnectedThemeProvider>
-                    <GlobalStyle />
-                    <Router />
-                </ConnectedThemeProvider>
-            </PersistGate>
-        </StoreProvider>
-    </Suspense>
+	<Suspense fallback={Loader}>
+		<Normalize />
+		<StoreProvider store={store}>
+			<PersistGate loading={Loader} persistor={persistor}>
+				<ConnectedThemeProvider>
+					<GlobalStyle />
+					<Router />
+				</ConnectedThemeProvider>
+			</PersistGate>
+		</StoreProvider>
+	</Suspense>
 )
 
 // Rendering the app
-ReactDOM.render(
-    <App />,
-    document.getElementById('root'),
-)
+ReactDOM.render(<App />, document.getElementById('root'))
 
 unregister()

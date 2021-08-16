@@ -24,19 +24,19 @@
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 Cypress.Commands.add(
-    'attach_file',
-    {
-        prevSubject: 'element',
-    },
-    (input, fileName, fileType) => {
-        cy.fixture(fileName)
-        .then(content => Cypress.Blob.base64StringToBlob(content, fileType))
-        .then(blob => {
-            const testFile = new File([blob], fileName)
-            const dataTransfer = new DataTransfer()
-            dataTransfer.items.add(testFile)
-            input[0].files = dataTransfer.files
-            return input
-        })
-    }
+	'attach_file',
+	{
+		prevSubject: 'element',
+	},
+	(input, fileName, fileType) => {
+		cy.fixture(fileName)
+			.then((content) => Cypress.Blob.base64StringToBlob(content, fileType))
+			.then((blob) => {
+				const testFile = new File([blob], fileName)
+				const dataTransfer = new DataTransfer()
+				dataTransfer.items.add(testFile)
+				input[0].files = dataTransfer.files
+				return input
+			})
+	}
 )

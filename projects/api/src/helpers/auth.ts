@@ -5,11 +5,14 @@ import { User } from '../entities'
 import { secretKey } from '../constants/secret'
 
 export const generateToken = (data: Partial<User>, remember?: boolean): string => {
-    const today: number = DateTime.local().toSeconds()
-    const dayInSeconds: number = 86400
+	const today: number = DateTime.local().toSeconds()
+	const dayInSeconds: number = 86400
 
-    return jwt.sign({
-        ...data,
-        exp: remember ? today + (30 * dayInSeconds): today + dayInSeconds,
-    }, secretKey)
+	return jwt.sign(
+		{
+			...data,
+			exp: remember ? today + 30 * dayInSeconds : today + dayInSeconds,
+		},
+		secretKey
+	)
 }

@@ -1,71 +1,71 @@
 {
-  "translation": {
-    "languages":  {
-      "en": "English",
-      "fr": "Français",
-      "es": "Español",
-      "nl": "Nederlands"
-    },
+	"translation": {
+		"languages": {
+			"en": "English",
+			"fr": "Français",
+			"es": "Español",
+			"nl": "Nederlands"
+		},
 
-    "fieldError": {
-      "required": "Ce champ est requis",
-      "emailNotValid": "Adresse email incorrect",
-      "tooShort": "C'est trop court ({{min}} caractères min.)"
-    },
+		"fieldError": {
+			"required": "Ce champ est requis",
+			"emailNotValid": "Adresse email incorrect",
+			"tooShort": "C'est trop court ({{min}} caractères min.)"
+		},
 
-    "serverError": "Une erreur serveur est survenue",
+		"serverError": "Une erreur serveur est survenue",
 
-    "login": {
-      "title": "<span>Vos</span> amis,\n<span>Vos</span> souvenirs,\n<span>Vos</span> données,\nChez <span>vous</span>.",
-      "form": {
-        "emailAddress": "Adresse email",
-        "password": "Mot de passe",
-        "rememberMe": "Se souvenir de moi",
-        "login": "Connexion",
-        "notSignedUp": "Pas encore inscrit ?"
-      },
-      "error": {
-        "userNotFound": "Celle-ci n'est pas attribuée",
-        "incorrectPassword": "Mot de passe incorrect"
-      }
-    },
+		"login": {
+			"title": "<span>Vos</span> amis,\n<span>Vos</span> souvenirs,\n<span>Vos</span> données,\nChez <span>vous</span>.",
+			"form": {
+				"emailAddress": "Adresse email",
+				"password": "Mot de passe",
+				"rememberMe": "Se souvenir de moi",
+				"login": "Connexion",
+				"notSignedUp": "Pas encore inscrit ?"
+			},
+			"error": {
+				"userNotFound": "Celle-ci n'est pas attribuée",
+				"incorrectPassword": "Mot de passe incorrect"
+			}
+		},
 
-    "signup": {
-      "title": "Rejoignez l'<span>aventure</span>,\nFaites partie de la <span>communauté</span>.",
-      "form": {
-        "firstname": "Prénom",
-        "lastname": "Nom de famille",
-        "termsOfUse": "En cochant cette case, vous acceptez nos conditions générales d'utilisation.",
-        "signup": "Inscription",
-        "alreadySignedUp": "Déjà inscrit ?"
-      },
-      "error": {
-        "emailAlreadyTaken": "Celle-ci est déjà utilisée"
-      }
-    },
+		"signup": {
+			"title": "Rejoignez l'<span>aventure</span>,\nFaites partie de la <span>communauté</span>.",
+			"form": {
+				"firstname": "Prénom",
+				"lastname": "Nom de famille",
+				"termsOfUse": "En cochant cette case, vous acceptez nos conditions générales d'utilisation.",
+				"signup": "Inscription",
+				"alreadySignedUp": "Déjà inscrit ?"
+			},
+			"error": {
+				"emailAlreadyTaken": "Celle-ci est déjà utilisée"
+			}
+		},
 
-    "onboarding": {
-      "title": "Vous y êtes <span>presque</span> !",
-      "form": {
-        "username": "Pseudo",
-        "birthdate": "Date de naissance",
-        "description": "Description",
-        "finish": "C'est parti !"
-      },
-      "error": {
-        "usernameAlreadyTaken": "Celui-ci est déjà utilisé",
-        "invalidBirthdate": "Date invalide"
-      }
-    },
+		"onboarding": {
+			"title": "Vous y êtes <span>presque</span> !",
+			"form": {
+				"username": "Pseudo",
+				"birthdate": "Date de naissance",
+				"description": "Description",
+				"finish": "C'est parti !"
+			},
+			"error": {
+				"usernameAlreadyTaken": "Celui-ci est déjà utilisé",
+				"invalidBirthdate": "Date invalide"
+			}
+		},
 
-    "dialogs": {
-      "languages": {
-        "title": "Choisissez une langue"
-      },
-      "avatarCropper": {
-        "modify": "Modifier",
-        "title": "Choisissez une photo de profil"
-      }
-    }
-  }
+		"dialogs": {
+			"languages": {
+				"title": "Choisissez une langue"
+			},
+			"avatarCropper": {
+				"modify": "Modifier",
+				"title": "Choisissez une photo de profil"
+			}
+		}
+	}
 }

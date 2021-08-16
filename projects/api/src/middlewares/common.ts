@@ -3,6 +3,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 import parser from 'body-parser'
 import compression from 'compression'
+import formidable from 'express-formidable'
 
 import { ServerLogger } from '../utils'
 
@@ -14,7 +15,7 @@ import { ServerLogger } from '../utils'
  * @param router the application
  */
 const handleHelmet = (router: Router): void => {
-    router.use(helmet())
+	router.use(helmet())
 }
 
 /**
@@ -24,7 +25,7 @@ const handleHelmet = (router: Router): void => {
  * @param router the application
  */
 const handleCors = (router: Router): void => {
-    router.use(cors({ credentials: true, origin: true }))
+	router.use(cors({ credentials: true, origin: true }))
 }
 
 /**
@@ -34,7 +35,8 @@ const handleCors = (router: Router): void => {
  * @param router the application
  */
 const handleBodyRequestParsing = (router: Router): void => {
-    router.use(parser.json())
+	router.use(parser.json())
+	router.use(formidable({ multiples: true }))
 }
 
 /**
@@ -49,10 +51,12 @@ const handleBodyRequestParsing = (router: Router): void => {
  * @param router the application
  */
 const handleCompression = (router: Router): void => {
-    router.use(compression({
-        filter: (req: Request, res: Response) =>
-            req.headers['x-no-compression'] ? false : compression.filter(req, res),
-    }))
+	router.use(
+		compression({
+			filter: (req: Request, res: Response) =>
+				req.headers['x-no-compression'] ? false : compression.filter(req, res),
+		})
+	)
 }
 
 /**
@@ -62,7 +66,7 @@ const handleCompression = (router: Router): void => {
  * @param router the application
  */
 const handleNewRequestLog = (router: Router): void => {
-    router.use(ServerLogger.newRequest())
+	router.use(ServerLogger.newRequest())
 }
 
 /**
@@ -72,7 +76,7 @@ const handleNewRequestLog = (router: Router): void => {
  * @param router the application
  */
 const handleServerErrorLog = (router: Router): void => {
-    router.use(ServerLogger.error())
+	router.use(ServerLogger.error())
 }
 
 /**
@@ -80,10 +84,10 @@ const handleServerErrorLog = (router: Router): void => {
  * which will be iterated when applying it
  */
 export const commonMiddlewares: ((router: Router) => void)[] = [
-    handleHelmet,
-    handleCors,
-    handleBodyRequestParsing,
-    handleCompression,
-    handleNewRequestLog,
-    handleServerErrorLog,
+	handleHelmet,
+	handleCors,
+	handleBodyRequestParsing,
+	handleCompression,
+	handleNewRequestLog,
+	handleServerErrorLog,
 ]

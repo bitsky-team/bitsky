@@ -1,7 +1,7 @@
 export interface IToken {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  username?: string;
+	id: number
+	firstName: string
+	lastName: string
+	email: string
+	username?: string
 }

@@ -6,5 +6,5 @@ import { colors } from '../../../../constants'
  * Translucent white overlay over the background
  */
 export const WhiteOverlay = styled.div`
-    background-color: ${colors.singleFormOverlay};
+	background-color: ${colors.singleFormOverlay};
 `

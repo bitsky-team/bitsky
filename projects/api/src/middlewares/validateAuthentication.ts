@@ -13,19 +13,20 @@ import { IAuthenticatedRequest, IToken } from '../interfaces'
  * @param res Express Response
  * @param next Callback to call to continue the flow
  */
-export const validateAuthentication = () => (req: IAuthenticatedRequest, res: Response, next: Function) => {
-    const token: string = String((req.headers['x-access-token'] ?? req.headers.authorization) ?? '')
+export const validateAuthentication =
+	() => (req: IAuthenticatedRequest, res: Response, next: Function) => {
+		const token: string = String(req.headers['x-access-token'] ?? req.headers.authorization ?? '')
 
-    if (!token) {
-        ServerLogger.log('Trying to access to a private route without token', logLevels.ERR)
-        return res.status(403).json('no_token_provided')
-    }
+		if (!token) {
+			ServerLogger.log('Trying to access to a private route without token', logLevels.ERR)
+			return res.status(403).json('no_token_provided')
+		}
 
-    try {
-        req.user = jwt.verify(token, secretKey) as IToken
-        next()
-    } catch {
-        ServerLogger.log('Trying to access to a private route with an invalid token', logLevels.ERR)
-        return res.status(403).json('invalid_token')
-    }
-}
+		try {
+			req.user = jwt.verify(token, secretKey) as IToken
+			next()
+		} catch {
+			ServerLogger.log('Trying to access to a private route with an invalid token', logLevels.ERR)
+			return res.status(403).json('invalid_token')
+		}
+	}
