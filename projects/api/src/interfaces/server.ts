@@ -1,7 +1,5 @@
-import { Request } from '@nestjs/common';
+import { UserFromRequest } from './user'
 
-import { UserFromRequest } from './user';
-
-export interface AuthenticatedRequest extends Request {
-  user: UserFromRequest;
+export interface AuthenticatedRequest {
+    user: UserFromRequest
 }

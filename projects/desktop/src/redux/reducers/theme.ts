@@ -18,7 +18,10 @@ const reducer: IThemeReducer = {
     }),
 }
 
-export const themeReducer: Reducer<ITheme, IThemeAction> = (state: ITheme = defaultState, action: IThemeAction): ITheme => {
+export const themeReducer: Reducer<ITheme, IThemeAction> = (
+    state: ITheme = defaultState,
+    action: IThemeAction
+): ITheme => {
     const handler = reducer[action.type]
     return handler instanceof Function ? handler(state, action.payload) : state
 }

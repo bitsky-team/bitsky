@@ -10,7 +10,7 @@ import { IStringTMap, IStringAnyMap } from '../../../../interfaces/generics'
 import { IInputProps } from '../../../../interfaces/forms'
 
 interface IState {
-    visible: boolean;
+    visible: boolean
 }
 
 type IOwnProps = IInputProps
@@ -28,13 +28,13 @@ const actions: IStringTMap<string> = {
 
 const reducer = (state: IStringAnyMap, action: AnyAction): IState => {
     switch (action.type) {
-    case actions.TOGGLE_VISIBILITY:
-        return {
-            ...state,
-            visible: !state.visible,
-        }
-    default:
-        throw new Error('Action type not found')
+        case actions.TOGGLE_VISIBILITY:
+            return {
+                ...state,
+                visible: !state.visible,
+            }
+        default:
+            throw new Error('Action type not found')
     }
 }
 
@@ -51,52 +51,49 @@ export const Input = (props: IInputProps): JSX.Element => {
     const { visibilityFilter, invalid, value, customComponent, ...rest }: IProps = props
 
     return (
-        <InputWithError
-            data-testid='input'
-            active={Boolean(invalid)}
-        >
+        <InputWithError data-testid="input" active={Boolean(invalid)}>
             <InputContainer>
                 <InputBorder
-                    data-testid='inputBorder'
+                    data-testid="inputBorder"
                     borderColor={invalid ? colors.error : !value ? colors.grey : null}
                 />
 
-                {visibilityFilter
-                    ? (
-                        <InputField
-                            {...rest}
-                            value={value}
-                            type={state.visible ? 'text' : 'password'}
-                            InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position='end'>
-                                        <IconButton
-                                            edge='end'
-                                            onClick={() => dispatch({type: actions.TOGGLE_VISIBILITY})}
-                                        >
-                                            {state.visible ? <VisibilityOff /> : <Visibility />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
-                            }}
-                        />
-                    )
-                    : (
-                        <InputField
-                            {...rest}
-                            value={value}
-                            InputProps={{
-                                inputComponent: customComponent,
-                            }}
-                        />
-                    )
-                }
+                {visibilityFilter ? (
+                    <InputField
+                        {...rest}
+                        value={value}
+                        type={state.visible ? 'text' : 'password'}
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton
+                                        edge="end"
+                                        onClick={() =>
+                                            dispatch({ type: actions.TOGGLE_VISIBILITY })
+                                        }
+                                    >
+                                        {state.visible ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                ) : (
+                    <InputField
+                        {...rest}
+                        value={value}
+                        InputProps={{
+                            inputComponent: customComponent,
+                        }}
+                    />
+                )}
             </InputContainer>
 
-            {typeof invalid === 'string'
-                ? <InputError data-testid='inputError'>{t(invalid)}</InputError>
-                : <InputError data-testid='inputError'>{t(invalid.key, invalid.data)}</InputError>
-            }
+            {typeof invalid === 'string' ? (
+                <InputError data-testid="inputError">{t(invalid)}</InputError>
+            ) : (
+                <InputError data-testid="inputError">{t(invalid.key, invalid.data)}</InputError>
+            )}
         </InputWithError>
     )
 }

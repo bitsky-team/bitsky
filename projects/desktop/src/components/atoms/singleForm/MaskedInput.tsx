@@ -2,12 +2,17 @@ import React from 'react'
 import Masked from 'react-text-mask'
 
 export interface MaskedInputProps {
-  inputRef: (ref: HTMLInputElement | null) => void;
-  mask: (string | RegExp)[];
-  showMask: boolean;
+    inputRef: (ref: HTMLInputElement | null) => void
+    mask: (string | RegExp)[]
+    showMask: boolean
 }
 
-export const MaskedInput = ({ inputRef, mask, showMask, ...rest}: MaskedInputProps): JSX.Element =>
+export const MaskedInput = ({
+    inputRef,
+    mask,
+    showMask,
+    ...rest
+}: MaskedInputProps): JSX.Element => (
     <Masked
         {...rest}
         ref={(ref: any) => {
@@ -16,3 +21,4 @@ export const MaskedInput = ({ inputRef, mask, showMask, ...rest}: MaskedInputPro
         mask={mask}
         showMask={showMask}
     />
+)

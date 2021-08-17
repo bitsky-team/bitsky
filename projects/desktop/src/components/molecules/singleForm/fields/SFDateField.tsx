@@ -5,9 +5,9 @@ import { SFTextField, DateInput } from '../../../'
  * Date field for single form
  */
 interface IOwnProps {
-    name: string;
-    label: string;
-    validators: any[];
+    name: string
+    label: string
+    validators: any[]
 }
 
 type IProps = IOwnProps

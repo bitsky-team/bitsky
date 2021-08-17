@@ -1,32 +1,34 @@
-import { NestFactory } from '@nestjs/core';
-import dotenv from 'dotenv';
-const { version } = require('../package.json');
+import { NestFactory } from '@nestjs/core'
+import dotenv from 'dotenv'
 
-import { AppModule } from './modules';
-import { ServerLogger, logLevels } from './utils/ServerLogger';
-import { serverGreetings } from './constants/art';
+// eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
+const { version }: { version: string } = require('../package.json')
 
-async function bootstrap() {
-  dotenv.config();
+import { AppModule } from './modules'
+import { ServerLogger, logLevels } from './utils/ServerLogger'
+import { serverGreetings } from './constants/art'
 
-  const app = await NestFactory.create(AppModule, {
-    cors: true,
-    logger: ['error'],
-  });
+async function bootstrap(): Promise<void> {
+    dotenv.config()
 
-  app.use(ServerLogger.newRequest());
-  app.use(ServerLogger.error());
+    const app = await NestFactory.create(AppModule, {
+        cors: true,
+        logger: ['error'],
+    })
 
-  const port = process.env.HTTP_PORT;
+    app.use(ServerLogger.newRequest())
+    app.use(ServerLogger.error())
 
-  await app.listen(port);
+    const port = process.env.HTTP_PORT ?? 5030
 
-  ServerLogger.log(serverGreetings, logLevels.MISC);
-  ServerLogger.log(
-    `Version: ${version}                                     ${process.env.MODE} mode\n`,
-    logLevels.MISC,
-  );
-  ServerLogger.log(`Server started on port ${port}`);
+    await app.listen(port)
+
+    ServerLogger.log(serverGreetings, logLevels.MISC)
+    ServerLogger.log(
+        `Version: ${version}                                     ${process.env.MODE} mode\n`,
+        logLevels.MISC
+    )
+    ServerLogger.log(`Server started on port ${port}`)
 }
 
-bootstrap();
+bootstrap().catch((e: Error) => console.error('Could not start Bitsky API', e))

@@ -1,29 +1,29 @@
 language: node_js
 
 services:
-    - postgresql
+  - postgresql
 
 addons:
-    postgresql: "12.1"
+  postgresql: "12.1"
 
 node_js:
-    - 13
+  - 13
 
 before_install:
-    - sudo /etc/init.d/postgresql start 12.1
+  - sudo /etc/init.d/postgresql start 12.1
 
 before_script:
-    - nvm install 13.8
-    - nvm alias default 13.8
-    - yarn policies set-version 1.22.0
+  - nvm install 13.8
+  - nvm alias default 13.8
+  - yarn policies set-version 1.22.0
 
-    - psql --version
-    - psql -c "CREATE DATABASE bitsky;" -U postgres
-    - psql -c "CREATE DATABASE bitsky_test;" -U postgres
-    - psql -c "CREATE ROLE admin LOGIN SUPERUSER PASSWORD 'admin';" -U postgres
-    - psql -c "CREATE ROLE test LOGIN SUPERUSER PASSWORD 'test';" -U postgres
+  - psql --version
+  - psql -c "CREATE DATABASE bitsky;" -U postgres
+  - psql -c "CREATE DATABASE bitsky_test;" -U postgres
+  - psql -c "CREATE ROLE admin LOGIN SUPERUSER PASSWORD 'admin';" -U postgres
+  - psql -c "CREATE ROLE test LOGIN SUPERUSER PASSWORD 'test';" -U postgres
 
-    - yarn
-    - yarn danger ci
+  - yarn
+  - yarn danger ci
 
-    - cd projects/api && yarn
+  - cd projects/api && yarn

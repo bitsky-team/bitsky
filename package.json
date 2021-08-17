@@ -3,7 +3,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "test": "yarn test-api && yarn test-desktop",
-    "test-api": "cd projects/api && yarn test && yarn lint",
+    "test-api": "cd projects/api && yarn test:e2e && yarn lint",
     "test-desktop": "cd projects/desktop && yarn lint",
     "start-desktop": "cd projects/desktop && pm2 start -f ./node_modules/react-scripts/scripts/start.js && wait-on http://localhost:3000",
     "test-desktop-cypress": "cd projects/desktop && yarn run cypress:run",

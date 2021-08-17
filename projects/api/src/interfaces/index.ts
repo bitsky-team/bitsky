@@ -3,4 +3,4 @@
  * the imports path
  */
 
-export { IStringTMap, IStringAnyMap } from './generic';
+export { IStringTMap, IStringAnyMap } from './generic'

@@ -9,29 +9,35 @@ import { Input } from '../../../'
  * Text field for single form
  */
 interface IOwnProps {
-    name: string;
-    label: string;
-    validators: any[];
-    customComponent?: any;
-    multiline?: boolean;
+    name: string
+    label: string
+    validators: any[]
+    customComponent?: any
+    multiline?: boolean
 }
 
 type IProps = IOwnProps
 
-export const SFTextField = ({name, label, validators, customComponent, multiline}: IProps): JSX.Element => {
-    const {t}: UseTranslationResponse = useTranslation()
+export const SFTextField = ({
+    name,
+    label,
+    validators,
+    customComponent,
+    multiline,
+}: IProps): JSX.Element => {
+    const { t }: UseTranslationResponse = useTranslation()
 
     return (
-        <Field
-            name={name}
-            type='text'
-            validate={composeValidators(...validators)}
-        >
+        <Field name={name} type="text" validate={composeValidators(...validators)}>
             {({ input, meta }: FieldRenderProps<any>) => (
                 <Input
                     label={t(label)}
-                    variant='outlined'
-                    invalid={meta.touched && (meta.error || meta.submitError) ? meta.error || meta.submitError : false}
+                    variant="outlined"
+                    invalid={
+                        meta.touched && (meta.error || meta.submitError)
+                            ? meta.error || meta.submitError
+                            : false
+                    }
                     customComponent={customComponent}
                     multiline={multiline}
                     {...input}

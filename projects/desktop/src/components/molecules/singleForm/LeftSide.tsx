@@ -7,10 +7,8 @@ import { IPropsChildren } from '../../../interfaces/generics'
 /**
  * Left side of the login form (white part)
  */
-export const LeftSide = ({children}: IPropsChildren): JSX.Element => (
+export const LeftSide = ({ children }: IPropsChildren): JSX.Element => (
     <LeftSideContainer>
-        <MaterialBox>
-            {children}
-        </MaterialBox>
+        <MaterialBox>{children}</MaterialBox>
     </LeftSideContainer>
 )

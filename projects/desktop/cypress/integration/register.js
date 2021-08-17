@@ -14,40 +14,31 @@ describe('Sign up', () => {
     })
 
     it('Should check the checkbox to send the form', () => {
-        cy
-            .contains('Firstname')
+        cy.contains('Firstname')
             .parent()
             .within(() => {
-                cy.get('input')
-                    .type('John')
+                cy.get('input').type('John')
             })
-        cy
-            .contains('Lastname')
+        cy.contains('Lastname')
             .parent()
             .within(() => {
-                cy.get('input')
-                    .type('Doe')
+                cy.get('input').type('Doe')
             })
-        cy
-            .contains('Email')
+        cy.contains('Email')
             .parent()
             .within(() => {
-                cy.get('input')
-                    .type('john@bitsky.be')
+                cy.get('input').type('john@bitsky.be')
             })
-        cy
-            .contains('Password')
+        cy.contains('Password')
             .parent()
             .within(() => {
-                cy.get('input')
-                    .type('iliketrains')
+                cy.get('input').type('iliketrains')
             })
 
         cy.get('form').submit()
 
         // Checks if the checkbox text is red
-        cy
-            .contains('By checking this box')
+        cy.contains('By checking this box')
             .should('have.css', 'color')
             .and('eq', 'rgb(227, 86, 86)')
     })

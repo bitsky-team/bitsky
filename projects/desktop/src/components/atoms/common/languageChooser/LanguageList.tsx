@@ -5,9 +5,9 @@ import { colors } from '../../../../constants'
 
 // Removing the margin-top for aesthetic reasons
 export const LanguageList = styled(List)`
-  margin-top: 0;
+    margin-top: 0;
 
-  .MuiListItem-root:hover {
-    background-color: ${colors.whiteConstrast};
-  }
+    .MuiListItem-root:hover {
+        background-color: ${colors.whiteConstrast};
+    }
 `

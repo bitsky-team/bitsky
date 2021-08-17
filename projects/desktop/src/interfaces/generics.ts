@@ -5,17 +5,17 @@
 import { ReactNode } from 'react'
 
 export interface IStringTMap<T> {
-  [key: string]: T;
+    [key: string]: T
 }
 
 export interface IStringAnyMap {
-  [key: string]: any;
+    [key: string]: any
 }
 
 export interface IPropsChildren {
-  children: ReactNode;
+    children: ReactNode
 }
 
 export interface IDangerousHTMLContent {
-  __html: string;
+    __html: string
 }
