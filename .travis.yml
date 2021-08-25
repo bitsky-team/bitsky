@@ -13,8 +13,8 @@ before_install:
   - sudo /etc/init.d/postgresql start 12.1
 
 before_script:
-  - nvm install 13.8
-  - nvm alias default 13.8
+  - nvm install 14.0
+  - nvm alias default 14.0
   - yarn policies set-version 1.22.0
 
   - psql --version
