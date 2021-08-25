@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import { DateTime } from 'luxon'
 import clc from 'cli-color'
+
 import { IStringTMap } from '../interfaces/generic'
 
 /**
@@ -31,7 +32,6 @@ const log = (message: string): void => {
  * in the terminal
  */
 export class ServerLogger {
-
     /**
      * Method who logs a given message with a given color in the terminal
      *
@@ -41,7 +41,7 @@ export class ServerLogger {
     static log(message: string, level: number = logLevels.INFO): void {
         const datetime: string = DateTime.local().toFormat('dd/MM/yyyy HH:mm:ss')
 
-        switch(level) {
+        switch (level) {
         case logLevels.MISC:
             log(message)
             break
@@ -70,9 +70,8 @@ export class ServerLogger {
      */
     static newRequest() {
         return (req: Request, _: Response, next: () => any) => {
-            const authorization = req.get('Authorization')
             const from = req.ip
-            ServerLogger.log(`${from} - ${req.method} on ${req.originalUrl} ${authorization ? `(Authorization: ${authorization})` : ''}`)
+            ServerLogger.log(`${from} - ${req.method} on ${req.originalUrl}`)
             next()
         }
     }

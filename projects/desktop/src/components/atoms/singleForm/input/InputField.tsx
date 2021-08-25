@@ -16,7 +16,8 @@ export const InputField = styled(TextField)`
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 
-    input, textarea {
+    input,
+    textarea {
         color: ${colors.grey};
     }
 
@@ -32,7 +33,8 @@ export const InputField = styled(TextField)`
         color: ${colors.grey} !important;
     }
 
-    div:hover, .Mui-focused {
+    div:hover,
+    .Mui-focused {
         fieldset {
             border: none;
         }

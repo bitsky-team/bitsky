@@ -4,7 +4,7 @@ export const AvatarOverlay = styled.span`
     display: none;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     justify-content: center;
     align-items: center;

@@ -3,4 +3,4 @@
  */
 
 // Key used to secure the JWT (jwt.io)
-export const secretKey: string = process.env.SECRET_KEY ?? 'NO_KEY'
+export const secretKey: string = process.env.SECRET ?? 'NO_KEY'

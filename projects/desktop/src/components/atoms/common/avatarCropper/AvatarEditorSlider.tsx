@@ -20,13 +20,18 @@ const ClickableRemove = styled(Remove)`
 `
 
 interface IOwnProps extends SliderProps {
-    increment: () => void;
-    decrement: () => void;
+    increment: () => void
+    decrement: () => void
 }
 
 type IProps = IOwnProps
 
-export const AvatarEditorSlider = ({ value, onChange, increment, decrement }: IProps): JSX.Element => (
+export const AvatarEditorSlider = ({
+    value,
+    onChange,
+    increment,
+    decrement,
+}: IProps): JSX.Element => (
     <Grid container spacing={2}>
         <Grid item>
             <ClickableRemove onClick={decrement} />

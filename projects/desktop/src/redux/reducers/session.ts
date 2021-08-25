@@ -22,7 +22,10 @@ const reducer: ISessionReducer = {
     }),
 }
 
-export const sessionReducer: Reducer<ISession, ISessionAction> = (state: ISession = defaultState, action: ISessionAction): ISession => {
+export const sessionReducer: Reducer<ISession, ISessionAction> = (
+    state: ISession = defaultState,
+    action: ISessionAction
+): ISession => {
     const handler = reducer[action.type]
     return handler instanceof Function ? handler(state, action.payload) : state
 }

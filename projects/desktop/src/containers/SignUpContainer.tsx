@@ -1,4 +1,4 @@
-import React, {useContext, useReducer, Dispatch, useEffect} from 'react'
+import React, { useContext, useReducer, Dispatch, useEffect } from 'react'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import axios, { AxiosResponse } from 'axios'
@@ -24,21 +24,21 @@ import { IFinalFormRenderProps } from '../interfaces/forms'
 import { getLogo } from '../helpers/logo'
 import { ITheme } from '../interfaces/theme'
 import { setToken } from '../redux/actions/session'
-import {IToken} from '../interfaces/token'
-import {getTokenData} from '../helpers/auth'
+import { IToken } from '../interfaces/token'
+import { getTokenData } from '../helpers/auth'
 
 interface IState {
     invalidForm: {
-        termsOfUse: boolean;
-    };
+        termsOfUse: boolean
+    }
 }
 
 interface IForm {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    termsOfUse?: boolean;
+    firstName: string
+    lastName: string
+    email: string
+    password: string
+    termsOfUse?: boolean
 }
 
 const initialState: IState = {
@@ -53,18 +53,18 @@ const actions: IStringTMap<string> = {
 
 const reducer = (state: typeof initialState, action: AnyAction): IState => {
     switch (action.type) {
-    case actions.SET_INVALID_FORM:
-        return {
-            ...state,
-            invalidForm: action.payload,
-        }
-    default:
-        throw new Error('Action type not found')
+        case actions.SET_INVALID_FORM:
+            return {
+                ...state,
+                invalidForm: action.payload,
+            }
+        default:
+            throw new Error('Action type not found')
     }
 }
 
 interface IDispatchProps {
-    setToken: (token: string) => Promise<Function>;
+    setToken: (token: string) => Promise<Function>
 }
 
 type IProps = IDispatchProps
@@ -81,9 +81,12 @@ const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
     setToken: async (token: string): Promise<Function> => dispatch(setToken(token)),
 })
 
-export const SignUpContainer = connect(null, mapDispatchToProps)(({setToken}: IProps): JSX.Element => {
+export const SignUpContainer = connect(
+    null,
+    mapDispatchToProps
+)(({ setToken }: IProps): JSX.Element => {
     const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
-    const {t}: UseTranslationResponse = useTranslation()
+    const { t }: UseTranslationResponse = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
     const history = useHistory()
 
@@ -95,29 +98,31 @@ export const SignUpContainer = connect(null, mapDispatchToProps)(({setToken}: IP
         }
     })
 
-    const getTitleContent = (): IDangerousHTMLContent => ({__html: t('signup.title')})
+    const getTitleContent = (): IDangerousHTMLContent => ({
+        __html: t('signup.title'),
+    })
 
     const setInvalidForm = (value: object): void => {
-        dispatch({type: actions.SET_INVALID_FORM, payload: value})
+        dispatch({ type: actions.SET_INVALID_FORM, payload: value })
     }
 
     const onSubmit = async (values: IForm | AnyObject): Promise<void | object> => {
-        const {termsOfUse}: {termsOfUse?: boolean;} = values
+        const { termsOfUse }: { termsOfUse?: boolean } = values
 
         setInvalidForm({
             termsOfUse: !termsOfUse,
         })
 
-        if(termsOfUse) {
+        if (termsOfUse) {
             const formData: IForm = _.pick(values, ['email', 'password', 'firstName', 'lastName'])
 
             try {
                 const response: AxiosResponse = await axios.post(
                     `${serverURL}/auth/signup`,
-                    formData,
+                    formData
                 )
 
-                const {data}: AxiosResponse<any> = response
+                const { data }: AxiosResponse<any> = response
                 await setToken(data.token)
                 return history.push('/onboarding')
             } catch (e) {
@@ -128,12 +133,12 @@ export const SignUpContainer = connect(null, mapDispatchToProps)(({setToken}: IP
                 }
 
                 switch (e.response.data.message) {
-                case 'email_already_taken':
-                    return { email: t('signup.error.emailAlreadyTaken')}
-                default:
-                    error('Error while signup: ')
-                    error(e.response)
-                    break
+                    case 'email_already_taken':
+                        return { email: t('signup.error.emailAlreadyTaken') }
+                    default:
+                        error('Error while signup: ')
+                        error(e.response)
+                        break
                 }
             }
         }
@@ -142,16 +147,19 @@ export const SignUpContainer = connect(null, mapDispatchToProps)(({setToken}: IP
     return (
         <SingleFormContainer>
             <SignUpBox>
-                <Logo src={getLogo(theme)} alt='Bitsky' />
+                <Logo src={getLogo(theme)} alt="Bitsky" />
                 <SFLanguageChooser />
                 <BigTitle dangerouslySetInnerHTML={getTitleContent()} />
                 <FinalForm
                     onSubmit={onSubmit}
                     initialValues={{ termsOfUse: false }}
-                    render={({
-                        handleSubmit,
-                        submitError,
-                    }: IFinalFormRenderProps) => <SignUpForm handleSubmit={handleSubmit} invalid={state.invalidForm} submitError={submitError} />}
+                    render={({ handleSubmit, submitError }: IFinalFormRenderProps) => (
+                        <SignUpForm
+                            handleSubmit={handleSubmit}
+                            invalid={state.invalidForm}
+                            submitError={submitError}
+                        />
+                    )}
                 />
             </SignUpBox>
         </SingleFormContainer>

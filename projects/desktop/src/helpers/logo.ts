@@ -4,11 +4,11 @@ import { ITheme } from './../interfaces/theme'
 
 export const getLogo = (theme: ITheme): string => {
     switch (theme.mode) {
-    case 'classic':
-        return logoClassic
-    case 'dark':
-        return logoDark
-    default:
-        return logoClassic // will be the user's logo if he sets one
+        case 'classic':
+            return logoClassic
+        case 'dark':
+            return logoDark
+        default:
+            return logoClassic // will be the user's logo if he sets one
     }
 }

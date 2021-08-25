@@ -9,7 +9,7 @@ import { colors } from '../../../constants'
 export const SignUpBox = styled(MaterialBox)`
     background-color: ${colors.white};
     border-radius: 8px;
-    box-shadow: 4px 8px 32px 0 rgba(0,0,0,0.10);
+    box-shadow: 4px 8px 32px 0 rgba(0, 0, 0, 0.1);
     position: relative;
     padding: 80px 40px 40px;
 `

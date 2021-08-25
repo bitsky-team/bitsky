@@ -9,7 +9,7 @@ import { IStringTMap } from '../../../interfaces/generics'
 import { setLanguage } from '../../../redux/actions/session'
 
 interface IState {
-    open: boolean;
+    open: boolean
 }
 
 const initialState: IState = {
@@ -22,25 +22,28 @@ const actions: IStringTMap<string> = {
 }
 
 interface IDispatchProps {
-    setLanguage: (language: string) => Promise<Function>;
+    setLanguage: (language: string) => Promise<Function>
 }
 
 type IProps = IDispatchProps & {
-    className?: string;
+    className?: string
 }
 
 /**
  * Reducer who returns a new state depending on the action
  */
-const reducer: Reducer<typeof initialState, AnyAction> = (state: typeof initialState, action: AnyAction): IState => {
+const reducer: Reducer<typeof initialState, AnyAction> = (
+    state: typeof initialState,
+    action: AnyAction
+): IState => {
     switch (action.type) {
-    case actions.TOGGLE_DIALOG:
-        return {
-            ...state,
-            open: !state.open,
-        }
-    default:
-        throw new Error('Action type not found')
+        case actions.TOGGLE_DIALOG:
+            return {
+                ...state,
+                open: !state.open,
+            }
+        default:
+            throw new Error('Action type not found')
     }
 }
 
@@ -54,15 +57,18 @@ const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
     setLanguage: async (language: string): Promise<Function> => dispatch(setLanguage(language)),
 })
 
-export const LanguageChooser = connect(null, mapDispatchToProps)(({className, setLanguage}: IProps): JSX.Element => {
+export const LanguageChooser = connect(
+    null,
+    mapDispatchToProps
+)(({ className, setLanguage }: IProps): JSX.Element => {
     const [state, dispatch]: [IState, Dispatch<AnyAction>] = useReducer(reducer, initialState)
-    const {i18n}: UseTranslationResponse = useTranslation()
+    const { i18n }: UseTranslationResponse = useTranslation()
 
     /**
      * Method who toggles the dialog state
      */
     const toggleDialog: (event?: MouseEvent) => void = (): void => {
-        return dispatch({type: actions.TOGGLE_DIALOG})
+        return dispatch({ type: actions.TOGGLE_DIALOG })
     }
 
     /**
@@ -72,7 +78,9 @@ export const LanguageChooser = connect(null, mapDispatchToProps)(({className, se
      * redux-persist
      * @param language string
      */
-    const setSessionLanguage: (language: string) => void = async (language: string): Promise<void> => {
+    const setSessionLanguage: (language: string) => void = async (
+        language: string
+    ): Promise<void> => {
         if (language) {
             await setLanguage(language)
             await i18n.changeLanguage(language)
@@ -88,11 +96,7 @@ export const LanguageChooser = connect(null, mapDispatchToProps)(({className, se
                 setLanguage={setSessionLanguage}
                 onClose={toggleDialog}
             />
-            <Button
-                data-testid='translationToggler'
-                className={className}
-                onClick={toggleDialog}
-            >
+            <Button data-testid="translationToggler" className={className} onClick={toggleDialog}>
                 {i18n.language}
             </Button>
         </LanguageChooserContainer>

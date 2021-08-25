@@ -5,19 +5,13 @@ import { Grid } from '@material-ui/core'
 import { Done, Replay, Close, Publish } from '@material-ui/icons'
 import downscale from 'downscale'
 
-import {
-    Dialog,
-    DialogTitle,
-    AvatarEditorContainer,
-    Button,
-    FileInput
-} from '../../'
+import { Dialog, DialogTitle, AvatarEditorContainer, Button, FileInput } from '../../'
 import { ISimpleDialogProps } from '../../../interfaces/dialogs'
 import { AvatarEditorSlider } from '../../atoms/common/avatarCropper/AvatarEditorSlider'
 import { AVATAR_HEIGHT, AVATAR_WIDTH } from '../../../constants'
 
 interface IOwnProps {
-    setAvatar: (value: string) => void;
+    setAvatar: (value: string) => void
 }
 
 type IProps = ISimpleDialogProps & IOwnProps
@@ -30,9 +24,11 @@ type IProps = ISimpleDialogProps & IOwnProps
  */
 export const AvatarCropperDialog = ({ open, onClose, setAvatar }: IProps): JSX.Element => {
     const { t }: UseTranslationResponse = useTranslation()
-    const [uploadedImage, setUploadedImage]: [(string | null), Function] = useState<string | null>(null)
+    const [uploadedImage, setUploadedImage]: [string | null, Function] = useState<string | null>(
+        null
+    )
     const [scale, setScale]: [number, Function] = useState<number>(1)
-    const [editor, setEditor]: [(AvatarEditor | null), Function] = useState<AvatarEditor | null>(null)
+    const [editor, setEditor]: [AvatarEditor | null, Function] = useState<AvatarEditor | null>(null)
     const imageInput = useRef<HTMLInputElement>(null)
 
     /**
@@ -82,7 +78,10 @@ export const AvatarCropperDialog = ({ open, onClose, setAvatar }: IProps): JSX.E
             const reader: FileReader = new FileReader()
             reader.onload = (e: ProgressEvent<FileReader>) => {
                 const result: string = e.target?.result as string
-                if (result.startsWith('data:image')  || result.startsWith('data:application/octet-stream;base64')) {
+                if (
+                    result.startsWith('data:image') ||
+                    result.startsWith('data:application/octet-stream;base64')
+                ) {
                     setUploadedImage(result)
                 }
             }
@@ -92,9 +91,7 @@ export const AvatarCropperDialog = ({ open, onClose, setAvatar }: IProps): JSX.E
 
     return (
         <Dialog data-testid="avatarCropperDialog" onClose={onClose} open={open}>
-            <DialogTitle>
-                {t('dialogs.avatarCropper.title')}
-            </DialogTitle>
+            <DialogTitle>{t('dialogs.avatarCropper.title')}</DialogTitle>
             {uploadedImage ? (
                 <AvatarEditorContainer>
                     <AvatarEditor
@@ -116,7 +113,12 @@ export const AvatarCropperDialog = ({ open, onClose, setAvatar }: IProps): JSX.E
                     />
                 </AvatarEditorContainer>
             ) : (
-                <FileInput data-testid="imageInput" ref={imageInput} type="file" onChange={handleFileUpload} />
+                <FileInput
+                    data-testid="imageInput"
+                    ref={imageInput}
+                    type="file"
+                    onChange={handleFileUpload}
+                />
             )}
             <Grid container>
                 {uploadedImage ? (

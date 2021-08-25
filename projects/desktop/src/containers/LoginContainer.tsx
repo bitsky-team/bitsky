@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 import axios, { AxiosResponse } from 'axios'
@@ -29,13 +29,13 @@ import { ITheme } from '../interfaces/theme'
 import { getTokenData } from '../helpers/auth'
 
 interface IForm {
-    email: string;
-    password: string;
+    email: string
+    password: string
 }
 
 interface IDispatchProps {
-    setTheme: (theme: string) => Promise<Function>;
-    setToken: (token: string) => Promise<Function>;
+    setTheme: (theme: string) => Promise<Function>
+    setToken: (token: string) => Promise<Function>
 }
 
 type IProps = IDispatchProps
@@ -53,10 +53,15 @@ const mapDispatchToProps = (dispatch: Function): IDispatchProps => ({
     setToken: async (token: string): Promise<Function> => dispatch(setToken(token)),
 })
 
-export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setToken}: IProps): JSX.Element => {
-    const {t}: UseTranslationResponse = useTranslation()
+export const LoginContainer = connect(
+    null,
+    mapDispatchToProps
+)(({ setTheme, setToken }: IProps): JSX.Element => {
+    const { t }: UseTranslationResponse = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
-    const getTitleContent = (): IDangerousHTMLContent => ({__html: t('login.title')})
+    const getTitleContent = (): IDangerousHTMLContent => ({
+        __html: t('login.title'),
+    })
     const history = useHistory()
 
     useEffect(() => {
@@ -69,12 +74,9 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setT
 
     const onSubmit = async (values: IForm | AnyObject): Promise<void | object> => {
         try {
-            const response: AxiosResponse = await axios.post(
-                `${serverURL}/auth/login`,
-                values,
-            )
+            const response: AxiosResponse = await axios.post(`${serverURL}/auth/login`, values)
 
-            const {data}: AxiosResponse<any> = response
+            const { data }: AxiosResponse<any> = response
             await setToken(data.token)
             await setTheme(data.theme)
 
@@ -84,7 +86,6 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setT
             }
 
             return history.push('/activity_feed')
-
         } catch (e) {
             if (!e.response) {
                 return {
@@ -93,14 +94,14 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setT
             }
 
             switch (e.response.data.message) {
-            case 'user_not_found':
-                return { email: t('login.error.userNotFound')}
-            case 'incorrect_password':
-                return { password: t('login.error.incorrectPassword')}
-            default:
-                error('Error while login: ')
-                error(e.response)
-                break
+                case 'user_not_found':
+                    return { email: t('login.error.userNotFound') }
+                case 'incorrect_password':
+                    return { password: t('login.error.incorrectPassword') }
+                default:
+                    error('Error while login: ')
+                    error(e.response)
+                    break
             }
         }
     }
@@ -109,21 +110,20 @@ export const LoginContainer = connect(null, mapDispatchToProps)(({setTheme, setT
         <SingleFormContainer>
             <LoginBox>
                 <LeftSide>
-                    <Logo src={getLogo(theme)} alt='Bitsky' />
+                    <Logo src={getLogo(theme)} alt="Bitsky" />
                     <SFLanguageChooser />
                     <BigTitle dangerouslySetInnerHTML={getTitleContent()} />
 
                     <FinalForm
                         onSubmit={onSubmit}
                         initialValues={{ remember: false }}
-                        render={({
-                            handleSubmit,
-                            submitError,
-                        }: IFinalFormRenderProps) => <LoginForm handleSubmit={handleSubmit} submitError={submitError} />}
+                        render={({ handleSubmit, submitError }: IFinalFormRenderProps) => (
+                            <LoginForm handleSubmit={handleSubmit} submitError={submitError} />
+                        )}
                     />
                 </LeftSide>
                 <RightSide>
-                    <br/> {/* FIXME */}
+                    <br /> {/* FIXME */}
                 </RightSide>
             </LoginBox>
         </SingleFormContainer>

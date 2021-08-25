@@ -32,22 +32,20 @@ const getLanguage = (): string | undefined => {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
-i18n
-    .use(initReactI18next)
-    .init({
-        resources: {
-            en,
-            fr,
-            es,
-            nl,
-        },
-        lng: getLanguage() ?? 'en',
-        fallbackLng: 'en',
-        keySeparator: '.',
-        interpolation: {
-            escapeValue: false,
-        },
-    })
+i18n.use(initReactI18next).init({
+    resources: {
+        en,
+        fr,
+        es,
+        nl,
+    },
+    lng: getLanguage() ?? 'en',
+    fallbackLng: 'en',
+    keySeparator: '.',
+    interpolation: {
+        escapeValue: false,
+    },
+})
 
 const Loader = <Fragment />
 
@@ -72,31 +70,32 @@ const store = configureStore()
 
 // This component will read the hydrated theme from redux
 interface IOwnProps {
-  children: object;
+    children: object
 }
 interface IStoreProps {
-  mode?: string;
+    mode?: string
 }
 
 type IProps = IOwnProps & IStoreProps
 
-const mapStateToProps = ({themeReducer}: IReduxState): IStoreProps => ({mode: themeReducer.mode})
+const mapStateToProps = ({ themeReducer }: IReduxState): IStoreProps => ({
+    mode: themeReducer.mode,
+})
 
-const ConnectedThemeProvider = connect(mapStateToProps, null)(
-    ({children, mode}: IProps) => {
-        if (!mode) {
-            return Loader
-        }
+const ConnectedThemeProvider = connect(
+    mapStateToProps,
+    null
+)(({ children, mode }: IProps) => {
+    if (!mode) {
+        return Loader
+    }
 
-        return (
-            <ThemeProvider theme={{mode}}>
-                <StylesProvider injectFirst>
-                    {children}
-                </StylesProvider>
-            </ThemeProvider>
-        )
-    },
-)
+    return (
+        <ThemeProvider theme={{ mode }}>
+            <StylesProvider injectFirst>{children}</StylesProvider>
+        </ThemeProvider>
+    )
+})
 
 // TODO: Maybe change Suspense fallback props into a beautiful loading screen
 // but if there is a loading at each click, it will be relou
@@ -115,9 +114,6 @@ const App = (): JSX.Element => (
 )
 
 // Rendering the app
-ReactDOM.render(
-    <App />,
-    document.getElementById('root'),
-)
+ReactDOM.render(<App />, document.getElementById('root'))
 
 unregister()

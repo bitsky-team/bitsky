@@ -3,15 +3,10 @@ import { AnyAction } from 'redux'
 import { useTranslation, UseTranslationResponse } from 'react-i18next'
 
 import { IStringTMap } from '../../../interfaces/generics'
-import {
-    AvatarCropperDialog,
-    AvatarCropperContainer,
-    AvatarOverlay,
-    AvatarImage,
-} from '../../'
+import { AvatarCropperDialog, AvatarCropperContainer, AvatarOverlay, AvatarImage } from '../../'
 
 interface IState {
-    open: boolean;
+    open: boolean
 }
 
 const initialState: IState = {
@@ -26,21 +21,24 @@ const actions: IStringTMap<string> = {
 /**
  * Reducer who returns a new state depending on the action
  */
-const reducer: Reducer<typeof initialState, AnyAction> = (state: typeof initialState, action: AnyAction): IState => {
+const reducer: Reducer<typeof initialState, AnyAction> = (
+    state: typeof initialState,
+    action: AnyAction
+): IState => {
     switch (action.type) {
-    case actions.TOGGLE_DIALOG:
-        return {
-            ...state,
-            open: !state.open,
-        }
-    default:
-        throw new Error('Action type not found')
+        case actions.TOGGLE_DIALOG:
+            return {
+                ...state,
+                open: !state.open,
+            }
+        default:
+            throw new Error('Action type not found')
     }
 }
 
 interface IOwnProps {
-    avatar: string;
-    setAvatar: Function;
+    avatar: string
+    setAvatar: Function
 }
 
 type IProps = IOwnProps
@@ -57,8 +55,7 @@ export const AvatarCropper = ({ avatar, setAvatar }: IProps): JSX.Element => {
     /**
      * Method which toggles the dialog state
      */
-    const toggleDialog = (): void =>
-        dispatch({type: actions.TOGGLE_DIALOG})
+    const toggleDialog = (): void => dispatch({ type: actions.TOGGLE_DIALOG })
 
     /**
      * Method which sets the avatar state
@@ -77,7 +74,9 @@ export const AvatarCropper = ({ avatar, setAvatar }: IProps): JSX.Element => {
                 onClose={toggleDialog}
             />
             <AvatarCropperContainer>
-                <AvatarOverlay data-testid="avatarOverlay" onClick={toggleDialog}>{t('dialogs.avatarCropper.modify')}</AvatarOverlay>
+                <AvatarOverlay data-testid="avatarOverlay" onClick={toggleDialog}>
+                    {t('dialogs.avatarCropper.modify')}
+                </AvatarOverlay>
                 <AvatarImage data-testid="avatar" src={avatar} alt="avatar" />
             </AvatarCropperContainer>
         </>

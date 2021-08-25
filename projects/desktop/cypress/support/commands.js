@@ -30,13 +30,13 @@ Cypress.Commands.add(
     },
     (input, fileName, fileType) => {
         cy.fixture(fileName)
-        .then(content => Cypress.Blob.base64StringToBlob(content, fileType))
-        .then(blob => {
-            const testFile = new File([blob], fileName)
-            const dataTransfer = new DataTransfer()
-            dataTransfer.items.add(testFile)
-            input[0].files = dataTransfer.files
-            return input
-        })
+            .then((content) => Cypress.Blob.base64StringToBlob(content, fileType))
+            .then((blob) => {
+                const testFile = new File([blob], fileName)
+                const dataTransfer = new DataTransfer()
+                dataTransfer.items.add(testFile)
+                input[0].files = dataTransfer.files
+                return input
+            })
     }
 )

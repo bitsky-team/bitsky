@@ -3,6 +3,7 @@
 </p>
 
 # Bitsky
+
 A new way to share with your loved ones.
 
 [![Build Status](https://travis-ci.com/bitsky-team/bitsky.svg?branch=develop)](https://travis-ci.com/bitsky-team/bitsky)
@@ -10,23 +11,24 @@ A new way to share with your loved ones.
 ![Issues badge](https://img.shields.io/github/issues/bitsky-team/bitsky.svg)
 ![License badge](https://img.shields.io/github/license/bitsky-team/bitsky.svg)
 
-📌 Table of contents
-=================
-* [Introduction](#-introduction)
-* [Why](#-why)
-* [Project structure](#-project-structure)
-* [How do I get started?](#-how-do-i-get-started)
-* [Contributing](#-contributing)
-* [Discord](#-discord)
+# 📌 Table of contents
 
-☁️ Introduction
-==========================
+- [Introduction](#-introduction)
+- [Why](#-why)
+- [Project structure](#-project-structure)
+- [How do I get started?](#-how-do-i-get-started)
+- [Contributing](#-contributing)
+- [Discord](#-discord)
+
+# ☁️ Introduction
+
 **Founders**: Bitsky is a private community and social cloud.  
 **You**: Excuse me, what the fuck?  
 **Founders**: Let’s take a closer look at the meaning of these words.
- - The term *private* means that it belongs to a user or to a group of users.
- - The term *social* means that it contains the functionalities of a social network.
- - The term *community* means that you can link it to other Bitsky in order to create a broader network.
+
+- The term _private_ means that it belongs to a user or to a group of users.
+- The term _social_ means that it contains the functionalities of a social network.
+- The term _community_ means that you can link it to other Bitsky in order to create a broader network.
 
 But not only that, it can also be used as a private or shared storage space.
 
@@ -38,8 +40,8 @@ Each device will be able to link to other devices through key sharing.
 
 The device on the left will be able to read and, if necessary, display the data from the device on the right and vice versa. A link is only by direct link and therefore is not transitive.
 
-🤔 Why?
-===========================
+# 🤔 Why?
+
 Privacy.
 
 A virtual identity card, social networks alter our society by their influence. We allow them, often without our knowledge, to achieve their economic or political ends.
@@ -50,8 +52,8 @@ The indignation and distrust of Internet users has only grown. The use and contr
 
 This project will try to address that and address those concerns.
 
-🛠️ Project structure
-=================
+# 🛠️ Project structure
+
 ```bash
 ├── src
 │   ├── intermediary-api # Security REST api cloud-hosted
@@ -71,12 +73,13 @@ This project will try to address that and address those concerns.
 └── .github
 ```
 
-📟 How do I get started?
-=====================
+# 📟 How do I get started?
+
 If you want to use it: actually you can't, we are bootstrapping the project.
 But if you want to get an overview of the current work here are the steps to follow:
- 
+
 ## Preview the project
+
 Docker is a requirement.
 
 ```bash
@@ -85,6 +88,7 @@ docker compose up
 ```
 
 After seeing this:
+
 ```bash
 bitsky_api_1 | ██████╗ ██╗████████╗███████╗██╗  ██╗██╗   ██╗     █████╗ ██████╗ ██╗
 bitsky_api_1 | ██╔══██╗██║╚══██╔══╝██╔════╝██║ ██╔╝╚██╗ ██╔╝    ██╔══██╗██╔══██╗██║
@@ -99,6 +103,7 @@ Frontend will be available at http://localhost:5000
 Backend will be available at http://localhost:5030
 
 ## Contribute
+
 ### Tools
 
 - yarn@1.22.10
@@ -106,7 +111,9 @@ Backend will be available at http://localhost:5030
 - postgreSQL@12.1
 
 ### Base installation
+
 - Install the main dependencies
+
   ```bash
   cd bitsky
   yarn install
@@ -116,16 +123,16 @@ Backend will be available at http://localhost:5030
 
 - Install & launch [Desktop app](https://github.com/bitsky-team/bitsky/tree/develop/projects/desktop)
 
+# 🤝 Contributing
 
-🤝 Contributing
-================
 If you want to contribute:
- 1. Read the [contributing.md file](CONTRIBUTING.md).
- 2. Check the [project board](https://github.com/bitsky-team/bitsky/projects) and find an issue who suits you.
- 3. Respect the pull request template.
- 4. Add your name in the [contributors.md file](CONTRIBUTORS.md).
- 5. Thanks !
 
-💌 Discord
-===========
+1.  Read the [contributing.md file](CONTRIBUTING.md).
+2.  Check the [project board](https://github.com/bitsky-team/bitsky/projects) and find an issue who suits you.
+3.  Respect the pull request template.
+4.  Add your name in the [contributors.md file](CONTRIBUTORS.md).
+5.  Thanks !
+
+# 💌 Discord
+
 If you have any suggestions or would like to contribute or just chat, please feel free to come to our [Discord server](https://discord.gg/nNmB7Sz).

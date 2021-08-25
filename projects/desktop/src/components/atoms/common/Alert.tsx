@@ -8,9 +8,9 @@ import { ITheme } from '../../../interfaces/theme'
 
 type PropsValue = string
 interface IAlertProps {
-    bgColor?: PropsValue;
-    color?: PropsValue;
-    borderColor?: PropsValue;
+    bgColor?: PropsValue
+    color?: PropsValue
+    borderColor?: PropsValue
 }
 
 const AlertBox = styled.div<IAlertColor>`
@@ -22,15 +22,15 @@ const AlertBox = styled.div<IAlertColor>`
     align-items: center;
     box-sizing: border-box;
     width: 100%;
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     border-radius: 4px;
     border: 1px solid ${(props: IAlertProps): PropsValue => props.borderColor ?? ''};
 `
 
 interface IOwnProps {
-    type: string;
-    children: string;
+    type: string
+    children: string
 }
 
 type IProps = IOwnProps
@@ -39,7 +39,7 @@ export const Alert: Function = ({ type, children }: IProps) => {
     const [data, setData]: [IAlertColor, Function] = useState({})
 
     useEffect(() => {
-        const theme: { theme: ITheme; } = getRawTheme()
+        const theme: { theme: ITheme } = getRawTheme()
 
         if (!['info', 'warning', 'danger', 'success'].includes(type)) {
             throw new Error('Unknown alert type')
@@ -53,11 +53,7 @@ export const Alert: Function = ({ type, children }: IProps) => {
     }, [type])
 
     return (
-        <AlertBox
-            bgColor={data.bgColor}
-            borderColor={data.borderColor}
-            color={data.color}
-        >
+        <AlertBox bgColor={data.bgColor} borderColor={data.borderColor} color={data.color}>
             {children}
         </AlertBox>
     )
