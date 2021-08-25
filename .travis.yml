@@ -7,14 +7,14 @@ addons:
   postgresql: "12.1"
 
 node_js:
-  - 14
+  - 14.15
 
 before_install:
   - sudo /etc/init.d/postgresql start 12.1
 
 before_script:
-  - nvm install 14.0
-  - nvm alias default 14.0
+  - nvm install 14.15
+  - nvm alias default 14.15
   - yarn policies set-version 1.22.0
 
   - psql --version
