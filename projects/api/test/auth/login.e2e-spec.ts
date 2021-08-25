@@ -1,41 +1,15 @@
-import { Test, TestingModule } from '@nestjs/testing'
-import { INestApplication } from '@nestjs/common'
 import request from 'supertest'
-import { getConnection } from 'typeorm'
 
 import { johnDoe } from '../mockups/user'
 import { decode } from '../../src/utils/jwt'
 import { UserFromRequest } from '../../src/interfaces/user'
-import { AppModule } from '../../src/modules/app/app.module'
 
 describe('POST /auth/login', () => {
-    let app: INestApplication
-    let server: any
-
-    beforeEach(async () => {
-        const moduleFixture: TestingModule = await Test.createTestingModule({
-            imports: [AppModule],
-        }).compile()
-
-        app = moduleFixture.createNestApplication()
-        await app.init()
-        server = app.getHttpServer()
-    })
-
-    afterEach(async () => {
-        const entities = getConnection().entityMetadatas
-
-        for (const entity of entities) {
-            const repository = getConnection().getRepository(entity.name)
-            await repository.clear()
-        }
-    })
-
     it('Login successfully', async () => {
-        await request(server).post('/auth/signup').send(johnDoe)
+        await request(window.server).post('/auth/signup').send(johnDoe)
 
         // Sending the data
-        const res: any = await request(server)
+        const res: any = await request(window.server)
             .post('/auth/login')
             .send({
                 email: johnDoe.email,
@@ -53,7 +27,7 @@ describe('POST /auth/login', () => {
 
     it('Login unsuccessfully (user not found)', async () => {
         // Sending the data
-        const res: any = await request(server)
+        const res: any = await request(window.server)
             .post('/auth/login')
             .send({
                 email: johnDoe.email,
@@ -66,10 +40,10 @@ describe('POST /auth/login', () => {
     })
 
     it('Login unsuccessfully (incorrect password)', async () => {
-        await request(server).post('/auth/signup').send(johnDoe)
+        await request(window.server).post('/auth/signup').send(johnDoe)
 
         // Sending the data
-        const res: any = await request(server)
+        const res: any = await request(window.server)
             .post('/auth/login')
             .send({
                 email: johnDoe.email,

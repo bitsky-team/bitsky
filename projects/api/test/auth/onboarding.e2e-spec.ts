@@ -1,35 +1,9 @@
-import { Test, TestingModule } from '@nestjs/testing'
-import { INestApplication } from '@nestjs/common'
 import request from 'supertest'
-import { getConnection } from 'typeorm'
 
 import { johnDoe } from '../mockups/user'
-import { AppModule } from '../../src/modules/app/app.module'
 import { User } from '../../src/modules/user/user.entity'
 
 describe('POST /auth/onboarding', () => {
-    let app: INestApplication
-    let server: any
-
-    beforeEach(async () => {
-        const moduleFixture: TestingModule = await Test.createTestingModule({
-            imports: [AppModule],
-        }).compile()
-
-        app = moduleFixture.createNestApplication()
-        await app.init()
-        server = app.getHttpServer()
-    })
-
-    afterEach(async () => {
-        const entities = getConnection().entityMetadatas
-
-        for (const entity of entities) {
-            const repository = getConnection().getRepository(entity.name)
-            await repository.clear()
-        }
-    })
-
     it('Invalid birthdate (year < 1900) generates `invalid_birthdate` error message', async () => {
         const data: Partial<User> = {
             avatar: 'placeholder',
@@ -39,10 +13,13 @@ describe('POST /auth/onboarding', () => {
         }
 
         // Sending the data
-        const signupRes: any = await request(server).post('/auth/signup').send(johnDoe).expect(200)
+        const signupRes: any = await request(window.server)
+            .post('/auth/signup')
+            .send(johnDoe)
+            .expect(200)
         const token: string = signupRes.body.token
 
-        const onboardingRes: any = await request(server)
+        const onboardingRes: any = await request(window.server)
             .post('/auth/onboarding')
             .set('Authorization', `Bearer ${token}`)
             .send(data)
@@ -60,10 +37,13 @@ describe('POST /auth/onboarding', () => {
         }
 
         // Sending the data
-        const signupRes: any = await request(server).post('/auth/signup').send(johnDoe).expect(200)
+        const signupRes: any = await request(window.server)
+            .post('/auth/signup')
+            .send(johnDoe)
+            .expect(200)
         const token: string = signupRes.body.token
 
-        const onboardingRes: any = await request(server)
+        const onboardingRes: any = await request(window.server)
             .post('/auth/onboarding')
             .set('Authorization', `Bearer ${token}`)
             .send(data)
@@ -81,10 +61,13 @@ describe('POST /auth/onboarding', () => {
         }
 
         // Sending the data
-        const signupRes: any = await request(server).post('/auth/signup').send(johnDoe).expect(200)
+        const signupRes: any = await request(window.server)
+            .post('/auth/signup')
+            .send(johnDoe)
+            .expect(200)
         const token: string = signupRes.body.token
 
-        const onboardingRes: any = await request(server)
+        const onboardingRes: any = await request(window.server)
             .post('/auth/onboarding')
             .set('Authorization', `Bearer ${token}`)
             .send(data)
@@ -102,18 +85,21 @@ describe('POST /auth/onboarding', () => {
         }
 
         // Sending the data
-        const signupRes: any = await request(server).post('/auth/signup').send(johnDoe).expect(200)
+        const signupRes: any = await request(window.server)
+            .post('/auth/signup')
+            .send(johnDoe)
+            .expect(200)
         const token: string = signupRes.body.token
 
         // First onboarding is ok
-        await request(server)
+        await request(window.server)
             .post('/auth/onboarding')
             .set('Authorization', `Bearer ${token}`)
             .send(data)
             .expect(200)
 
         // We resend the same data in order to have the username taken error
-        const onboardingRes: any = await request(server)
+        const onboardingRes: any = await request(window.server)
             .post('/auth/onboarding')
             .set('Authorization', `Bearer ${token}`)
             .send(data)
