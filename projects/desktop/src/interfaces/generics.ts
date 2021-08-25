@@ -19,3 +19,11 @@ export interface IPropsChildren {
 export interface IDangerousHTMLContent {
     __html: string
 }
+
+export interface ServerResponseError {
+    response: {
+        data: {
+            message: string
+        }
+    }
+}

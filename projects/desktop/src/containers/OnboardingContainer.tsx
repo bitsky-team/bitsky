@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useTranslation, UseTranslationResponse } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import { ThemeContext } from 'styled-components'
 import { Form as FinalForm, AnyObject } from 'react-final-form'
 import axios, { AxiosResponse } from 'axios'
@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom'
 import { getLogo } from '../helpers/logo'
 import { error } from '../helpers/logger'
 import { ITheme } from '../interfaces/theme'
-import { IDangerousHTMLContent } from '../interfaces/generics'
+import { IDangerousHTMLContent, ServerResponseError } from '../interfaces/generics'
 import { IFinalFormRenderProps } from '../interfaces/forms'
 import { IReduxState } from '../interfaces/redux'
 import { ISession } from '../interfaces/session'
@@ -56,7 +56,7 @@ export const OnboardingContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(({ session, setToken }: IProps): JSX.Element => {
-    const { t }: UseTranslationResponse<'onboarding'> = useTranslation()
+    const { t } = useTranslation()
     const theme: ITheme = useContext(ThemeContext)
     const [avatar, setAvatar]: [string, Function] = useState<string>(DEFAULT_AVATAR)
     const history = useHistory()
@@ -93,22 +93,23 @@ export const OnboardingContainer = connect(
             await setToken(data.token) // refresh token to have the username
 
             history.push('/activity_feed')
-        } catch (e: any) {
-            console.error(e)
-            if (!e.response) {
+        } catch (e) {
+            const castedError = e as ServerResponseError
+
+            if (!castedError.response) {
                 return {
                     [FORM_ERROR]: t('serverError'),
                 }
             }
 
-            switch (e.response.data.message) {
+            switch (castedError.response.data.message) {
                 case 'invalid_birthdate':
                     return { birthdate: t('onboarding.error.invalidBirthdate') }
                 case 'username_already_taken':
                     return { username: t('onboarding.error.usernameAlreadyTaken') }
                 default:
                     error('Error while onboarding: ')
-                    error(e.response)
+                    error(castedError.response.data.message)
                     break
             }
         }
