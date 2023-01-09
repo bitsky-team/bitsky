@@ -24,7 +24,7 @@
         "bcrypt": "^5.0.1",
         "cli-color": "^2.0.0",
         "dotenv": "^10.0.0",
-        "luxon": "^2.0.2",
+        "luxon": "^2.5.2",
         "pg": "^8.7.1",
         "reflect-metadata": "^0.1.13",
         "rimraf": "^3.0.2",
